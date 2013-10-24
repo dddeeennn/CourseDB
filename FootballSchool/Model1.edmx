@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="fscModelStoreContainer">
+          <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GameEvents" EntityType="fscModel.Store.GameEvents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Games" EntityType="fscModel.Store.Games" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlayerInTeam" EntityType="fscModel.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlayerPositions" EntityType="fscModel.Store.PlayerPositions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Players" EntityType="fscModel.Store.Players" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Referee" EntityType="fscModel.Store.Referee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Teams" EntityType="fscModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_GameEvents_Event" Association="fscModel.Store.FK_GameEvents_Event">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameEvents_Game" Association="fscModel.Store.FK_GameEvents_Game">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameEvents_Players" Association="fscModel.Store.FK_GameEvents_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Referee" Association="fscModel.Store.FK_Games_Referee">
+            <End Role="Referee" EntitySet="Referee" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Team1" Association="fscModel.Store.FK_Games_Team1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Team2" Association="fscModel.Store.FK_Games_Team2">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerInTeam_Players" Association="fscModel.Store.FK_PlayerInTeam_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="PlayerInTeam" EntitySet="PlayerInTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerInTeam_Team" Association="fscModel.Store.FK_PlayerInTeam_Team">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="PlayerInTeam" EntitySet="PlayerInTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_PlayerPositions" Association="fscModel.Store.FK_Players_PlayerPositions">
+            <End Role="PlayerPositions" EntitySet="PlayerPositions" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Coaches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GameEvents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Team1ID" Type="int" Nullable="false" />
+          <Property Name="Team2ID" Type="int" Nullable="false" />
+          <Property Name="Stadium" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="bit" Nullable="false" />
+          <Property Name="RefereeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlayerInTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlayerPositions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passport" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Referee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Qualify" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CoachID" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_GameEvents_Event">
+          <End Role="Events" Type="fscModel.Store.Events" Multiplicity="1" />
+          <End Role="GameEvents" Type="fscModel.Store.GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameEvents_Game">
+          <End Role="Games" Type="fscModel.Store.Games" Multiplicity="1" />
+          <End Role="GameEvents" Type="fscModel.Store.GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameEvents_Players">
+          <End Role="Players" Type="fscModel.Store.Players" Multiplicity="1" />
+          <End Role="GameEvents" Type="fscModel.Store.GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Referee">
+          <End Role="Referee" Type="fscModel.Store.Referee" Multiplicity="1" />
+          <End Role="Games" Type="fscModel.Store.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Referee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="RefereeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Team1">
+          <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="1" />
+          <End Role="Games" Type="fscModel.Store.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Team2">
+          <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="1" />
+          <End Role="Games" Type="fscModel.Store.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerInTeam_Players">
+          <End Role="Players" Type="fscModel.Store.Players" Multiplicity="1" />
+          <End Role="PlayerInTeam" Type="fscModel.Store.PlayerInTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerInTeam">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerInTeam_Team">
+          <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="1" />
+          <End Role="PlayerInTeam" Type="fscModel.Store.PlayerInTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerInTeam">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_PlayerPositions">
+          <End Role="PlayerPositions" Type="fscModel.Store.PlayerPositions" Multiplicity="1" />
+          <End Role="Players" Type="fscModel.Store.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerPositions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fscModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="fscEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Coaches" EntityType="fscModel.Coaches" />
+          <EntitySet Name="Events" EntityType="fscModel.Events" />
+          <EntitySet Name="GameEvents" EntityType="fscModel.GameEvents" />
+          <EntitySet Name="Games" EntityType="fscModel.Games" />
+          <EntitySet Name="PlayerInTeam" EntityType="fscModel.PlayerInTeam" />
+          <EntitySet Name="PlayerPositions" EntityType="fscModel.PlayerPositions" />
+          <EntitySet Name="Players" EntityType="fscModel.Players" />
+          <EntitySet Name="Referee" EntityType="fscModel.Referee" />
+          <EntitySet Name="Teams" EntityType="fscModel.Teams" />
+          <AssociationSet Name="FK_GameEvents_Event" Association="fscModel.FK_GameEvents_Event">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameEvents_Game" Association="fscModel.FK_GameEvents_Game">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameEvents_Players" Association="fscModel.FK_GameEvents_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Referee" Association="fscModel.FK_Games_Referee">
+            <End Role="Referee" EntitySet="Referee" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Team1" Association="fscModel.FK_Games_Team1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Team2" Association="fscModel.FK_Games_Team2">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerInTeam_Players" Association="fscModel.FK_PlayerInTeam_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="PlayerInTeam" EntitySet="PlayerInTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerInTeam_Team" Association="fscModel.FK_PlayerInTeam_Team">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="PlayerInTeam" EntitySet="PlayerInTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Players_PlayerPositions" Association="fscModel.FK_Players_PlayerPositions">
+            <End Role="PlayerPositions" EntitySet="PlayerPositions" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Coaches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Event" FromRole="Events" ToRole="GameEvents" />
+        </EntityType>
+        <EntityType Name="GameEvents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="PlayerID" Type="Int32" Nullable="false" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Events" Relationship="fscModel.FK_GameEvents_Event" FromRole="GameEvents" ToRole="Events" />
+          <NavigationProperty Name="Games" Relationship="fscModel.FK_GameEvents_Game" FromRole="GameEvents" ToRole="Games" />
+          <NavigationProperty Name="Players" Relationship="fscModel.FK_GameEvents_Players" FromRole="GameEvents" ToRole="Players" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Team1ID" Type="Int32" Nullable="false" />
+          <Property Name="Team2ID" Type="Int32" Nullable="false" />
+          <Property Name="Stadium" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="Boolean" Nullable="false" />
+          <Property Name="RefereeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Game" FromRole="Games" ToRole="GameEvents" />
+          <NavigationProperty Name="Referee" Relationship="fscModel.FK_Games_Referee" FromRole="Games" ToRole="Referee" />
+          <NavigationProperty Name="Teams" Relationship="fscModel.FK_Games_Team1" FromRole="Games" ToRole="Teams" />
+          <NavigationProperty Name="Teams1" Relationship="fscModel.FK_Games_Team2" FromRole="Games" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="PlayerInTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerID" Type="Int32" Nullable="false" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Players" Relationship="fscModel.FK_PlayerInTeam_Players" FromRole="PlayerInTeam" ToRole="Players" />
+          <NavigationProperty Name="Teams" Relationship="fscModel.FK_PlayerInTeam_Team" FromRole="PlayerInTeam" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="PlayerPositions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Players" Relationship="fscModel.FK_Players_PlayerPositions" FromRole="PlayerPositions" ToRole="Players" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Passport" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Players" FromRole="Players" ToRole="GameEvents" />
+          <NavigationProperty Name="PlayerInTeam" Relationship="fscModel.FK_PlayerInTeam_Players" FromRole="Players" ToRole="PlayerInTeam" />
+          <NavigationProperty Name="PlayerPositions" Relationship="fscModel.FK_Players_PlayerPositions" FromRole="Players" ToRole="PlayerPositions" />
+        </EntityType>
+        <EntityType Name="Referee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Qualify" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Games" Relationship="fscModel.FK_Games_Referee" FromRole="Referee" ToRole="Games" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CoachID" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Games" Relationship="fscModel.FK_Games_Team1" FromRole="Teams" ToRole="Games" />
+          <NavigationProperty Name="Games1" Relationship="fscModel.FK_Games_Team2" FromRole="Teams" ToRole="Games" />
+          <NavigationProperty Name="PlayerInTeam" Relationship="fscModel.FK_PlayerInTeam_Team" FromRole="Teams" ToRole="PlayerInTeam" />
+        </EntityType>
+        <Association Name="FK_GameEvents_Event">
+          <End Role="Events" Type="fscModel.Events" Multiplicity="1" />
+          <End Role="GameEvents" Type="fscModel.GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameEvents_Game">
+          <End Role="Games" Type="fscModel.Games" Multiplicity="1" />
+          <End Role="GameEvents" Type="fscModel.GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameEvents_Players">
+          <End Role="Players" Type="fscModel.Players" Multiplicity="1" />
+          <End Role="GameEvents" Type="fscModel.GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Referee">
+          <End Role="Referee" Type="fscModel.Referee" Multiplicity="1" />
+          <End Role="Games" Type="fscModel.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Referee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="RefereeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Team1">
+          <End Role="Teams" Type="fscModel.Teams" Multiplicity="1" />
+          <End Role="Games" Type="fscModel.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Team2">
+          <End Role="Teams" Type="fscModel.Teams" Multiplicity="1" />
+          <End Role="Games" Type="fscModel.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerInTeam_Players">
+          <End Role="Players" Type="fscModel.Players" Multiplicity="1" />
+          <End Role="PlayerInTeam" Type="fscModel.PlayerInTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerInTeam">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerInTeam_Team">
+          <End Role="Teams" Type="fscModel.Teams" Multiplicity="1" />
+          <End Role="PlayerInTeam" Type="fscModel.PlayerInTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerInTeam">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Players_PlayerPositions">
+          <End Role="PlayerPositions" Type="fscModel.PlayerPositions" Multiplicity="1" />
+          <End Role="Players" Type="fscModel.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerPositions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fscModelStoreContainer" CdmEntityContainer="fscEntities">
+          <EntitySetMapping Name="Coaches">
+            <EntityTypeMapping TypeName="fscModel.Coaches">
+              <MappingFragment StoreEntitySet="Coaches">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="fscModel.Events">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameEvents">
+            <EntityTypeMapping TypeName="fscModel.GameEvents">
+              <MappingFragment StoreEntitySet="GameEvents">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="fscModel.Games">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Team1ID" ColumnName="Team1ID" />
+                <ScalarProperty Name="Team2ID" ColumnName="Team2ID" />
+                <ScalarProperty Name="Stadium" ColumnName="Stadium" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RefereeID" ColumnName="RefereeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlayerInTeam">
+            <EntityTypeMapping TypeName="fscModel.PlayerInTeam">
+              <MappingFragment StoreEntitySet="PlayerInTeam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlayerPositions">
+            <EntityTypeMapping TypeName="fscModel.PlayerPositions">
+              <MappingFragment StoreEntitySet="PlayerPositions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="fscModel.Players">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Referee">
+            <EntityTypeMapping TypeName="fscModel.Referee">
+              <MappingFragment StoreEntitySet="Referee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Qualify" ColumnName="Qualify" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="fscModel.Teams">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CoachID" ColumnName="CoachID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
