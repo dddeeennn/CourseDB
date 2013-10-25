@@ -10,6 +10,10 @@
     <EntitySet Name="Players" EntityType="fscModel.Players" />
     <EntitySet Name="Referee" EntityType="fscModel.Referee" />
     <EntitySet Name="Teams" EntityType="fscModel.Teams" />
+    <AssociationSet Name="FK_Teams_Coaches" Association="fscModel.FK_Teams_Coaches">
+      <End Role="Coaches" EntitySet="Coaches" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
     <AssociationSet Name="FK_GameEvents_Event" Association="fscModel.FK_GameEvents_Event">
       <End Role="Events" EntitySet="Events" />
       <End Role="GameEvents" EntitySet="GameEvents" />
@@ -30,7 +34,7 @@
       <End Role="Teams" EntitySet="Teams" />
       <End Role="Games" EntitySet="Games" />
     </AssociationSet>
-    <AssociationSet Name="FK_Games_Team2" Association="fscModel.FK_Games_Team2">
+    <AssociationSet Name="FK_Games_Teams" Association="fscModel.FK_Games_Teams">
       <End Role="Teams" EntitySet="Teams" />
       <End Role="Games" EntitySet="Games" />
     </AssociationSet>
@@ -55,6 +59,7 @@
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Teams" Relationship="fscModel.FK_Teams_Coaches" FromRole="Coaches" ToRole="Teams" />
   </EntityType>
   <EntityType Name="Events">
     <Key>
@@ -90,7 +95,7 @@
     <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Game" FromRole="Games" ToRole="GameEvents" />
     <NavigationProperty Name="Referee" Relationship="fscModel.FK_Games_Referee" FromRole="Games" ToRole="Referee" />
     <NavigationProperty Name="Teams" Relationship="fscModel.FK_Games_Team1" FromRole="Games" ToRole="Teams" />
-    <NavigationProperty Name="Teams1" Relationship="fscModel.FK_Games_Team2" FromRole="Games" ToRole="Teams" />
+    <NavigationProperty Name="Teams1" Relationship="fscModel.FK_Games_Teams" FromRole="Games" ToRole="Teams" />
   </EntityType>
   <EntityType Name="PlayerInTeam">
     <Key>
@@ -144,10 +149,23 @@
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="CoachID" Type="Int32" Nullable="false" />
     <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Coaches" Relationship="fscModel.FK_Teams_Coaches" FromRole="Teams" ToRole="Coaches" />
     <NavigationProperty Name="Games" Relationship="fscModel.FK_Games_Team1" FromRole="Teams" ToRole="Games" />
-    <NavigationProperty Name="Games1" Relationship="fscModel.FK_Games_Team2" FromRole="Teams" ToRole="Games" />
+    <NavigationProperty Name="Games1" Relationship="fscModel.FK_Games_Teams" FromRole="Teams" ToRole="Games" />
     <NavigationProperty Name="PlayerInTeam" Relationship="fscModel.FK_PlayerInTeam_Team" FromRole="Teams" ToRole="PlayerInTeam" />
   </EntityType>
+  <Association Name="FK_Teams_Coaches">
+    <End Role="Coaches" Type="fscModel.Coaches" Multiplicity="1" />
+    <End Role="Teams" Type="fscModel.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coaches">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="CoachID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GameEvents_Event">
     <End Role="Events" Type="fscModel.Events" Multiplicity="1" />
     <End Role="GameEvents" Type="fscModel.GameEvents" Multiplicity="*" />
@@ -208,7 +226,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Games_Team2">
+  <Association Name="FK_Games_Teams">
     <End Role="Teams" Type="fscModel.Teams" Multiplicity="1" />
     <End Role="Games" Type="fscModel.Games" Multiplicity="*" />
     <ReferentialConstraint>

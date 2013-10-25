@@ -32,3 +32,4 @@ C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Referies.baml
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Games.g.cs
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Referies.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\FootballSchool_MarkupCompile.lref
