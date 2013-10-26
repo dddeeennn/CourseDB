@@ -9,17 +9,18 @@
         <CollectionViewSource x:Key="refereeViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Referee}, CreateList=True}"/>
         <CollectionViewSource x:Key="refereeGamesViewSource" Source="{Binding Games, Source={StaticResource refereeViewSource}}"/>
         <CollectionViewSource x:Key="refereeGamesGameEventsViewSource" Source="{Binding GameEvents, Source={StaticResource refereeGamesViewSource}}"/>
+        <CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvents}, CreateList=True}"/>
     </UserControl.Resources>
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition />
             <ColumnDefinition Width="6"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel DataContext="{StaticResource refereeViewSource}">
                 <TextBlock Text="Судьи" Style="{StaticResource Heading2}" />
-                <DataGrid x:Name="refereeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="200" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Width="435">
+                <DataGrid x:Name="refereeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn x:Name="idColumn" Header="Id" Width="SizeToHeader">
                             <DataGridTemplateColumn.CellTemplate>
@@ -46,7 +47,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel DataContext="{StaticResource refereeGamesViewSource}">
                     <TextBlock Text="Список матчей" Style="{StaticResource Heading2}" />
-                    <DataGrid x:Name="gamesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid x:Name="gamesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn x:Name="idColumn1" Header="Id" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -55,15 +56,18 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1ID}" Header="Team 1 ID" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2ID}" Header="Team 2 ID" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Stadium" Width="SizeToHeader"/>
                             <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="refereeIDColumn" Binding="{Binding RefereeID}" Header="Referee ID" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
                 <GridSplitter Grid.Row="1"/>
                 <StackPanel Grid.Row="2" DataContext="{StaticResource refereeGamesGameEventsViewSource}">
                     <TextBlock Text="Статистика матча" Style="{StaticResource Heading2}" />
-                    <DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource gameEventsViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn x:Name="idColumn2" Header="Id" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -72,6 +76,8 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding GameID}" Header="Game ID" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding EventID}" Header="Event ID" Width="SizeToHeader"/>
                             <DataGridTemplateColumn x:Name="timeColumn" Header="Time" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -79,6 +85,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding PlayerID}" Header="Player ID" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

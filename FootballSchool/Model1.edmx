@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="fscModelStoreContainer">
           <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" />
@@ -259,8 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="fscModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -284,10 +283,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_GameEvents_Game" Association="fscModel.FK_GameEvents_Game">
             <End Role="Games" EntitySet="Games" />
-            <End Role="GameEvents" EntitySet="GameEvents" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GameEvents_Players" Association="fscModel.FK_GameEvents_Players">
-            <End Role="Players" EntitySet="Players" />
             <End Role="GameEvents" EntitySet="GameEvents" />
           </AssociationSet>
           <AssociationSet Name="FK_Games_Referee" Association="fscModel.FK_Games_Referee">
@@ -314,6 +309,10 @@
             <End Role="PlayerPositions" EntitySet="PlayerPositions" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
+          <AssociationSet Name="FK_GameEvents_Players" Association="fscModel.FK_GameEvents_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="GameEvents" EntitySet="GameEvents" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Coaches">
           <Key>
@@ -339,11 +338,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="GameID" Type="Int32" Nullable="false" />
-          <Property Name="PlayerID" Type="Int32" Nullable="false" />
           <Property Name="EventID" Type="Int32" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Events" Relationship="fscModel.FK_GameEvents_Event" FromRole="GameEvents" ToRole="Events" />
           <NavigationProperty Name="Games" Relationship="fscModel.FK_GameEvents_Game" FromRole="GameEvents" ToRole="Games" />
+          <Property Type="Int32" Name="PlayerID" Nullable="false" />
           <NavigationProperty Name="Players" Relationship="fscModel.FK_GameEvents_Players" FromRole="GameEvents" ToRole="Players" />
         </EntityType>
         <EntityType Name="Games">
@@ -390,9 +389,9 @@
           <Property Name="Passport" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="IsMain" Type="Boolean" Nullable="false" />
           <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Players" FromRole="Players" ToRole="GameEvents" />
           <NavigationProperty Name="PlayerInTeam" Relationship="fscModel.FK_PlayerInTeam_Players" FromRole="Players" ToRole="PlayerInTeam" />
           <NavigationProperty Name="PlayerPositions" Relationship="fscModel.FK_Players_PlayerPositions" FromRole="Players" ToRole="PlayerPositions" />
+          <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Players" FromRole="Players" ToRole="GameEvents" />
         </EntityType>
         <EntityType Name="Referee">
           <Key>
@@ -451,18 +450,6 @@
             </Principal>
             <Dependent Role="GameEvents">
               <PropertyRef Name="GameID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GameEvents_Players">
-          <End Role="Players" Type="fscModel.Players" Multiplicity="1" />
-          <End Role="GameEvents" Type="fscModel.GameEvents" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Players">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GameEvents">
-              <PropertyRef Name="PlayerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -538,6 +525,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GameEvents_Players">
+          <End Type="fscModel.Players" Role="Players" Multiplicity="1" />
+          <End Type="fscModel.GameEvents" Role="GameEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameEvents">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -565,9 +564,9 @@
           <EntitySetMapping Name="GameEvents">
             <EntityTypeMapping TypeName="fscModel.GameEvents">
               <MappingFragment StoreEntitySet="GameEvents">
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GameID" ColumnName="GameID" />
-                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
                 <ScalarProperty Name="EventID" ColumnName="EventID" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
               </MappingFragment>

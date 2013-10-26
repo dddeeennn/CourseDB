@@ -6,5 +6,47 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="fscEntities" Identifier="FootballSchool.fscEntities" ProviderType="Microsoft.VisualStudio.DataDesign.DataSourceProviders.EntityDataModel.EdmDataSourceProvider" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <Children>
+      <GenericObjectDataSource DisplayName="GameEvents" Identifier="FootballSchool.fscEntities" ProviderType="Microsoft.VisualStudio.DataDesign.DataSourceProviders.EntityDataModel.EdmDataSourceProvider" Version="1.0">
+         <TypeInfo>FootballSchool.GameEvents, Model1.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="Id">
+                  <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+                        <BindableControlInfo Name="Label" Type="System.Windows.Controls.Label" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+                     </ControlSetting></ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+      <GenericObjectDataSource DisplayName="Games" Identifier="FootballSchool.fscEntities" ProviderType="Microsoft.VisualStudio.DataDesign.DataSourceProviders.EntityDataModel.EdmDataSourceProvider" Version="1.0">
+         <TypeInfo>FootballSchool.Games, Model1.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="Id">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="Label" Type="System.Windows.Controls.Label" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+      <GenericObjectDataSource DisplayName="Referee" Identifier="FootballSchool.fscEntities" ProviderType="Microsoft.VisualStudio.DataDesign.DataSourceProviders.EntityDataModel.EdmDataSourceProvider" Version="1.0">
+         <TypeInfo>FootballSchool.Referee, Model1.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="Id">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="Label" Type="System.Windows.Controls.Label" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+   </Children>
    <TypeInfo>FootballSchool.fscEntities, Model1.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

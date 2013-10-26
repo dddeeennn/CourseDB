@@ -22,13 +22,13 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("fscModel", "FK_Teams_Coaches", "Coaches", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Coaches), "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Teams), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Event", "Events", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Events), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Game", "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Games), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Players), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Referee", "Referee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Referee), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Games), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Team1", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Teams), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Games), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Teams", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Teams), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Games), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_PlayerInTeam_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Players), "PlayerInTeam", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.PlayerInTeam), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_PlayerInTeam_Team", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Teams), "PlayerInTeam", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.PlayerInTeam), true)]
 [assembly: EdmRelationshipAttribute("fscModel", "FK_Players_PlayerPositions", "PlayerPositions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.PlayerPositions), "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Players), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Players), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
 
 #endregion
 
@@ -253,7 +253,7 @@ namespace FootballSchool
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Games EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the GamesVM EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToGames(Games games)
         {
@@ -589,17 +589,17 @@ namespace FootballSchool
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="gameID">Initial value of the GameID property.</param>
-        /// <param name="playerID">Initial value of the PlayerID property.</param>
         /// <param name="eventID">Initial value of the EventID property.</param>
         /// <param name="time">Initial value of the Time property.</param>
-        public static GameEvents CreateGameEvents(global::System.Int32 id, global::System.Int32 gameID, global::System.Int32 playerID, global::System.Int32 eventID, global::System.DateTime time)
+        /// <param name="playerID">Initial value of the PlayerID property.</param>
+        public static GameEvents CreateGameEvents(global::System.Int32 id, global::System.Int32 gameID, global::System.Int32 eventID, global::System.DateTime time, global::System.Int32 playerID)
         {
             GameEvents gameEvents = new GameEvents();
             gameEvents.Id = id;
             gameEvents.GameID = gameID;
-            gameEvents.PlayerID = playerID;
             gameEvents.EventID = eventID;
             gameEvents.Time = time;
+            gameEvents.PlayerID = playerID;
             return gameEvents;
         }
 
@@ -663,30 +663,6 @@ namespace FootballSchool
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 PlayerID
-        {
-            get
-            {
-                return _PlayerID;
-            }
-            set
-            {
-                OnPlayerIDChanging(value);
-                ReportPropertyChanging("PlayerID");
-                _PlayerID = StructuralObject.SetValidValue(value, "PlayerID");
-                ReportPropertyChanged("PlayerID");
-                OnPlayerIDChanged();
-            }
-        }
-        private global::System.Int32 _PlayerID;
-        partial void OnPlayerIDChanging(global::System.Int32 value);
-        partial void OnPlayerIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.Int32 EventID
         {
             get
@@ -729,6 +705,30 @@ namespace FootballSchool
         private global::System.DateTime _Time;
         partial void OnTimeChanging(global::System.DateTime value);
         partial void OnTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PlayerID
+        {
+            get
+            {
+                return _PlayerID;
+            }
+            set
+            {
+                OnPlayerIDChanging(value);
+                ReportPropertyChanging("PlayerID");
+                _PlayerID = StructuralObject.SetValidValue(value, "PlayerID");
+                ReportPropertyChanged("PlayerID");
+                OnPlayerIDChanged();
+            }
+        }
+        private global::System.Int32 _PlayerID;
+        partial void OnPlayerIDChanging(global::System.Int32 value);
+        partial void OnPlayerIDChanged();
 
         #endregion
 
@@ -863,7 +863,7 @@ namespace FootballSchool
         #region Factory Method
     
         /// <summary>
-        /// Create a new Games object.
+        /// Create a new GamesVM object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="team1ID">Initial value of the Team1ID property.</param>
@@ -1688,28 +1688,6 @@ namespace FootballSchool
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Players", "GameEvents")]
-        public EntityCollection<GameEvents> GameEvents
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Players", "GameEvents");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Players", "GameEvents", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Players", "PlayerInTeam")]
         public EntityCollection<PlayerInTeam> PlayerInTeam
         {
@@ -1760,6 +1738,28 @@ namespace FootballSchool
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PlayerPositions>("fscModel.FK_Players_PlayerPositions", "PlayerPositions", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Players", "GameEvents")]
+        public EntityCollection<GameEvents> GameEvents
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Players", "GameEvents");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Players", "GameEvents", value);
                 }
             }
         }

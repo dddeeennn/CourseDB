@@ -22,9 +22,9 @@
     <EntitySetMapping Name="GameEvents">
       <EntityTypeMapping TypeName="fscModel.GameEvents">
         <MappingFragment StoreEntitySet="GameEvents">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="GameID" ColumnName="GameID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
           <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
