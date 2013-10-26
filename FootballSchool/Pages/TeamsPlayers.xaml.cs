@@ -21,9 +21,11 @@ namespace FootballSchool.Pages
     /// </summary>
     public partial class TeamsPlayers : UserControl
     {
+        private fscEntities entities;
         public TeamsPlayers()
         {
             InitializeComponent();
+            entities = new fscEntities();
         }
 
         private ObjectQuery<Teams> GetTeamsQuery(fscEntities fscEntities)
@@ -38,18 +40,36 @@ namespace FootballSchool.Pages
             return playersQuery;
         }
 
+        private ObjectQuery<Players> GetPlayersQuery(int teamId)
+        {
+            var players = (from pt in entities.PlayerInTeam
+                         join t in entities.Teams
+                             on pt.TeamID equals teamId
+                         join p in entities.Players
+                             on pt.PlayerID equals p.Id
+                         select p).Distinct();
+
+            return (ObjectQuery<Players>)players;
+        }
+
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
 
-            var fscEntities = new fscEntities();
             var teamsViewSource = ((CollectionViewSource)(FindResource("teamsViewSource")));
-            var teamsQuery = GetTeamsQuery(fscEntities);
+            var teamsQuery = GetTeamsQuery(entities);
             teamsViewSource.Source = teamsQuery.Execute(MergeOption.AppendOnly);
 
             var playersViewSource = ((CollectionViewSource)(FindResource("playersViewSource")));
-            var playersQuery = GetPlayersQuery(fscEntities);
+            var playersQuery = GetPlayersQuery(entities);
             playersViewSource.Source = playersQuery.Execute(MergeOption.AppendOnly);
+        }
+
+        private void teamsDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            var playersViewSource = ((CollectionViewSource)(FindResource("playersViewSource")));
+            var playersQuery = GetPlayersQuery(((Teams)teamsDataGrid.SelectedItem).Id);
+            playersViewSource.Source = playersQuery.Execute(MergeOption.OverwriteChanges);
         }
     }
 }

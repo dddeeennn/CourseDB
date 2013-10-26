@@ -18,7 +18,7 @@
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel DataContext="{StaticResource teamsViewSource}">
                 <TextBlock Text="Команды" Style="{StaticResource Heading2}" />
-                <DataGrid x:Name="teamsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+                <DataGrid x:Name="teamsDataGrid" AutoGenerateColumns="False" SelectionChanged="teamsDataGrid_SelectionChanged_1" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
                     <DataGrid.Columns>
                         <DataGridTemplateColumn x:Name="idColumn" Header="ИД" Width="SizeToHeader">
                             <DataGridTemplateColumn.CellTemplate>
@@ -64,7 +64,6 @@
                 <StackPanel Grid.Row="2">
                     <TextBlock Text="Статистика игрока" Style="{StaticResource Heading2}" />
                 </StackPanel>
-
             </Grid>
         </ScrollViewer>
     </Grid>
