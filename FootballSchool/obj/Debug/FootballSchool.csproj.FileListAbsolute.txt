@@ -71,3 +71,6 @@ C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\Foot
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.g.resources
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.exe
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.pdb
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\EntityFramework.SqlServer.xml

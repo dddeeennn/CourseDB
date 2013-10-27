@@ -80,6 +80,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\GameEventPlayerModel.cs" />
+    <Compile Include="Models\GameModel.cs" />
     <Compile Include="Pages\GamesVM.xaml.cs">
       <DependentUpon>GamesVM.xaml</DependentUpon>
     </Compile>
@@ -95,9 +96,11 @@
     <Compile Include="Repositories\GameEventRepository.cs" />
     <Compile Include="Repositories\Gamerepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
+    <Compile Include="Repositories\RefereeRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\TeamRepository.cs" />
     <Compile Include="ViewModels\GameEventVM.cs" />
+    <Compile Include="ViewModels\GameVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

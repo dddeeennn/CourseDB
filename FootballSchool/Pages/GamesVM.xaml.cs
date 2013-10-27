@@ -3,6 +3,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using FootballSchool.Models;
+using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages
 {
@@ -25,11 +27,13 @@ namespace FootballSchool.Pages
 
 			var gamesViewSource = (CollectionViewSource)FindResource("gamesViewSource");
 			var gamesQuery = GetGamesQuery(entities);
-			gamesViewSource.Source = gamesQuery.Execute(MergeOption.AppendOnly);
+		    var gamesVM = new GameVM(gamesQuery.Select(x => x).ToList());
+			gamesViewSource.Source = gamesVM.Models;
 
 			var gamesGameEventsViewSource = (CollectionViewSource)FindResource("gamesGameEventsViewSource");
 			var gameEventsQuery = GetGameEventsQuery(entities);
-			gamesGameEventsViewSource.Source = gameEventsQuery.Execute(MergeOption.AppendOnly);
+		    var gameEventsVM = new GameEventVM(gameEventsQuery.Select(x => x));
+            gamesGameEventsViewSource.Source = gameEventsVM.Models;
 		}
 
 		private ObjectQuery<Games> GetGamesQuery(fscEntities fscEntities)
@@ -53,8 +57,9 @@ namespace FootballSchool.Pages
 		private void gamesDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
 		{
 			var gamesGameEventsViewSource = (CollectionViewSource)FindResource("gamesGameEventsViewSource");
-			var gameEventsQuery = GetGameEventsQuery(((Games)gamesDataGrid.SelectedItem).Id);
-			gamesGameEventsViewSource.Source = gameEventsQuery.Execute(MergeOption.OverwriteChanges);
+			var gameEventsQuery = GetGameEventsQuery(((GameModel)gamesDataGrid.SelectedItem).Id);
+            var vm = new GameEventVM(gameEventsQuery.Select(x => x).ToList());
+            gamesGameEventsViewSource.Source = vm.Models;
 		}
 	}
 }

@@ -29,10 +29,10 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Фамилия" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="middleNameColumn" Binding="{Binding MiddleName}" Header="Отчество" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Имя" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="qualifyColumn" Binding="{Binding Qualify}" Header="Квалификация" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Фамилия" Width="*"/>
+                        <DataGridTextColumn x:Name="middleNameColumn" Binding="{Binding MiddleName}" Header="Отчество" Width="*"/>
+                        <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Имя" Width="*"/>
+                        <DataGridTextColumn x:Name="qualifyColumn" Binding="{Binding Qualify}" Header="Квалификация" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
@@ -56,11 +56,10 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1ID}" Header="Команда 1" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2ID}" Header="Команда 2" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="SizeToHeader"/>
-                            <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Тип" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="refereeIDColumn" Binding="{Binding RefereeID}" Header="Судья" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Команда 1" Width="*"/>
+                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Команда 2" Width="*"/>
+                            <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="*"/>
+                            <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Тип" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
@@ -76,16 +75,16 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding GameID}" Header="Игра" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding EventID}" Header="Событие" Width="SizeToHeader"/>
-                            <DataGridTemplateColumn x:Name="timeColumn" Header="Время" Width="SizeToHeader">
+                            <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding Game}" Header="Игра" Width="*"/>
+                            <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding Event}" Header="Событие" Width="*"/>
+                            <DataGridTemplateColumn x:Name="timeColumn" Header="Время" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <DatePicker SelectedDate="{Binding Time, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding PlayerID}" Header="Игрок" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding Player}" Header="Игрок" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
