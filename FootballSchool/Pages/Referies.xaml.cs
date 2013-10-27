@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Objects;
+﻿using System.Data.Entity.Core.Objects;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using FootballSchool.Models;
+using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages
 {
@@ -39,7 +31,8 @@ namespace FootballSchool.Pages
 
             var refereeGamesViewSource = ((CollectionViewSource)(FindResource("refereeGamesViewSource")));
             var refereeGamesQuery = GetRefereeGamesQuery(entities);
-            refereeGamesViewSource.Source = refereeGamesQuery.Execute(MergeOption.AppendOnly);
+            var gamesVM = new GameVM(refereeGamesQuery.Select(x => x));
+            refereeGamesViewSource.Source = gamesVM.Models;
         }
 
         private ObjectQuery<Referee> GetRefereeQuery(fscEntities fscEntities)
@@ -53,7 +46,7 @@ namespace FootballSchool.Pages
             var refereeQuery = from r in entities.Referee
                                join g in entities.Games
                                    on r.Id equals g.RefereeID
-                                   where r.Id ==refereeId
+                               where r.Id == refereeId
                                select g;
             return (ObjectQuery<Games>)refereeQuery;
         }
@@ -76,12 +69,11 @@ namespace FootballSchool.Pages
 
         private void refereeDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            var refereeGamesViewSource = ((CollectionViewSource)(FindResource("refereeGamesViewSource")));
-            if (refereeDataGrid.SelectedItem != null)
-            {
-                var refereeQuery = GetRefereeQuery(((Referee)refereeDataGrid.SelectedItem).Id);
-                refereeGamesViewSource.Source = refereeQuery.Execute(MergeOption.OverwriteChanges);
-            }
+            var refereeGamesViewSource = (CollectionViewSource)FindResource("refereeGamesViewSource");
+            if (refereeDataGrid.SelectedItem == null) return;
+            var refereeQuery = GetRefereeQuery(((Referee)refereeDataGrid.SelectedItem).Id);
+            var gamesVM = new GameVM(refereeQuery.Select(x => x));
+            refereeGamesViewSource.Source = gamesVM.Models;
         }
 
         private void gamesDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
@@ -89,8 +81,9 @@ namespace FootballSchool.Pages
             var gameEventsViewSource = ((CollectionViewSource)(FindResource("gameEventsViewSource")));
             if (gamesDataGrid.SelectedItem != null)
             {
-                var refereeGamesQuery = GetRefereeGameQuery(((Games)gamesDataGrid.SelectedItem).Id);
-                gameEventsViewSource.Source = refereeGamesQuery.Execute(MergeOption.OverwriteChanges);
+                var refereeGamesQuery = GetRefereeGameQuery(((GameModel)gamesDataGrid.SelectedItem).Id);
+                var gameEventVM = new GameEventVM(refereeGamesQuery.Select(x => x));
+                gameEventsViewSource.Source = gameEventVM.Models;
             }
         }
     }

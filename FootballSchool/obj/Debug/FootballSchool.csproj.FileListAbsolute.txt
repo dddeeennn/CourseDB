@@ -33,3 +33,44 @@ C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\FootballSchool_MarkupCompile.lref
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\GamesVM.g.cs
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\GamesVM.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Content\About.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Content\SettingsAppearance.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Home.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\TableStats.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\App.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Content\About.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Content\SettingsAppearance.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\GamesVM.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Home.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Referies.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\TableStats.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\TeamsPlayers.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\App.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool_MarkupCompile.cache
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool_MarkupCompile.lref
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\FootballSchool.exe.config
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.csprojResolveAssemblyReference.cache
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\MainWindow.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Settings.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\TabMenu.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\MainWindow.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Settings.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\TabMenu.g.cs
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\FootballSchool.exe
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\FootballSchool.pdb
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\EntityFramework.dll
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\FirstFloor.ModernUI.dll
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\EntityFramework.xml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\bin\Debug\FirstFloor.ModernUI.xml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\GamesVM.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Referies.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\TeamsPlayers.baml
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.g.resources
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.exe
+C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\FootballSchool.pdb
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\EntityFramework.SqlServer.xml

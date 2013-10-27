@@ -11,9 +11,9 @@
     </UserControl.Resources>
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="6"/>
-            <ColumnDefinition Width="2.1*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel DataContext="{StaticResource gamesViewSource}">
@@ -27,11 +27,11 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1ID}" Header="Команда 1" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2ID}" Header="Команда 2" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Команда 1" Width="*"/>
+                        <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Команда 2" Width="*"/>
+                        <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="*"/>
                         <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Тип" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="refereeIDColumn" Binding="{Binding RefereeID}" Header="Судья" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="refereeIDColumn" Binding="{Binding Referee}" Header="Судья" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
@@ -49,8 +49,9 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding GameID}" Header="Игра" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding EventID}" Header="Событие" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding Game}" Header="Игра" Width="*"/>
+                        <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding Event}" Header="Событие" Width="*"/>
+                        <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding Player}" Header="Игрок" Width="*"/>
                         <DataGridTemplateColumn x:Name="timeColumn" Header="Время" Width="SizeToHeader">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -58,7 +59,6 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding PlayerID}" Header="Игрок" Width="SizeToHeader"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

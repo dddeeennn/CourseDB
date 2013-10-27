@@ -4,90 +4,83 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:FootballSchool="clr-namespace:FootballSchool" x:Class="FootballSchool.Pages.TeamsPlayers"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="900" Loaded="UserControl_Loaded_1">
-    <UserControl.Resources>
-        <CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Teams}, CreateList=True}"/>
-        <CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Players}, CreateList=True}"/>
-        <CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvents}, CreateList=True}"/>
-    </UserControl.Resources>
-    <Grid Style="{StaticResource ContentRoot}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="6"/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="{StaticResource SplitLeft}">
-            <StackPanel DataContext="{StaticResource teamsViewSource}">
-                <TextBlock Text="Команды" Style="{StaticResource Heading2}" />
-                <DataGrid x:Name="teamsDataGrid" AutoGenerateColumns="False" SelectionChanged="teamsDataGrid_SelectionChanged_1" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn x:Name="idColumn" Header="ИД" Width="SizeToHeader">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Label Content="{Binding Id}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Название" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="cityColumn" Binding="{Binding City}" Header="Город" Width="SizeToHeader"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
-        </ScrollViewer>
-        <GridSplitter Grid.Column="1" />
-        <ScrollViewer Grid.Column="2" Margin="{StaticResource SplitRight}">
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackPanel DataContext="{StaticResource playersViewSource}">
-                    <TextBlock Text="Игроки" Style="{StaticResource Heading2}" />
-                    <DataGrid x:Name="playersDataGrid" AutoGenerateColumns="False" SelectionChanged="playersDataGrid_SelectionChanged_1" EnableRowVirtualization="True" Height="136" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="idColumn1" Header="ИД" Width="SizeToHeader">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Label Content="{Binding Id}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Фамилия" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Имя" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="middleNameColumn" Binding="{Binding MiddleName}" Header="Отчество" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="passportColumn" Binding="{Binding Passport}" Header="Паспорт" Width="SizeToHeader"/>
-                            <DataGridCheckBoxColumn x:Name="isMainColumn" Binding="{Binding IsMain}" Header="Основной состав" Width="SizeToHeader"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </StackPanel>
-                <GridSplitter Grid.Row="1"/>
-                <StackPanel Grid.Row="2" DataContext="{StaticResource gameEventsViewSource}" >
-                    <TextBlock Text="Статистика игрока" Style="{StaticResource Heading2}" />
-                    <DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="idColumn2" Header="Id" Width="SizeToHeader">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Label Content="{Binding Id}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding GameID}" Header="Game ID" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding PlayerID}" Header="Player ID" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding EventID}" Header="Event ID" Width="SizeToHeader"/>
-                            <DataGridTemplateColumn x:Name="timeColumn" Header="Time" Width="SizeToHeader">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding Time, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+             d:DesignHeight="500" d:DesignWidth="900" Loaded="UserControl_Loaded_1">
+	<UserControl.Resources>
+		<CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Teams}, CreateList=True}"/>
+		<CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Players}, CreateList=True}"/>
+		<CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvents}, CreateList=True}"/>
+	</UserControl.Resources>
+	<Grid Style="{StaticResource ContentRoot}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="6"/>
+			<ColumnDefinition Width="5*"/>
+		</Grid.ColumnDefinitions>
+		<ScrollViewer Margin="{StaticResource SplitLeft}">
+			<StackPanel DataContext="{StaticResource teamsViewSource}">
+				<TextBlock Text="Команды" Style="{StaticResource Heading2}" />
+				<DataGrid x:Name="teamsDataGrid" AutoGenerateColumns="False" SelectionChanged="teamsDataGrid_SelectionChanged_1" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+					<DataGrid.Columns>
+						<DataGridTemplateColumn x:Name="idColumn" Header="ИД" Width="SizeToHeader">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Label Content="{Binding Id}"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+						<DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Название" Width="SizeToHeader"/>
+						<DataGridTextColumn x:Name="cityColumn" Binding="{Binding City}" Header="Город" Width="SizeToHeader"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</StackPanel>
+		</ScrollViewer>
+		<GridSplitter Grid.Column="1" />
+		<ScrollViewer Grid.Column="2" Margin="{StaticResource SplitRight}">
+			<Grid Grid.Column="2">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="6"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel DataContext="{StaticResource playersViewSource}">
+					<TextBlock Text="Игроки" Style="{StaticResource Heading2}" />
+					<DataGrid x:Name="playersDataGrid" AutoGenerateColumns="False" SelectionChanged="playersDataGrid_SelectionChanged_1" EnableRowVirtualization="True" Height="136" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+						<DataGrid.Columns>
+							<DataGridTemplateColumn x:Name="idColumn1" Header="ИД" Width="SizeToHeader">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<Label Content="{Binding Id}"/>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							<DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Фамилия" Width="SizeToHeader"/>
+							<DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Имя" Width="SizeToHeader"/>
+							<DataGridTextColumn x:Name="middleNameColumn" Binding="{Binding MiddleName}" Header="Отчество" Width="SizeToHeader"/>
+							<DataGridTextColumn x:Name="passportColumn" Binding="{Binding Passport}" Header="Паспорт" Width="SizeToHeader"/>
+							<DataGridCheckBoxColumn x:Name="isMainColumn" Binding="{Binding IsMain}" Header="Основной состав" Width="SizeToHeader"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</StackPanel>
+				<GridSplitter Grid.Row="1"/>
+				<StackPanel Grid.Row="2" DataContext="{StaticResource gameEventsViewSource}" >
+					<TextBlock Text="Статистика игрока" Style="{StaticResource Heading2}" />
+					<DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
 
-                </StackPanel>
-            </Grid>
-        </ScrollViewer>
-    </Grid>
+						<DataGrid.Columns>
+							<DataGridTemplateColumn x:Name="idColumn2" Header="ИД" Width="SizeToHeader">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<Label Content="{Binding Id}"/>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							<DataGridTextColumn x:Name="gameColumn" Binding="{Binding Game}" Header="Игра" Width="*"/>
+							<DataGridTextColumn x:Name="playerColumn1" Binding="{Binding Player}" Header="Игрок" Width="*"/>
+							<DataGridTextColumn x:Name="eventColumn" Binding="{Binding Event}" Header="Событие" Width="*"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</StackPanel>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
 </UserControl>

@@ -9,28 +9,14 @@
 
 using System;
 using System.ComponentModel;
-using System.Data.EntityClient;
-using System.Data.Objects;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity.Core.EntityClient;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Core.Objects.DataClasses;
+
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
-[assembly: EdmSchemaAttribute()]
-#region EDM Relationship Metadata
-
-[assembly: EdmRelationshipAttribute("fscModel", "FK_Teams_Coaches", "Coaches", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Coaches), "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Teams), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Event", "Events", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Events), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Game", "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Games), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Referee", "Referee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Referee), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Games), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Team1", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Teams), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Games), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Teams", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Teams), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Games), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_PlayerInTeam_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Players), "PlayerInTeam", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.PlayerInTeam), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_PlayerInTeam_Team", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Teams), "PlayerInTeam", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.PlayerInTeam), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_Players_PlayerPositions", "PlayerPositions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.PlayerPositions), "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Players), true)]
-[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Players), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvents), true)]
-
-#endregion
 
 namespace FootballSchool
 {
@@ -253,7 +239,7 @@ namespace FootballSchool
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the GamesVM EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Games EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToGames(Games games)
         {
@@ -335,7 +321,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -354,7 +340,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -379,7 +365,7 @@ namespace FootballSchool
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
+                _LastName = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -403,7 +389,7 @@ namespace FootballSchool
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
+                _MiddleName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -427,7 +413,7 @@ namespace FootballSchool
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                _Name = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -438,6 +424,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -491,7 +478,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -510,7 +497,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -535,7 +522,7 @@ namespace FootballSchool
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, false, "Type");
+                _Type = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -546,6 +533,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -605,7 +593,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -624,7 +612,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -649,7 +637,7 @@ namespace FootballSchool
             {
                 OnGameIDChanging(value);
                 ReportPropertyChanging("GameID");
-                _GameID = StructuralObject.SetValidValue(value, "GameID");
+                _GameID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("GameID");
                 OnGameIDChanged();
             }
@@ -673,7 +661,7 @@ namespace FootballSchool
             {
                 OnEventIDChanging(value);
                 ReportPropertyChanging("EventID");
-                _EventID = StructuralObject.SetValidValue(value, "EventID");
+                _EventID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("EventID");
                 OnEventIDChanged();
             }
@@ -697,7 +685,7 @@ namespace FootballSchool
             {
                 OnTimeChanging(value);
                 ReportPropertyChanging("Time");
-                _Time = StructuralObject.SetValidValue(value, "Time");
+                _Time = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Time");
                 OnTimeChanged();
             }
@@ -721,7 +709,7 @@ namespace FootballSchool
             {
                 OnPlayerIDChanging(value);
                 ReportPropertyChanging("PlayerID");
-                _PlayerID = StructuralObject.SetValidValue(value, "PlayerID");
+                _PlayerID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("PlayerID");
                 OnPlayerIDChanged();
             }
@@ -732,6 +720,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -863,7 +852,7 @@ namespace FootballSchool
         #region Factory Method
     
         /// <summary>
-        /// Create a new GamesVM object.
+        /// Create a new Games object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="team1ID">Initial value of the Team1ID property.</param>
@@ -883,7 +872,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -902,7 +891,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -927,7 +916,7 @@ namespace FootballSchool
             {
                 OnTeam1IDChanging(value);
                 ReportPropertyChanging("Team1ID");
-                _Team1ID = StructuralObject.SetValidValue(value, "Team1ID");
+                _Team1ID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Team1ID");
                 OnTeam1IDChanged();
             }
@@ -951,7 +940,7 @@ namespace FootballSchool
             {
                 OnTeam2IDChanging(value);
                 ReportPropertyChanging("Team2ID");
-                _Team2ID = StructuralObject.SetValidValue(value, "Team2ID");
+                _Team2ID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Team2ID");
                 OnTeam2IDChanged();
             }
@@ -975,7 +964,7 @@ namespace FootballSchool
             {
                 OnStadiumChanging(value);
                 ReportPropertyChanging("Stadium");
-                _Stadium = StructuralObject.SetValidValue(value, true, "Stadium");
+                _Stadium = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Stadium");
                 OnStadiumChanged();
             }
@@ -999,7 +988,7 @@ namespace FootballSchool
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, "Type");
+                _Type = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -1023,7 +1012,7 @@ namespace FootballSchool
             {
                 OnRefereeIDChanging(value);
                 ReportPropertyChanging("RefereeID");
-                _RefereeID = StructuralObject.SetValidValue(value, "RefereeID");
+                _RefereeID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("RefereeID");
                 OnRefereeIDChanged();
             }
@@ -1034,6 +1023,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -1203,7 +1193,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1222,7 +1212,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1247,7 +1237,7 @@ namespace FootballSchool
             {
                 OnPlayerIDChanging(value);
                 ReportPropertyChanging("PlayerID");
-                _PlayerID = StructuralObject.SetValidValue(value, "PlayerID");
+                _PlayerID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("PlayerID");
                 OnPlayerIDChanged();
             }
@@ -1271,7 +1261,7 @@ namespace FootballSchool
             {
                 OnTeamIDChanging(value);
                 ReportPropertyChanging("TeamID");
-                _TeamID = StructuralObject.SetValidValue(value, "TeamID");
+                _TeamID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("TeamID");
                 OnTeamIDChanged();
             }
@@ -1282,6 +1272,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -1389,7 +1380,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1408,7 +1399,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1433,7 +1424,7 @@ namespace FootballSchool
             {
                 OnPositionChanging(value);
                 ReportPropertyChanging("Position");
-                _Position = StructuralObject.SetValidValue(value, false, "Position");
+                _Position = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Position");
                 OnPositionChanged();
             }
@@ -1444,6 +1435,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -1505,7 +1497,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1524,7 +1516,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1549,7 +1541,7 @@ namespace FootballSchool
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
+                _LastName = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -1573,7 +1565,7 @@ namespace FootballSchool
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                _Name = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1597,7 +1589,7 @@ namespace FootballSchool
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
+                _MiddleName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -1621,7 +1613,7 @@ namespace FootballSchool
             {
                 OnPassportChanging(value);
                 ReportPropertyChanging("Passport");
-                _Passport = StructuralObject.SetValidValue(value, false, "Passport");
+                _Passport = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Passport");
                 OnPassportChanged();
             }
@@ -1645,7 +1637,7 @@ namespace FootballSchool
             {
                 OnIsMainChanging(value);
                 ReportPropertyChanging("IsMain");
-                _IsMain = StructuralObject.SetValidValue(value, "IsMain");
+                _IsMain = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("IsMain");
                 OnIsMainChanged();
             }
@@ -1669,7 +1661,7 @@ namespace FootballSchool
             {
                 OnPositionIDChanging(value);
                 ReportPropertyChanging("PositionID");
-                _PositionID = StructuralObject.SetValidValue(value, "PositionID");
+                _PositionID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("PositionID");
                 OnPositionIDChanged();
             }
@@ -1680,6 +1672,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -1795,7 +1788,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1814,7 +1807,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1839,7 +1832,7 @@ namespace FootballSchool
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
+                _LastName = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -1863,7 +1856,7 @@ namespace FootballSchool
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
+                _MiddleName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -1887,7 +1880,7 @@ namespace FootballSchool
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                _Name = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1911,7 +1904,7 @@ namespace FootballSchool
             {
                 OnQualifyChanging(value);
                 ReportPropertyChanging("Qualify");
-                _Qualify = StructuralObject.SetValidValue(value, true, "Qualify");
+                _Qualify = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Qualify");
                 OnQualifyChanged();
             }
@@ -1922,6 +1915,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -1977,7 +1971,7 @@ namespace FootballSchool
 
         #endregion
 
-        #region Simple Properties
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1996,7 +1990,7 @@ namespace FootballSchool
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    _Id = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -2021,7 +2015,7 @@ namespace FootballSchool
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                _Name = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -2045,7 +2039,7 @@ namespace FootballSchool
             {
                 OnCoachIDChanging(value);
                 ReportPropertyChanging("CoachID");
-                _CoachID = StructuralObject.SetValidValue(value, "CoachID");
+                _CoachID = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("CoachID");
                 OnCoachIDChanged();
             }
@@ -2069,7 +2063,7 @@ namespace FootballSchool
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, true, "City");
+                _City = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -2080,6 +2074,7 @@ namespace FootballSchool
 
         #endregion
 
+    
         #region Navigation Properties
     
         /// <summary>
@@ -2192,4 +2187,5 @@ namespace FootballSchool
 
     #endregion
 
+    
 }
