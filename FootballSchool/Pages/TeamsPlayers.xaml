@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:FootballSchool="clr-namespace:FootballSchool" x:Class="FootballSchool.Pages.TeamsPlayers"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="900" Loaded="UserControl_Loaded_1">
+             d:DesignHeight="500" d:DesignWidth="900" Loaded="UserControl_Loaded_1">
     <UserControl.Resources>
         <CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Teams}, CreateList=True}"/>
         <CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Players}, CreateList=True}"/>
@@ -73,9 +73,30 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding GameID}" Header="Game ID" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding PlayerID}" Header="Player ID" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding EventID}" Header="Event ID" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="gameIDColumn" Header="Игра" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{DynamicResource Games}" SelectedIndex="{Binding Id}" DisplayMemberPath="Value" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                                
+                            <DataGridTemplateColumn x:Name="playerIDColumn" Header="Игрок" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox IsEditable="False" ItemsSource="{DynamicResource Players}" SelectedIndex="{Binding Id}" DisplayMemberPath="Value" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn x:Name="eventIDColumn" Header="Событие" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox IsEditable="False" ItemsSource="{DynamicResource Events}" SelectedIndex="{Binding Id}" DisplayMemberPath="Value" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
                             <DataGridTemplateColumn x:Name="timeColumn" Header="Time" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

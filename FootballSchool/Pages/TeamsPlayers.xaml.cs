@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FootballSchool.VM;
 
 namespace FootballSchool.Pages
 {
@@ -26,6 +27,8 @@ namespace FootballSchool.Pages
         {
             InitializeComponent();
             entities = new fscEntities();
+            Resources.Add("Players",new GameEventVM(entities).Players);
+            Resources.Add("Events", new GameEventVM(entities).Events);
         }
 
         private ObjectQuery<Teams> GetTeamsQuery(fscEntities fscEntities)
@@ -87,6 +90,10 @@ namespace FootballSchool.Pages
         {
             var gameEventsViewSource = ((CollectionViewSource)(FindResource("gameEventsViewSource")));
             var geQuery = GetEventsQuery(((Players)playersDataGrid.SelectedItem).Id);
+            var vm = new GameEventVM(geQuery.Select(x => x).ToList());
+            Resources["Players"] =vm.Players;
+            Resources["Events"] = vm.Events;
+            Resources["Games"] = vm.Games;
             gameEventsViewSource.Source = geQuery.Execute(MergeOption.OverwriteChanges);
         }
     }

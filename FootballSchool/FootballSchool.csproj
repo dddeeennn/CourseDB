@@ -81,6 +81,7 @@
     <Compile Include="Pages\TabMenu.xaml.cs">
       <DependentUpon>TabMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VM\GameEventVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
