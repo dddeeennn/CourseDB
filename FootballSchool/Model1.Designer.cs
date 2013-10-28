@@ -12,7 +12,6 @@ using System.ComponentModel;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Core.Objects.DataClasses;
-
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
@@ -297,7 +296,7 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Coaches")]
+    [EdmEntityType(NamespaceName="fscModel", Name="Coaches")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Coaches : EntityObject

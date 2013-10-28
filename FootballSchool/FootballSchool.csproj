@@ -81,20 +81,35 @@
     </Compile>
     <Compile Include="Models\GameEventPlayerModel.cs" />
     <Compile Include="Models\GameModel.cs" />
-    <Compile Include="Pages\GamesVM.xaml.cs">
+    <Compile Include="Pages\Details\GameDetail.xaml.cs">
+      <DependentUpon>GameDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Details\GameEventDetail.xaml.cs">
+      <DependentUpon>GameEventDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Details\PlayerDetail.xaml.cs">
+      <DependentUpon>PlayerDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Details\RefereeDetail.xaml.cs">
+      <DependentUpon>RefereeDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Details\TeamDetail.xaml.cs">
+      <DependentUpon>TeamDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Main\GamesVM.xaml.cs">
       <DependentUpon>GamesVM.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Referies.xaml.cs">
+    <Compile Include="Pages\Main\Referies.xaml.cs">
       <DependentUpon>Referies.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\TableStats.xaml.cs">
+    <Compile Include="Pages\Main\TableStats.xaml.cs">
       <DependentUpon>TableStats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\TabMenu.xaml.cs">
+    <Compile Include="Pages\Core\TabMenu.xaml.cs">
       <DependentUpon>TabMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repositories\GameEventRepository.cs" />
-    <Compile Include="Repositories\Gamerepository.cs" />
+    <Compile Include="Repositories\GameRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\RefereeRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
@@ -109,56 +124,76 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Content\About.xaml">
+    <Page Include="Pages\Content\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Content\About.xaml.cs">
+    <Compile Include="Pages\Content\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Page Include="Content\SettingsAppearance.xaml">
+    <Page Include="Pages\Content\SettingsAppearance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Content\SettingsAppearance.xaml.cs">
+    <Compile Include="Pages\Content\SettingsAppearance.xaml.cs">
       <DependentUpon>SettingsAppearance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\SettingsAppearanceViewModel.cs" />
-    <Page Include="Pages\GamesVM.xaml">
+    <Compile Include="Pages\Content\SettingsAppearanceViewModel.cs" />
+    <Page Include="Pages\Details\GameDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Home.xaml">
+    <Page Include="Pages\Details\GameEventDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Referies.xaml">
+    <Page Include="Pages\Details\PlayerDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Settings.xaml">
+    <Page Include="Pages\Details\RefereeDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Pages\Home.xaml.cs">
+    <Page Include="Pages\Details\TeamDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Main\GamesVM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Core\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Main\Referies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Core\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Pages\Core\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Settings.xaml.cs">
+    <Compile Include="Pages\Core\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\TeamsPlayers.xaml.cs">
+    <Compile Include="Pages\Main\TeamsPlayers.xaml.cs">
       <DependentUpon>TeamsPlayers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Page Include="Pages\TableStats.xaml">
+    <Page Include="Pages\Main\TableStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\TabMenu.xaml">
+    <Page Include="Pages\Core\TabMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\TeamsPlayers.xaml">
+    <Page Include="Pages\Main\TeamsPlayers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
