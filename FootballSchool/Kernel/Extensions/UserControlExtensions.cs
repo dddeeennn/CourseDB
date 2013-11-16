@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace FootballSchool.Kerenl.Extensions
+namespace FootballSchool.Kernel.Extensions
 {
 	/// <summary>
 	/// ext fo UC

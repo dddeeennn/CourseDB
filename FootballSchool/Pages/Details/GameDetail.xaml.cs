@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using FootballSchool.Kerenl.Extensions;
+using FootballSchool.Kernel.Extensions;
 using FootballSchool.Pages.Main;
 
 namespace FootballSchool.Pages.Details
@@ -10,7 +10,6 @@ namespace FootballSchool.Pages.Details
 	/// </summary>
 	public partial class GameDetail : UserControl
 	{
-
 		public GameDetail()
 		{
 			InitializeComponent();

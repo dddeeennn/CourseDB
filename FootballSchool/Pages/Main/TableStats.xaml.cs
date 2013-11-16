@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using FootballSchool.Kernel;
 
 namespace FootballSchool.Pages.Main
 {
@@ -11,7 +12,7 @@ namespace FootballSchool.Pages.Main
         public TableStats()
         {
             InitializeComponent();
-            entities = new fscEntities();
+            entities = EntityProvider.Entities;
         }
 
         private fscEntities entities;

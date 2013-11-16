@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using FootballSchool.Kernel;
 using FootballSchool.Models;
 using FootballSchool.ViewModels;
 
@@ -16,7 +17,7 @@ namespace FootballSchool.Pages.Main
 		public Referies()
 		{
 			InitializeComponent();
-			entities = new fscEntities();
+		    entities = EntityProvider.Entities;
 		}
 
 		private fscEntities entities;

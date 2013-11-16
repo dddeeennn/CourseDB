@@ -1,4 +1,4 @@
-﻿using FootballSchool.Kerenl;
+﻿using FootballSchool.Kernel;
 
 namespace FootballSchool.Repositories
 {
@@ -11,7 +11,7 @@ namespace FootballSchool.Repositories
 
 		protected RepositoryBase()
 		{
-			Entities = new fscEntities();
+		    Entities = EntityProvider.Entities;
 		}
 	}
 }

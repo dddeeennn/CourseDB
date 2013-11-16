@@ -1,6 +1,6 @@
 ﻿using System.Data.Objects;
 
-namespace FootballSchool.Kerenl
+namespace FootballSchool.Kernel
 {
 	/// <summary>
 	/// query provider
@@ -11,7 +11,7 @@ namespace FootballSchool.Kerenl
 
 		public QueryProvider()
 		{
-			_entities = new fscEntities();
+		    _entities = EntityProvider.Entities;
 		}
 
 		/// <summary>

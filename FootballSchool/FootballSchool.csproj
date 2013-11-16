@@ -92,7 +92,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Kerenl\QueryProvider.cs" />
+    <Compile Include="Kernel\EntityProvider.cs" />
+    <Compile Include="Kernel\QueryProvider.cs" />
     <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,7 +119,7 @@
     <Compile Include="Pages\Details\TeamDetail.xaml.cs">
       <DependentUpon>TeamDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Kerenl\Extensions\UserControlExtensions.cs" />
+    <Compile Include="Kernel\Extensions\UserControlExtensions.cs" />
     <Compile Include="Pages\Main\GamesVM.xaml.cs">
       <DependentUpon>GamesVM.xaml</DependentUpon>
     </Compile>

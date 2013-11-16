@@ -2,7 +2,8 @@
 using System.Data.Objects;
 using System.Windows;
 using System.Windows.Controls;
-using FootballSchool.Kerenl.Extensions;
+using FootballSchool.Kernel;
+using FootballSchool.Kernel.Extensions;
 using FootballSchool.Pages.Main;
 using FootballSchool.ViewModels;
 
@@ -16,21 +17,21 @@ namespace FootballSchool.Pages.Details
 		private readonly fscEntities _entities;
 
 		private readonly Team _editableTeam;
-		private TeamVM _viewVm = new TeamVM();
+		private readonly TeamVM _viewModel = new TeamVM();
 
 		public TeamDetail(Team team)
 			: this()
 		{
 			_editableTeam = team;
-			_viewVm = new TeamVM(team);
-			DataContext = _viewVm;
+			_viewModel = new TeamVM(team);
+			DataContext = _viewModel;
 		}
 
 		public TeamDetail()
 		{
-			_entities = new fscEntities();
+            _entities = EntityProvider.Entities;
 			InitializeComponent();
-			DataContext = _viewVm;
+			DataContext = _viewModel;
 		}
 
 		private void Button_CancelClick(object sender, RoutedEventArgs e)
@@ -51,23 +52,25 @@ namespace FootballSchool.Pages.Details
 		/// </summary>
 		private void EditTeam()
 		{
-			_editableTeam.City = _viewVm.City;
-			_editableTeam.Name = _viewVm.Name;
-			_editableTeam.CoachID = _viewVm.CoachId;
+            Map(_editableTeam, _viewModel);
 			_entities.Teams.ApplyCurrentValues(_editableTeam);
 		}
+
+        private void Map(Team team, TeamVM viewModel)
+        {
+            team.City = viewModel.City;
+            team.Name = viewModel.Name;
+            team.CoachID = ((KeyValuePair<int, string>)CmbCoach.SelectedItem).Key;
+        }
 
 		/// <summary>
 		/// Add new team.
 		/// </summary>
 		private void AddTeam()
 		{
-			_entities.Teams.AddObject(new Team
-			{
-				Name = NameTb.Text,
-				City = CityTb.Text,
-				CoachID = ((KeyValuePair<int, string>)CmbCoach.SelectedItem).Key
-			});
+		    var team = new Team();
+            Map(team, _viewModel);
+			_entities.Teams.AddObject(team);
 		}
 
 		/// <summary>
