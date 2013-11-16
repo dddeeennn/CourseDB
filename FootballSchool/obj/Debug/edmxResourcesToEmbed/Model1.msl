@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="fscModelStoreContainer" CdmEntityContainer="fscEntities">
     <EntitySetMapping Name="Coaches">
-      <EntityTypeMapping TypeName="fscModel.Coaches">
+      <EntityTypeMapping TypeName="fscModel.Coach">
         <MappingFragment StoreEntitySet="Coaches">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="fscModel.Events">
+      <EntityTypeMapping TypeName="fscModel.Event">
         <MappingFragment StoreEntitySet="Events">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
@@ -20,18 +20,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GameEvents">
-      <EntityTypeMapping TypeName="fscModel.GameEvents">
+      <EntityTypeMapping TypeName="fscModel.GameEvent">
         <MappingFragment StoreEntitySet="GameEvents">
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
           <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Games">
-      <EntityTypeMapping TypeName="fscModel.Games">
+      <EntityTypeMapping TypeName="fscModel.Game">
         <MappingFragment StoreEntitySet="Games">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Team1ID" ColumnName="Team1ID" />
@@ -42,7 +42,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PlayerInTeam">
+    <EntitySetMapping Name="PlayerInTeams">
       <EntityTypeMapping TypeName="fscModel.PlayerInTeam">
         <MappingFragment StoreEntitySet="PlayerInTeam">
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -52,7 +52,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PlayerPositions">
-      <EntityTypeMapping TypeName="fscModel.PlayerPositions">
+      <EntityTypeMapping TypeName="fscModel.PlayerPosition">
         <MappingFragment StoreEntitySet="PlayerPositions">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Position" ColumnName="Position" />
@@ -60,7 +60,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Players">
-      <EntityTypeMapping TypeName="fscModel.Players">
+      <EntityTypeMapping TypeName="fscModel.Player">
         <MappingFragment StoreEntitySet="Players">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -72,7 +72,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Referee">
+    <EntitySetMapping Name="Referees">
       <EntityTypeMapping TypeName="fscModel.Referee">
         <MappingFragment StoreEntitySet="Referee">
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -84,7 +84,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Teams">
-      <EntityTypeMapping TypeName="fscModel.Teams">
+      <EntityTypeMapping TypeName="fscModel.Team">
         <MappingFragment StoreEntitySet="Teams">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />

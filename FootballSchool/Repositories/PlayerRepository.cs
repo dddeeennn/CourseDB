@@ -15,7 +15,7 @@ namespace FootballSchool.Repositories
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public Players GetPlayerById(int id)
+		public Player GetPlayerById(int id)
 		{
 			return Entities.Players.FirstOrDefault(x => x.Id == id);
 		}

@@ -9,12 +9,28 @@
 
 using System;
 using System.ComponentModel;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.EntityClient;
+using System.Data.Objects;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+
+[assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("fscModel", "FK_Teams_Coaches", "Coaches", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Coach), "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Team), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Event", "Events", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Event), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvent), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Game", "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Game), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvent), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_GameEvents_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Player), "GameEvents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.GameEvent), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Referee", "Referee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Referee), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Game), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Team1", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Team), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Game), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_Games_Teams", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Team), "Games", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Game), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_PlayerInTeam_Players", "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Player), "PlayerInTeam", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.PlayerInTeam), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_PlayerInTeam_Team", "Teams", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.Team), "PlayerInTeam", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.PlayerInTeam), true)]
+[assembly: EdmRelationshipAttribute("fscModel", "FK_Players_PlayerPositions", "PlayerPositions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FootballSchool.PlayerPosition), "Players", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FootballSchool.Player), true)]
+
+#endregion
 
 namespace FootballSchool
 {
@@ -67,146 +83,146 @@ namespace FootballSchool
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Coaches> Coaches
+        public ObjectSet<Coach> Coaches
         {
             get
             {
                 if ((_Coaches == null))
                 {
-                    _Coaches = base.CreateObjectSet<Coaches>("Coaches");
+                    _Coaches = base.CreateObjectSet<Coach>("Coaches");
                 }
                 return _Coaches;
             }
         }
-        private ObjectSet<Coaches> _Coaches;
+        private ObjectSet<Coach> _Coaches;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Events> Events
+        public ObjectSet<Event> Events
         {
             get
             {
                 if ((_Events == null))
                 {
-                    _Events = base.CreateObjectSet<Events>("Events");
+                    _Events = base.CreateObjectSet<Event>("Events");
                 }
                 return _Events;
             }
         }
-        private ObjectSet<Events> _Events;
+        private ObjectSet<Event> _Events;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<GameEvents> GameEvents
+        public ObjectSet<GameEvent> GameEvents
         {
             get
             {
                 if ((_GameEvents == null))
                 {
-                    _GameEvents = base.CreateObjectSet<GameEvents>("GameEvents");
+                    _GameEvents = base.CreateObjectSet<GameEvent>("GameEvents");
                 }
                 return _GameEvents;
             }
         }
-        private ObjectSet<GameEvents> _GameEvents;
+        private ObjectSet<GameEvent> _GameEvents;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Games> Games
+        public ObjectSet<Game> Games
         {
             get
             {
                 if ((_Games == null))
                 {
-                    _Games = base.CreateObjectSet<Games>("Games");
+                    _Games = base.CreateObjectSet<Game>("Games");
                 }
                 return _Games;
             }
         }
-        private ObjectSet<Games> _Games;
+        private ObjectSet<Game> _Games;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PlayerInTeam> PlayerInTeam
+        public ObjectSet<PlayerInTeam> PlayerInTeams
         {
             get
             {
-                if ((_PlayerInTeam == null))
+                if ((_PlayerInTeams == null))
                 {
-                    _PlayerInTeam = base.CreateObjectSet<PlayerInTeam>("PlayerInTeam");
+                    _PlayerInTeams = base.CreateObjectSet<PlayerInTeam>("PlayerInTeams");
                 }
-                return _PlayerInTeam;
+                return _PlayerInTeams;
             }
         }
-        private ObjectSet<PlayerInTeam> _PlayerInTeam;
+        private ObjectSet<PlayerInTeam> _PlayerInTeams;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PlayerPositions> PlayerPositions
+        public ObjectSet<PlayerPosition> PlayerPositions
         {
             get
             {
                 if ((_PlayerPositions == null))
                 {
-                    _PlayerPositions = base.CreateObjectSet<PlayerPositions>("PlayerPositions");
+                    _PlayerPositions = base.CreateObjectSet<PlayerPosition>("PlayerPositions");
                 }
                 return _PlayerPositions;
             }
         }
-        private ObjectSet<PlayerPositions> _PlayerPositions;
+        private ObjectSet<PlayerPosition> _PlayerPositions;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Players> Players
+        public ObjectSet<Player> Players
         {
             get
             {
                 if ((_Players == null))
                 {
-                    _Players = base.CreateObjectSet<Players>("Players");
+                    _Players = base.CreateObjectSet<Player>("Players");
                 }
                 return _Players;
             }
         }
-        private ObjectSet<Players> _Players;
+        private ObjectSet<Player> _Players;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Referee> Referee
+        public ObjectSet<Referee> Referees
         {
             get
             {
-                if ((_Referee == null))
+                if ((_Referees == null))
                 {
-                    _Referee = base.CreateObjectSet<Referee>("Referee");
+                    _Referees = base.CreateObjectSet<Referee>("Referees");
                 }
-                return _Referee;
+                return _Referees;
             }
         }
-        private ObjectSet<Referee> _Referee;
+        private ObjectSet<Referee> _Referees;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Teams> Teams
+        public ObjectSet<Team> Teams
         {
             get
             {
                 if ((_Teams == null))
                 {
-                    _Teams = base.CreateObjectSet<Teams>("Teams");
+                    _Teams = base.CreateObjectSet<Team>("Teams");
                 }
                 return _Teams;
             }
         }
-        private ObjectSet<Teams> _Teams;
+        private ObjectSet<Team> _Teams;
 
         #endregion
 
@@ -215,73 +231,73 @@ namespace FootballSchool
         /// <summary>
         /// Deprecated Method for adding a new object to the Coaches EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToCoaches(Coaches coaches)
+        public void AddToCoaches(Coach coach)
         {
-            base.AddObject("Coaches", coaches);
+            base.AddObject("Coaches", coach);
         }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Events EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToEvents(Events events)
+        public void AddToEvents(Event @event)
         {
-            base.AddObject("Events", events);
+            base.AddObject("Events", @event);
         }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the GameEvents EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToGameEvents(GameEvents gameEvents)
+        public void AddToGameEvents(GameEvent gameEvent)
         {
-            base.AddObject("GameEvents", gameEvents);
+            base.AddObject("GameEvents", gameEvent);
         }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Games EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToGames(Games games)
+        public void AddToGames(Game game)
         {
-            base.AddObject("Games", games);
+            base.AddObject("Games", game);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PlayerInTeam EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the PlayerInTeams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPlayerInTeam(PlayerInTeam playerInTeam)
+        public void AddToPlayerInTeams(PlayerInTeam playerInTeam)
         {
-            base.AddObject("PlayerInTeam", playerInTeam);
+            base.AddObject("PlayerInTeams", playerInTeam);
         }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the PlayerPositions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPlayerPositions(PlayerPositions playerPositions)
+        public void AddToPlayerPositions(PlayerPosition playerPosition)
         {
-            base.AddObject("PlayerPositions", playerPositions);
+            base.AddObject("PlayerPositions", playerPosition);
         }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Players EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPlayers(Players players)
+        public void AddToPlayers(Player player)
         {
-            base.AddObject("Players", players);
+            base.AddObject("Players", player);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Referee EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Referees EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToReferee(Referee referee)
+        public void AddToReferees(Referee referee)
         {
-            base.AddObject("Referee", referee);
+            base.AddObject("Referees", referee);
         }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Teams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToTeams(Teams teams)
+        public void AddToTeams(Team team)
         {
-            base.AddObject("Teams", teams);
+            base.AddObject("Teams", team);
         }
 
         #endregion
@@ -295,26 +311,26 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Coaches")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Coach")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Coaches : EntityObject
+    public partial class Coach : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Coaches object.
+        /// Create a new Coach object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="lastName">Initial value of the LastName property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Coaches CreateCoaches(global::System.Int32 id, global::System.String lastName, global::System.String name)
+        public static Coach CreateCoach(global::System.Int32 id, global::System.String lastName, global::System.String name)
         {
-            Coaches coaches = new Coaches();
-            coaches.Id = id;
-            coaches.LastName = lastName;
-            coaches.Name = name;
-            return coaches;
+            Coach coach = new Coach();
+            coach.Id = id;
+            coach.LastName = lastName;
+            coach.Name = name;
+            return coach;
         }
 
         #endregion
@@ -432,17 +448,17 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Teams_Coaches", "Teams")]
-        public EntityCollection<Teams> Teams
+        public EntityCollection<Team> Teams
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Teams>("fscModel.FK_Teams_Coaches", "Teams");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Team>("fscModel.FK_Teams_Coaches", "Teams");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Teams>("fscModel.FK_Teams_Coaches", "Teams", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Team>("fscModel.FK_Teams_Coaches", "Teams", value);
                 }
             }
         }
@@ -454,24 +470,24 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Events")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Event")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Events : EntityObject
+    public partial class Event : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Events object.
+        /// Create a new Event object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="type">Initial value of the Type property.</param>
-        public static Events CreateEvents(global::System.Int32 id, global::System.String type)
+        public static Event CreateEvent(global::System.Int32 id, global::System.String type)
         {
-            Events events = new Events();
-            events.Id = id;
-            events.Type = type;
-            return events;
+            Event @event = new Event();
+            @event.Id = id;
+            @event.Type = type;
+            return @event;
         }
 
         #endregion
@@ -541,17 +557,17 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Event", "GameEvents")]
-        public EntityCollection<GameEvents> GameEvents
+        public EntityCollection<GameEvent> GameEvents
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Event", "GameEvents");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvent>("fscModel.FK_GameEvents_Event", "GameEvents");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Event", "GameEvents", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvent>("fscModel.FK_GameEvents_Event", "GameEvents", value);
                 }
             }
         }
@@ -563,309 +579,30 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="GameEvents")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Game")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class GameEvents : EntityObject
+    public partial class Game : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new GameEvents object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="gameID">Initial value of the GameID property.</param>
-        /// <param name="eventID">Initial value of the EventID property.</param>
-        /// <param name="time">Initial value of the Time property.</param>
-        /// <param name="playerID">Initial value of the PlayerID property.</param>
-        public static GameEvents CreateGameEvents(global::System.Int32 id, global::System.Int32 gameID, global::System.Int32 eventID, global::System.DateTime time, global::System.Int32 playerID)
-        {
-            GameEvents gameEvents = new GameEvents();
-            gameEvents.Id = id;
-            gameEvents.GameID = gameID;
-            gameEvents.EventID = eventID;
-            gameEvents.Time = time;
-            gameEvents.PlayerID = playerID;
-            return gameEvents;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 GameID
-        {
-            get
-            {
-                return _GameID;
-            }
-            set
-            {
-                OnGameIDChanging(value);
-                ReportPropertyChanging("GameID");
-                _GameID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("GameID");
-                OnGameIDChanged();
-            }
-        }
-        private global::System.Int32 _GameID;
-        partial void OnGameIDChanging(global::System.Int32 value);
-        partial void OnGameIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 EventID
-        {
-            get
-            {
-                return _EventID;
-            }
-            set
-            {
-                OnEventIDChanging(value);
-                ReportPropertyChanging("EventID");
-                _EventID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("EventID");
-                OnEventIDChanged();
-            }
-        }
-        private global::System.Int32 _EventID;
-        partial void OnEventIDChanging(global::System.Int32 value);
-        partial void OnEventIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime Time
-        {
-            get
-            {
-                return _Time;
-            }
-            set
-            {
-                OnTimeChanging(value);
-                ReportPropertyChanging("Time");
-                _Time = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Time");
-                OnTimeChanged();
-            }
-        }
-        private global::System.DateTime _Time;
-        partial void OnTimeChanging(global::System.DateTime value);
-        partial void OnTimeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 PlayerID
-        {
-            get
-            {
-                return _PlayerID;
-            }
-            set
-            {
-                OnPlayerIDChanging(value);
-                ReportPropertyChanging("PlayerID");
-                _PlayerID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PlayerID");
-                OnPlayerIDChanged();
-            }
-        }
-        private global::System.Int32 _PlayerID;
-        partial void OnPlayerIDChanging(global::System.Int32 value);
-        partial void OnPlayerIDChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Event", "Events")]
-        public Events Events
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Events>("fscModel.FK_GameEvents_Event", "Events").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Events>("fscModel.FK_GameEvents_Event", "Events").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Events> EventsReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Events>("fscModel.FK_GameEvents_Event", "Events");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Events>("fscModel.FK_GameEvents_Event", "Events", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Game", "Games")]
-        public Games Games
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Games>("fscModel.FK_GameEvents_Game", "Games").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Games>("fscModel.FK_GameEvents_Game", "Games").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Games> GamesReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Games>("fscModel.FK_GameEvents_Game", "Games");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Games>("fscModel.FK_GameEvents_Game", "Games", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Players", "Players")]
-        public Players Players
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Players>("fscModel.FK_GameEvents_Players", "Players").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Players>("fscModel.FK_GameEvents_Players", "Players").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Players> PlayersReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Players>("fscModel.FK_GameEvents_Players", "Players");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Players>("fscModel.FK_GameEvents_Players", "Players", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Games")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Games : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Games object.
+        /// Create a new Game object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="team1ID">Initial value of the Team1ID property.</param>
         /// <param name="team2ID">Initial value of the Team2ID property.</param>
         /// <param name="type">Initial value of the Type property.</param>
         /// <param name="refereeID">Initial value of the RefereeID property.</param>
-        public static Games CreateGames(global::System.Int32 id, global::System.Int32 team1ID, global::System.Int32 team2ID, global::System.Boolean type, global::System.Int32 refereeID)
+        public static Game CreateGame(global::System.Int32 id, global::System.Int32 team1ID, global::System.Int32 team2ID, global::System.Boolean type, global::System.Int32 refereeID)
         {
-            Games games = new Games();
-            games.Id = id;
-            games.Team1ID = team1ID;
-            games.Team2ID = team2ID;
-            games.Type = type;
-            games.RefereeID = refereeID;
-            return games;
+            Game game = new Game();
+            game.Id = id;
+            game.Team1ID = team1ID;
+            game.Team2ID = team2ID;
+            game.Type = type;
+            game.RefereeID = refereeID;
+            return game;
         }
 
         #endregion
@@ -1031,17 +768,17 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Game", "GameEvents")]
-        public EntityCollection<GameEvents> GameEvents
+        public EntityCollection<GameEvent> GameEvents
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Game", "GameEvents");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvent>("fscModel.FK_GameEvents_Game", "GameEvents");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Game", "GameEvents", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvent>("fscModel.FK_GameEvents_Game", "GameEvents", value);
                 }
             }
         }
@@ -1091,15 +828,15 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Games_Team1", "Teams")]
-        public Teams Teams
+        public Team Team
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_Games_Team1", "Teams").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_Games_Team1", "Teams").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_Games_Team1", "Teams").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_Games_Team1", "Teams").Value = value;
             }
         }
         /// <summary>
@@ -1107,17 +844,17 @@ namespace FootballSchool
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Teams> TeamsReference
+        public EntityReference<Team> TeamReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_Games_Team1", "Teams");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_Games_Team1", "Teams");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Teams>("fscModel.FK_Games_Team1", "Teams", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Team>("fscModel.FK_Games_Team1", "Teams", value);
                 }
             }
         }
@@ -1129,15 +866,15 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Games_Teams", "Teams")]
-        public Teams Teams1
+        public Team Team1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_Games_Teams", "Teams").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_Games_Teams", "Teams").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_Games_Teams", "Teams").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_Games_Teams", "Teams").Value = value;
             }
         }
         /// <summary>
@@ -1145,17 +882,17 @@ namespace FootballSchool
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Teams> Teams1Reference
+        public EntityReference<Team> Team1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_Games_Teams", "Teams");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_Games_Teams", "Teams");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Teams>("fscModel.FK_Games_Teams", "Teams", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Team>("fscModel.FK_Games_Teams", "Teams", value);
                 }
             }
         }
@@ -1167,26 +904,30 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="PlayerInTeam")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="GameEvent")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class PlayerInTeam : EntityObject
+    public partial class GameEvent : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new PlayerInTeam object.
+        /// Create a new GameEvent object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="gameID">Initial value of the GameID property.</param>
         /// <param name="playerID">Initial value of the PlayerID property.</param>
-        /// <param name="teamID">Initial value of the TeamID property.</param>
-        public static PlayerInTeam CreatePlayerInTeam(global::System.Int32 id, global::System.Int32 playerID, global::System.Int32 teamID)
+        /// <param name="eventID">Initial value of the EventID property.</param>
+        /// <param name="time">Initial value of the Time property.</param>
+        public static GameEvent CreateGameEvent(global::System.Int32 id, global::System.Int32 gameID, global::System.Int32 playerID, global::System.Int32 eventID, global::System.DateTime time)
         {
-            PlayerInTeam playerInTeam = new PlayerInTeam();
-            playerInTeam.Id = id;
-            playerInTeam.PlayerID = playerID;
-            playerInTeam.TeamID = teamID;
-            return playerInTeam;
+            GameEvent gameEvent = new GameEvent();
+            gameEvent.Id = id;
+            gameEvent.GameID = gameID;
+            gameEvent.PlayerID = playerID;
+            gameEvent.EventID = eventID;
+            gameEvent.Time = time;
+            return gameEvent;
         }
 
         #endregion
@@ -1219,6 +960,30 @@ namespace FootballSchool
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 GameID
+        {
+            get
+            {
+                return _GameID;
+            }
+            set
+            {
+                OnGameIDChanging(value);
+                ReportPropertyChanging("GameID");
+                _GameID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GameID");
+                OnGameIDChanged();
+            }
+        }
+        private global::System.Int32 _GameID;
+        partial void OnGameIDChanging(global::System.Int32 value);
+        partial void OnGameIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1249,187 +1014,48 @@ namespace FootballSchool
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TeamID
+        public global::System.Int32 EventID
         {
             get
             {
-                return _TeamID;
+                return _EventID;
             }
             set
             {
-                OnTeamIDChanging(value);
-                ReportPropertyChanging("TeamID");
-                _TeamID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TeamID");
-                OnTeamIDChanged();
+                OnEventIDChanging(value);
+                ReportPropertyChanging("EventID");
+                _EventID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EventID");
+                OnEventIDChanged();
             }
         }
-        private global::System.Int32 _TeamID;
-        partial void OnTeamIDChanging(global::System.Int32 value);
-        partial void OnTeamIDChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Players", "Players")]
-        public Players Players
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Players>("fscModel.FK_PlayerInTeam_Players", "Players").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Players>("fscModel.FK_PlayerInTeam_Players", "Players").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Players> PlayersReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Players>("fscModel.FK_PlayerInTeam_Players", "Players");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Players>("fscModel.FK_PlayerInTeam_Players", "Players", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Team", "Teams")]
-        public Teams Teams
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_PlayerInTeam_Team", "Teams").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_PlayerInTeam_Team", "Teams").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Teams> TeamsReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teams>("fscModel.FK_PlayerInTeam_Team", "Teams");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Teams>("fscModel.FK_PlayerInTeam_Team", "Teams", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="PlayerPositions")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class PlayerPositions : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new PlayerPositions object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="position">Initial value of the Position property.</param>
-        public static PlayerPositions CreatePlayerPositions(global::System.Int32 id, global::System.String position)
-        {
-            PlayerPositions playerPositions = new PlayerPositions();
-            playerPositions.Id = id;
-            playerPositions.Position = position;
-            return playerPositions;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
+        private global::System.Int32 _EventID;
+        partial void OnEventIDChanging(global::System.Int32 value);
+        partial void OnEventIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Position
+        public global::System.DateTime Time
         {
             get
             {
-                return _Position;
+                return _Time;
             }
             set
             {
-                OnPositionChanging(value);
-                ReportPropertyChanging("Position");
-                _Position = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Position");
-                OnPositionChanged();
+                OnTimeChanging(value);
+                ReportPropertyChanging("Time");
+                _Time = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Time");
+                OnTimeChanged();
             }
         }
-        private global::System.String _Position;
-        partial void OnPositionChanging(global::System.String value);
-        partial void OnPositionChanged();
+        private global::System.DateTime _Time;
+        partial void OnTimeChanging(global::System.DateTime value);
+        partial void OnTimeChanged();
 
         #endregion
 
@@ -1442,18 +1068,110 @@ namespace FootballSchool
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Players_PlayerPositions", "Players")]
-        public EntityCollection<Players> Players
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Event", "Events")]
+        public Event Event
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Players>("fscModel.FK_Players_PlayerPositions", "Players");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("fscModel.FK_GameEvents_Event", "Events").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("fscModel.FK_GameEvents_Event", "Events").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Event> EventReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("fscModel.FK_GameEvents_Event", "Events");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Players>("fscModel.FK_Players_PlayerPositions", "Players", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Event>("fscModel.FK_GameEvents_Event", "Events", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Game", "Games")]
+        public Game Game
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Game>("fscModel.FK_GameEvents_Game", "Games").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Game>("fscModel.FK_GameEvents_Game", "Games").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Game> GameReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Game>("fscModel.FK_GameEvents_Game", "Games");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Game>("fscModel.FK_GameEvents_Game", "Games", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Players", "Players")]
+        public Player Player
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Player>("fscModel.FK_GameEvents_Players", "Players").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Player>("fscModel.FK_GameEvents_Players", "Players").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Player> PlayerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Player>("fscModel.FK_GameEvents_Players", "Players");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Player>("fscModel.FK_GameEvents_Players", "Players", value);
                 }
             }
         }
@@ -1465,15 +1183,15 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Players")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Player")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Players : EntityObject
+    public partial class Player : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Players object.
+        /// Create a new Player object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="lastName">Initial value of the LastName property.</param>
@@ -1481,16 +1199,16 @@ namespace FootballSchool
         /// <param name="passport">Initial value of the Passport property.</param>
         /// <param name="isMain">Initial value of the IsMain property.</param>
         /// <param name="positionID">Initial value of the PositionID property.</param>
-        public static Players CreatePlayers(global::System.Int32 id, global::System.String lastName, global::System.String name, global::System.String passport, global::System.Boolean isMain, global::System.Int32 positionID)
+        public static Player CreatePlayer(global::System.Int32 id, global::System.String lastName, global::System.String name, global::System.String passport, global::System.Boolean isMain, global::System.Int32 positionID)
         {
-            Players players = new Players();
-            players.Id = id;
-            players.LastName = lastName;
-            players.Name = name;
-            players.Passport = passport;
-            players.IsMain = isMain;
-            players.PositionID = positionID;
-            return players;
+            Player player = new Player();
+            player.Id = id;
+            player.LastName = lastName;
+            player.Name = name;
+            player.Passport = passport;
+            player.IsMain = isMain;
+            player.PositionID = positionID;
+            return player;
         }
 
         #endregion
@@ -1679,8 +1397,30 @@ namespace FootballSchool
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Players", "GameEvents")]
+        public EntityCollection<GameEvent> GameEvents
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvent>("fscModel.FK_GameEvents_Players", "GameEvents");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvent>("fscModel.FK_GameEvents_Players", "GameEvents", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Players", "PlayerInTeam")]
-        public EntityCollection<PlayerInTeam> PlayerInTeam
+        public EntityCollection<PlayerInTeam> PlayerInTeams
         {
             get
             {
@@ -1702,15 +1442,15 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Players_PlayerPositions", "PlayerPositions")]
-        public PlayerPositions PlayerPositions
+        public PlayerPosition PlayerPosition
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PlayerPositions>("fscModel.FK_Players_PlayerPositions", "PlayerPositions").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PlayerPosition>("fscModel.FK_Players_PlayerPositions", "PlayerPositions").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PlayerPositions>("fscModel.FK_Players_PlayerPositions", "PlayerPositions").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PlayerPosition>("fscModel.FK_Players_PlayerPositions", "PlayerPositions").Value = value;
             }
         }
         /// <summary>
@@ -1718,17 +1458,168 @@ namespace FootballSchool
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<PlayerPositions> PlayerPositionsReference
+        public EntityReference<PlayerPosition> PlayerPositionReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PlayerPositions>("fscModel.FK_Players_PlayerPositions", "PlayerPositions");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PlayerPosition>("fscModel.FK_Players_PlayerPositions", "PlayerPositions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PlayerPositions>("fscModel.FK_Players_PlayerPositions", "PlayerPositions", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PlayerPosition>("fscModel.FK_Players_PlayerPositions", "PlayerPositions", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="PlayerInTeam")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PlayerInTeam : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PlayerInTeam object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="playerID">Initial value of the PlayerID property.</param>
+        /// <param name="teamID">Initial value of the TeamID property.</param>
+        public static PlayerInTeam CreatePlayerInTeam(global::System.Int32 id, global::System.Int32 playerID, global::System.Int32 teamID)
+        {
+            PlayerInTeam playerInTeam = new PlayerInTeam();
+            playerInTeam.Id = id;
+            playerInTeam.PlayerID = playerID;
+            playerInTeam.TeamID = teamID;
+            return playerInTeam;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PlayerID
+        {
+            get
+            {
+                return _PlayerID;
+            }
+            set
+            {
+                OnPlayerIDChanging(value);
+                ReportPropertyChanging("PlayerID");
+                _PlayerID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PlayerID");
+                OnPlayerIDChanged();
+            }
+        }
+        private global::System.Int32 _PlayerID;
+        partial void OnPlayerIDChanging(global::System.Int32 value);
+        partial void OnPlayerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TeamID
+        {
+            get
+            {
+                return _TeamID;
+            }
+            set
+            {
+                OnTeamIDChanging(value);
+                ReportPropertyChanging("TeamID");
+                _TeamID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TeamID");
+                OnTeamIDChanged();
+            }
+        }
+        private global::System.Int32 _TeamID;
+        partial void OnTeamIDChanging(global::System.Int32 value);
+        partial void OnTeamIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Players", "Players")]
+        public Player Player
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Player>("fscModel.FK_PlayerInTeam_Players", "Players").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Player>("fscModel.FK_PlayerInTeam_Players", "Players").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Player> PlayerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Player>("fscModel.FK_PlayerInTeam_Players", "Players");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Player>("fscModel.FK_PlayerInTeam_Players", "Players", value);
                 }
             }
         }
@@ -1739,18 +1630,143 @@ namespace FootballSchool
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_GameEvents_Players", "GameEvents")]
-        public EntityCollection<GameEvents> GameEvents
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Team", "Teams")]
+        public Team Team
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Players", "GameEvents");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_PlayerInTeam_Team", "Teams").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_PlayerInTeam_Team", "Teams").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Team> TeamReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Team>("fscModel.FK_PlayerInTeam_Team", "Teams");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GameEvents>("fscModel.FK_GameEvents_Players", "GameEvents", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Team>("fscModel.FK_PlayerInTeam_Team", "Teams", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="PlayerPosition")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PlayerPosition : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PlayerPosition object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="position">Initial value of the Position property.</param>
+        public static PlayerPosition CreatePlayerPosition(global::System.Int32 id, global::System.String position)
+        {
+            PlayerPosition playerPosition = new PlayerPosition();
+            playerPosition.Id = id;
+            playerPosition.Position = position;
+            return playerPosition;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Position
+        {
+            get
+            {
+                return _Position;
+            }
+            set
+            {
+                OnPositionChanging(value);
+                ReportPropertyChanging("Position");
+                _Position = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Position");
+                OnPositionChanged();
+            }
+        }
+        private global::System.String _Position;
+        partial void OnPositionChanging(global::System.String value);
+        partial void OnPositionChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Players_PlayerPositions", "Players")]
+        public EntityCollection<Player> Players
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Player>("fscModel.FK_Players_PlayerPositions", "Players");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Player>("fscModel.FK_Players_PlayerPositions", "Players", value);
                 }
             }
         }
@@ -1923,17 +1939,17 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Games_Referee", "Games")]
-        public EntityCollection<Games> Games
+        public EntityCollection<Game> Games
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Games>("fscModel.FK_Games_Referee", "Games");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Game>("fscModel.FK_Games_Referee", "Games");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Games>("fscModel.FK_Games_Referee", "Games", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Game>("fscModel.FK_Games_Referee", "Games", value);
                 }
             }
         }
@@ -1945,26 +1961,26 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Teams")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Team")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Teams : EntityObject
+    public partial class Team : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Teams object.
+        /// Create a new Team object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="coachID">Initial value of the CoachID property.</param>
-        public static Teams CreateTeams(global::System.Int32 id, global::System.String name, global::System.Int32 coachID)
+        public static Team CreateTeam(global::System.Int32 id, global::System.String name, global::System.Int32 coachID)
         {
-            Teams teams = new Teams();
-            teams.Id = id;
-            teams.Name = name;
-            teams.CoachID = coachID;
-            return teams;
+            Team team = new Team();
+            team.Id = id;
+            team.Name = name;
+            team.CoachID = coachID;
+            return team;
         }
 
         #endregion
@@ -2082,15 +2098,15 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Teams_Coaches", "Coaches")]
-        public Coaches Coaches
+        public Coach Coach
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Coaches>("fscModel.FK_Teams_Coaches", "Coaches").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Coach>("fscModel.FK_Teams_Coaches", "Coaches").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Coaches>("fscModel.FK_Teams_Coaches", "Coaches").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Coach>("fscModel.FK_Teams_Coaches", "Coaches").Value = value;
             }
         }
         /// <summary>
@@ -2098,17 +2114,17 @@ namespace FootballSchool
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Coaches> CoachesReference
+        public EntityReference<Coach> CoachReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Coaches>("fscModel.FK_Teams_Coaches", "Coaches");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Coach>("fscModel.FK_Teams_Coaches", "Coaches");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Coaches>("fscModel.FK_Teams_Coaches", "Coaches", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Coach>("fscModel.FK_Teams_Coaches", "Coaches", value);
                 }
             }
         }
@@ -2120,17 +2136,17 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Games_Team1", "Games")]
-        public EntityCollection<Games> Games
+        public EntityCollection<Game> Games
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Games>("fscModel.FK_Games_Team1", "Games");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Game>("fscModel.FK_Games_Team1", "Games");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Games>("fscModel.FK_Games_Team1", "Games", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Game>("fscModel.FK_Games_Team1", "Games", value);
                 }
             }
         }
@@ -2142,17 +2158,17 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_Games_Teams", "Games")]
-        public EntityCollection<Games> Games1
+        public EntityCollection<Game> Games1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Games>("fscModel.FK_Games_Teams", "Games");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Game>("fscModel.FK_Games_Teams", "Games");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Games>("fscModel.FK_Games_Teams", "Games", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Game>("fscModel.FK_Games_Teams", "Games", value);
                 }
             }
         }
@@ -2164,7 +2180,7 @@ namespace FootballSchool
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("fscModel", "FK_PlayerInTeam_Team", "PlayerInTeam")]
-        public EntityCollection<PlayerInTeam> PlayerInTeam
+        public EntityCollection<PlayerInTeam> PlayerInTeams
         {
             get
             {

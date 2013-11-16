@@ -2,8 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
@@ -11,12 +10,43 @@
 			<RowDefinition />
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<StackPanel>
-			<TextBlock>Contents goes here!!!</TextBlock>
+		<StackPanel VerticalAlignment="Center">
+			<Grid x:Name="grid1" HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Label Content="ИД:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+				<Label x:Name="Id" Content="{Binding Id}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+				<Label Content="Фамилия" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+				<TextBox x:Name="LastNameTb" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+				<Label Content="Имя:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+				<TextBox x:Name="NameTb" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+				<Label Content="Отчество:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+				<TextBox x:Name="MiddleNameTb" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding MiddleName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+				<Label Content="Паспорт:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+				<TextBox x:Name="PassportTb" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding Passport, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+				<Label Content="Основной состав?" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+				<CheckBox x:Name="IsMainChb" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" IsChecked="{Binding IsMain, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+				<Label Content="Позиция на поле:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+				<ComboBox Name="CmbPosition" Grid.Column="1" Grid.Row="6" ItemsSource="{Binding Positions, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding PositionId, Mode=TwoWay}" />
+				<Label Content="Команда:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+				<ComboBox Name="CmbTeam" Grid.Column="1" Grid.Row="7" ItemsSource="{Binding Teams, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding TeamId, Mode=TwoWay}" />
+			</Grid>
 		</StackPanel>
 		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-			<Button Content="Отмена"  Margin="5"/>
-			<Button Content="Сохранить" Margin="5"/>
+			<Button Content="Отмена" Click="ButtonCancel_OnClick" Margin="5"/>
+			<Button Content="Сохранить" Click="ButtonSave_OnClick" Margin="5"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

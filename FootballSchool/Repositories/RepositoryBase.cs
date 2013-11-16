@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core;
-using System.Linq;
-using System.Text;
+﻿using FootballSchool.Kerenl;
 
 namespace FootballSchool.Repositories
 {

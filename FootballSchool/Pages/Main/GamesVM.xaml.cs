@@ -1,4 +1,4 @@
-﻿using System.Data.Entity.Core.Objects;
+﻿using System.Data.Objects;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -6,7 +6,7 @@ using System.Windows.Data;
 using FootballSchool.Models;
 using FootballSchool.ViewModels;
 
-namespace FootballSchool.Pages
+namespace FootballSchool.Pages.Main
 {
 	/// <summary>
 	/// Interaction logic for GamesVM.xaml
@@ -34,22 +34,22 @@ namespace FootballSchool.Pages
 			gamesGameEventsViewSource.Source = gameEventsVM.Models;
 		}
 
-		private ObjectQuery<Games> GetGamesQuery(fscEntities fscEntities)
+		private ObjectQuery<Game> GetGamesQuery(fscEntities fscEntities)
 		{
 			var gamesQuery = fscEntities.Games;
 			return gamesQuery;
 		}
 
-		private ObjectQuery<GameEvents> GetGameEventsQuery(fscEntities fscEntities)
+		private ObjectQuery<GameEvent> GetGameEventsQuery(fscEntities fscEntities)
 		{
 			var gamesQuery = fscEntities.GameEvents;
 			return gamesQuery;
 		}
 
-		private ObjectQuery<GameEvents> GetGameEventsQuery(int gameId)
+		private ObjectQuery<GameEvent> GetGameEventsQuery(int gameId)
 		{
 			var gamesQuery = entities.GameEvents.Where(x => x.GameID == gameId);
-			return (ObjectQuery<GameEvents>)gamesQuery;
+			return (ObjectQuery<GameEvent>)gamesQuery;
 		}
 
 		private void gamesDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)

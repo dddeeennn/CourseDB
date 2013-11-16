@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="fscModel1StoreContainer" CdmEntityContainer="fscEntities1">
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fscModelStoreContainer" CdmEntityContainer="fscEntitiesWork">
     <EntitySetMapping Name="Coaches">
-      <EntityTypeMapping TypeName="fscModel1.Coaches">
+      <EntityTypeMapping TypeName="fscModel.Coach">
         <MappingFragment StoreEntitySet="Coaches">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="fscModel1.Events">
+      <EntityTypeMapping TypeName="fscModel.Event">
         <MappingFragment StoreEntitySet="Events">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
@@ -20,31 +20,39 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GameEvents">
-      <EntityTypeMapping TypeName="fscModel1.GameEvents">
+      <EntityTypeMapping TypeName="fscModel.GameEvent">
         <MappingFragment StoreEntitySet="GameEvents">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Games">
-      <EntityTypeMapping TypeName="fscModel1.Games">
+      <EntityTypeMapping TypeName="fscModel.Game">
         <MappingFragment StoreEntitySet="Games">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Team1ID" ColumnName="Team1ID" />
+          <ScalarProperty Name="Team2ID" ColumnName="Team2ID" />
           <ScalarProperty Name="Stadium" ColumnName="Stadium" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="RefereeID" ColumnName="RefereeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PlayerInTeam">
-      <EntityTypeMapping TypeName="fscModel1.PlayerInTeam">
+    <EntitySetMapping Name="PlayerInTeams">
+      <EntityTypeMapping TypeName="fscModel.PlayerInTeam">
         <MappingFragment StoreEntitySet="PlayerInTeam">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PlayerPositions">
-      <EntityTypeMapping TypeName="fscModel1.PlayerPositions">
+      <EntityTypeMapping TypeName="fscModel.PlayerPosition">
         <MappingFragment StoreEntitySet="PlayerPositions">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Position" ColumnName="Position" />
@@ -52,7 +60,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Players">
-      <EntityTypeMapping TypeName="fscModel1.Players">
+      <EntityTypeMapping TypeName="fscModel.Player">
         <MappingFragment StoreEntitySet="Players">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -60,11 +68,12 @@
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="Passport" ColumnName="Passport" />
           <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Referee">
-      <EntityTypeMapping TypeName="fscModel1.Referee">
+    <EntitySetMapping Name="Referees">
+      <EntityTypeMapping TypeName="fscModel.Referee">
         <MappingFragment StoreEntitySet="Referee">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -75,93 +84,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Teams">
-      <EntityTypeMapping TypeName="fscModel1.Teams">
+      <EntityTypeMapping TypeName="fscModel.Team">
         <MappingFragment StoreEntitySet="Teams">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CoachID" ColumnName="CoachID" />
           <ScalarProperty Name="City" ColumnName="City" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_Teams_Coaches" TypeName="fscModel1.FK_Teams_Coaches" StoreEntitySet="Teams">
-      <EndProperty Name="Coaches">
-        <ScalarProperty Name="Id" ColumnName="CoachID" />
-      </EndProperty>
-      <EndProperty Name="Teams">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_GameEvents_Event" TypeName="fscModel1.FK_GameEvents_Event" StoreEntitySet="GameEvents">
-      <EndProperty Name="Events">
-        <ScalarProperty Name="Id" ColumnName="EventID" />
-      </EndProperty>
-      <EndProperty Name="GameEvents">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_GameEvents_Game" TypeName="fscModel1.FK_GameEvents_Game" StoreEntitySet="GameEvents">
-      <EndProperty Name="Games">
-        <ScalarProperty Name="Id" ColumnName="GameID" />
-      </EndProperty>
-      <EndProperty Name="GameEvents">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_GameEvents_Players" TypeName="fscModel1.FK_GameEvents_Players" StoreEntitySet="GameEvents">
-      <EndProperty Name="Players">
-        <ScalarProperty Name="Id" ColumnName="PlayerID" />
-      </EndProperty>
-      <EndProperty Name="GameEvents">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Games_Referee" TypeName="fscModel1.FK_Games_Referee" StoreEntitySet="Games">
-      <EndProperty Name="Referee">
-        <ScalarProperty Name="Id" ColumnName="RefereeID" />
-      </EndProperty>
-      <EndProperty Name="Games">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Games_Team1" TypeName="fscModel1.FK_Games_Team1" StoreEntitySet="Games">
-      <EndProperty Name="Teams">
-        <ScalarProperty Name="Id" ColumnName="Team1ID" />
-      </EndProperty>
-      <EndProperty Name="Games">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Games_Teams" TypeName="fscModel1.FK_Games_Teams" StoreEntitySet="Games">
-      <EndProperty Name="Teams">
-        <ScalarProperty Name="Id" ColumnName="Team2ID" />
-      </EndProperty>
-      <EndProperty Name="Games">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_PlayerInTeam_Players" TypeName="fscModel1.FK_PlayerInTeam_Players" StoreEntitySet="PlayerInTeam">
-      <EndProperty Name="Players">
-        <ScalarProperty Name="Id" ColumnName="PlayerID" />
-      </EndProperty>
-      <EndProperty Name="PlayerInTeam">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_PlayerInTeam_Team" TypeName="fscModel1.FK_PlayerInTeam_Team" StoreEntitySet="PlayerInTeam">
-      <EndProperty Name="Teams">
-        <ScalarProperty Name="Id" ColumnName="TeamID" />
-      </EndProperty>
-      <EndProperty Name="PlayerInTeam">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Players_PlayerPositions" TypeName="fscModel1.FK_Players_PlayerPositions" StoreEntitySet="Players">
-      <EndProperty Name="PlayerPositions">
-        <ScalarProperty Name="Id" ColumnName="PositionID" />
-      </EndProperty>
-      <EndProperty Name="Players">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

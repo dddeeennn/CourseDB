@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="fscModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="fscModel1StoreContainer">
-    <EntitySet Name="Coaches" EntityType="fscModel1.Store.Coaches" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Events" EntityType="fscModel1.Store.Events" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="GameEvents" EntityType="fscModel1.Store.GameEvents" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Games" EntityType="fscModel1.Store.Games" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerInTeam" EntityType="fscModel1.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerPositions" EntityType="fscModel1.Store.PlayerPositions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Players" EntityType="fscModel1.Store.Players" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Referee" EntityType="fscModel1.Store.Referee" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Teams" EntityType="fscModel1.Store.Teams" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_GameEvents_Event" Association="fscModel1.Store.FK_GameEvents_Event">
+<Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="fscModelStoreContainer">
+    <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameEvents" EntityType="fscModel.Store.GameEvents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Games" EntityType="fscModel.Store.Games" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlayerInTeam" EntityType="fscModel.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlayerPositions" EntityType="fscModel.Store.PlayerPositions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Players" EntityType="fscModel.Store.Players" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Referee" EntityType="fscModel.Store.Referee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teams" EntityType="fscModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_GameEvents_Event" Association="fscModel.Store.FK_GameEvents_Event">
       <End Role="Events" EntitySet="Events" />
       <End Role="GameEvents" EntitySet="GameEvents" />
     </AssociationSet>
-    <AssociationSet Name="FK_GameEvents_Game" Association="fscModel1.Store.FK_GameEvents_Game">
+    <AssociationSet Name="FK_GameEvents_Game" Association="fscModel.Store.FK_GameEvents_Game">
       <End Role="Games" EntitySet="Games" />
       <End Role="GameEvents" EntitySet="GameEvents" />
     </AssociationSet>
-    <AssociationSet Name="FK_GameEvents_Players" Association="fscModel1.Store.FK_GameEvents_Players">
+    <AssociationSet Name="FK_GameEvents_Players" Association="fscModel.Store.FK_GameEvents_Players">
       <End Role="Players" EntitySet="Players" />
       <End Role="GameEvents" EntitySet="GameEvents" />
     </AssociationSet>
-    <AssociationSet Name="FK_Games_Referee" Association="fscModel1.Store.FK_Games_Referee">
+    <AssociationSet Name="FK_Games_Referee" Association="fscModel.Store.FK_Games_Referee">
       <End Role="Referee" EntitySet="Referee" />
       <End Role="Games" EntitySet="Games" />
     </AssociationSet>
-    <AssociationSet Name="FK_Games_Team1" Association="fscModel1.Store.FK_Games_Team1">
+    <AssociationSet Name="FK_Games_Team1" Association="fscModel.Store.FK_Games_Team1">
       <End Role="Teams" EntitySet="Teams" />
       <End Role="Games" EntitySet="Games" />
     </AssociationSet>
-    <AssociationSet Name="FK_Games_Teams" Association="fscModel1.Store.FK_Games_Teams">
+    <AssociationSet Name="FK_Games_Teams" Association="fscModel.Store.FK_Games_Teams">
       <End Role="Teams" EntitySet="Teams" />
       <End Role="Games" EntitySet="Games" />
     </AssociationSet>
-    <AssociationSet Name="FK_PlayerInTeam_Players" Association="fscModel1.Store.FK_PlayerInTeam_Players">
+    <AssociationSet Name="FK_PlayerInTeam_Players" Association="fscModel.Store.FK_PlayerInTeam_Players">
       <End Role="Players" EntitySet="Players" />
       <End Role="PlayerInTeam" EntitySet="PlayerInTeam" />
     </AssociationSet>
-    <AssociationSet Name="FK_PlayerInTeam_Team" Association="fscModel1.Store.FK_PlayerInTeam_Team">
+    <AssociationSet Name="FK_PlayerInTeam_Team" Association="fscModel.Store.FK_PlayerInTeam_Team">
       <End Role="Teams" EntitySet="Teams" />
       <End Role="PlayerInTeam" EntitySet="PlayerInTeam" />
     </AssociationSet>
-    <AssociationSet Name="FK_Players_PlayerPositions" Association="fscModel1.Store.FK_Players_PlayerPositions">
+    <AssociationSet Name="FK_Players_PlayerPositions" Association="fscModel.Store.FK_Players_PlayerPositions">
       <End Role="PlayerPositions" EntitySet="PlayerPositions" />
       <End Role="Players" EntitySet="Players" />
     </AssociationSet>
-    <AssociationSet Name="FK_Teams_Coaches" Association="fscModel1.Store.FK_Teams_Coaches">
+    <AssociationSet Name="FK_Teams_Coaches" Association="fscModel.Store.FK_Teams_Coaches">
       <End Role="Coaches" EntitySet="Coaches" />
       <End Role="Teams" EntitySet="Teams" />
     </AssociationSet>
@@ -135,8 +135,8 @@
     <Property Name="City" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_GameEvents_Event">
-    <End Role="Events" Type="fscModel1.Store.Events" Multiplicity="1" />
-    <End Role="GameEvents" Type="fscModel1.Store.GameEvents" Multiplicity="*" />
+    <End Role="Events" Type="fscModel.Store.Events" Multiplicity="1" />
+    <End Role="GameEvents" Type="fscModel.Store.GameEvents" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Events">
         <PropertyRef Name="Id" />
@@ -147,8 +147,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_GameEvents_Game">
-    <End Role="Games" Type="fscModel1.Store.Games" Multiplicity="1" />
-    <End Role="GameEvents" Type="fscModel1.Store.GameEvents" Multiplicity="*" />
+    <End Role="Games" Type="fscModel.Store.Games" Multiplicity="1" />
+    <End Role="GameEvents" Type="fscModel.Store.GameEvents" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Games">
         <PropertyRef Name="Id" />
@@ -159,8 +159,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_GameEvents_Players">
-    <End Role="Players" Type="fscModel1.Store.Players" Multiplicity="1" />
-    <End Role="GameEvents" Type="fscModel1.Store.GameEvents" Multiplicity="*" />
+    <End Role="Players" Type="fscModel.Store.Players" Multiplicity="1" />
+    <End Role="GameEvents" Type="fscModel.Store.GameEvents" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Players">
         <PropertyRef Name="Id" />
@@ -171,8 +171,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Games_Referee">
-    <End Role="Referee" Type="fscModel1.Store.Referee" Multiplicity="1" />
-    <End Role="Games" Type="fscModel1.Store.Games" Multiplicity="*" />
+    <End Role="Referee" Type="fscModel.Store.Referee" Multiplicity="1" />
+    <End Role="Games" Type="fscModel.Store.Games" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Referee">
         <PropertyRef Name="Id" />
@@ -183,8 +183,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Games_Team1">
-    <End Role="Teams" Type="fscModel1.Store.Teams" Multiplicity="1" />
-    <End Role="Games" Type="fscModel1.Store.Games" Multiplicity="*" />
+    <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="1" />
+    <End Role="Games" Type="fscModel.Store.Games" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Teams">
         <PropertyRef Name="Id" />
@@ -195,8 +195,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Games_Teams">
-    <End Role="Teams" Type="fscModel1.Store.Teams" Multiplicity="1" />
-    <End Role="Games" Type="fscModel1.Store.Games" Multiplicity="*" />
+    <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="1" />
+    <End Role="Games" Type="fscModel.Store.Games" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Teams">
         <PropertyRef Name="Id" />
@@ -207,8 +207,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PlayerInTeam_Players">
-    <End Role="Players" Type="fscModel1.Store.Players" Multiplicity="1" />
-    <End Role="PlayerInTeam" Type="fscModel1.Store.PlayerInTeam" Multiplicity="*" />
+    <End Role="Players" Type="fscModel.Store.Players" Multiplicity="1" />
+    <End Role="PlayerInTeam" Type="fscModel.Store.PlayerInTeam" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Players">
         <PropertyRef Name="Id" />
@@ -219,8 +219,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PlayerInTeam_Team">
-    <End Role="Teams" Type="fscModel1.Store.Teams" Multiplicity="1" />
-    <End Role="PlayerInTeam" Type="fscModel1.Store.PlayerInTeam" Multiplicity="*" />
+    <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="1" />
+    <End Role="PlayerInTeam" Type="fscModel.Store.PlayerInTeam" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Teams">
         <PropertyRef Name="Id" />
@@ -231,8 +231,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Players_PlayerPositions">
-    <End Role="PlayerPositions" Type="fscModel1.Store.PlayerPositions" Multiplicity="1" />
-    <End Role="Players" Type="fscModel1.Store.Players" Multiplicity="*" />
+    <End Role="PlayerPositions" Type="fscModel.Store.PlayerPositions" Multiplicity="1" />
+    <End Role="Players" Type="fscModel.Store.Players" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PlayerPositions">
         <PropertyRef Name="Id" />
@@ -243,8 +243,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Teams_Coaches">
-    <End Role="Coaches" Type="fscModel1.Store.Coaches" Multiplicity="1" />
-    <End Role="Teams" Type="fscModel1.Store.Teams" Multiplicity="*" />
+    <End Role="Coaches" Type="fscModel.Store.Coaches" Multiplicity="1" />
+    <End Role="Teams" Type="fscModel.Store.Teams" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Coaches">
         <PropertyRef Name="Id" />

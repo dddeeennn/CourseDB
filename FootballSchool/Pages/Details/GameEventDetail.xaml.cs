@@ -20,9 +20,19 @@ namespace FootballSchool.Pages.Details
 	/// </summary>
 	public partial class GameEventDetail : UserControl
 	{
+		private GameEvent gameEvent;
+
 		public GameEventDetail()
 		{
 			InitializeComponent();
 		}
+
+		public GameEventDetail(GameEvent gameEvent)
+		{
+			// TODO: Complete member initialization
+			this.gameEvent = gameEvent;
+		}
+
+		
 	}
 }

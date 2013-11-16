@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using FootballSchool.Kerenl.Extensions;
+using FootballSchool.Pages.Main;
 
 namespace FootballSchool.Pages.Details
 {
@@ -20,9 +10,30 @@ namespace FootballSchool.Pages.Details
 	/// </summary>
 	public partial class GameDetail : UserControl
 	{
+
 		public GameDetail()
 		{
 			InitializeComponent();
+		}
+
+		public bool IsSaveChanges { get; set; }
+
+		private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
+		{
+			CloseControl();
+		}
+
+		private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
+		{
+			CloseControl();
+		}
+
+		/// <summary>
+		/// Closes this control.
+		/// </summary>
+		private void CloseControl()
+		{
+			this.TryFindParent<UserControl>().Content = new TeamsPlayers();
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace FootballSchool.Repositories
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public Games GetGameById(int id)
+		public Game GetGameById(int id)
 		{
 			return Entities.Games.FirstOrDefault(x => x.Id == id);
 		}

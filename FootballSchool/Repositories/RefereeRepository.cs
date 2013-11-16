@@ -14,7 +14,7 @@ namespace FootballSchool.Repositories
 		/// <returns></returns>
 		public Referee GetRefereeById(int id)
 		{
-			return Entities.Referee.FirstOrDefault(x => x.Id == id);
+			return Entities.Referees.FirstOrDefault(x => x.Id == id);
 		}
 
 		/// <summary>

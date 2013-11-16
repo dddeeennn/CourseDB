@@ -1,4 +1,4 @@
-﻿using System.Data.Entity.Core.Objects;
+﻿using System.Data.Objects;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -6,7 +6,7 @@ using System.Windows.Data;
 using FootballSchool.Models;
 using FootballSchool.ViewModels;
 
-namespace FootballSchool.Pages
+namespace FootballSchool.Pages.Main
 {
 	/// <summary>
 	/// Interaction logic for Referies.xaml
@@ -37,34 +37,34 @@ namespace FootballSchool.Pages
 
 		private ObjectQuery<Referee> GetRefereeQuery(fscEntities fscEntities)
 		{
-			var refereeQuery = fscEntities.Referee;
+			var refereeQuery = fscEntities.Referees;
 			return refereeQuery;
 		}
 
-		private ObjectQuery<Games> GetRefereeQuery(int refereeId)
+		private ObjectQuery<Game> GetRefereeQuery(int refereeId)
 		{
-			var refereeQuery = from r in entities.Referee
+			var refereeQuery = from r in entities.Referees
 							   join g in entities.Games
 								   on r.Id equals g.RefereeID
 							   where r.Id == refereeId
 							   select g;
-			return (ObjectQuery<Games>)refereeQuery;
+			return (ObjectQuery<Game>)refereeQuery;
 		}
 
-		private ObjectQuery<Games> GetRefereeGamesQuery(fscEntities fscEntities)
+		private ObjectQuery<Game> GetRefereeGamesQuery(fscEntities fscEntities)
 		{
 			var refereeGamesQuery = entities.Games;
 			return refereeGamesQuery;
 		}
 
-		private ObjectQuery<GameEvents> GetRefereeGameQuery(int gameId)
+		private ObjectQuery<GameEvent> GetRefereeGameQuery(int gameId)
 		{
 			var refereeGamesQuery = from g in entities.Games
 									join ge in entities.GameEvents
 										on g.Id equals ge.GameID
 									where ge.GameID == gameId
 									select ge;
-			return (ObjectQuery<GameEvents>)refereeGamesQuery;
+			return (ObjectQuery<GameEvent>)refereeGamesQuery;
 		}
 
 		private void refereeDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)

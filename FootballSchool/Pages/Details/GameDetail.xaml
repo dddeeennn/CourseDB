@@ -15,8 +15,8 @@
 			<TextBlock>Contents goes here!!!</TextBlock>
 		</StackPanel>
 		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-			<Button Content="Отмена"  Margin="5"/>
-			<Button Content="Сохранить" Margin="5"/>
+			<Button Content="Отмена" Click="ButtonSave_OnClick"  Margin="5"/>
+			<Button Content="Сохранить" Click="ButtonCancel_OnClick" Margin="5"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

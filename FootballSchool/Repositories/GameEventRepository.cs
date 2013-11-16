@@ -12,7 +12,7 @@ namespace FootballSchool.Repositories
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public Events GetEventById(int id)
+		public Event GetEventById(int id)
 		{
 			return Entities.Events.FirstOrDefault(x => x.Id == id);
 		}

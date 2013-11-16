@@ -2,13 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:FootballSchool="clr-namespace:FootballSchool" x:Class="FootballSchool.Pages.TeamsPlayers"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:FootballSchool="clr-namespace:FootballSchool" x:Class="FootballSchool.Pages.Main.TeamsPlayers"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="900" Loaded="UserControl_Loaded_1">
 	<UserControl.Resources>
-		<CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Teams}, CreateList=True}"/>
-		<CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Players}, CreateList=True}"/>
-		<CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvents}, CreateList=True}"/>
+		<CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Team}, CreateList=True}"/>
+		<CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Player}, CreateList=True}"/>
+		<CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvent}, CreateList=True}"/>
 	</UserControl.Resources>
 	<Grid Style="{StaticResource ContentRoot}">
 		<Grid.ColumnDefinitions>
@@ -19,11 +19,11 @@
 		<ScrollViewer Margin="{StaticResource SplitLeft}">
 			<StackPanel DataContext="{StaticResource teamsViewSource}">
 				<TextBlock Text="Команды" Style="{StaticResource Heading2}" />
-				<DataGrid x:Name="teamsDataGrid" MouseDoubleClick="TeamsDataGrid_OnMouseDoubleClick" AutoGenerateColumns="False" SelectionChanged="teamsDataGrid_SelectionChanged_1" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+				<DataGrid x:Name="teamsDataGrid" MouseDoubleClick="TeamsDataGrid_OnMouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="teamsDataGrid_SelectionChanged_1" EnableRowVirtualization="True"  ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
 					<DataGrid.ContextMenu>
 						<ContextMenu>
-							<MenuItem Header="Добавить..." Click="MenuAddTeamItem_OnClick"></MenuItem>
-							<MenuItem Header="Удалить" Click="MenuRemoveTeamItem_OnClick"></MenuItem>
+							<MenuItem Header="Добавить..." Click="MenuAddTeam_OnClick"></MenuItem>
+							<MenuItem Header="Удалить" Click="MenuRemoveTeam_OnClick"></MenuItem>
 						</ContextMenu>
 					</DataGrid.ContextMenu>
 					<DataGrid.Columns>
@@ -50,7 +50,13 @@
 				</Grid.RowDefinitions>
 				<StackPanel DataContext="{StaticResource playersViewSource}">
 					<TextBlock Text="Игроки" Style="{StaticResource Heading2}" />
-					<DataGrid x:Name="playersDataGrid" AutoGenerateColumns="False" SelectionChanged="playersDataGrid_SelectionChanged_1" EnableRowVirtualization="True" Height="136" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+					<DataGrid x:Name="playersDataGrid" MouseDoubleClick="PlayersDataGrid_OnMouseDoubleClick" AutoGenerateColumns="False" SelectionChanged="playersDataGrid_SelectionChanged_1"   IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" Height="136" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+						<DataGrid.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Добавить..." Click="MenuAddPlayer_OnClick"></MenuItem>
+								<MenuItem Header="Удалить" Click="MenuRemovePlayer_OnClick"></MenuItem>
+							</ContextMenu>
+						</DataGrid.ContextMenu>
 						<DataGrid.Columns>
 							<DataGridTemplateColumn x:Name="idColumn1" Header="ИД" Width="SizeToHeader">
 								<DataGridTemplateColumn.CellTemplate>
@@ -70,7 +76,13 @@
 				<GridSplitter Grid.Row="1"/>
 				<StackPanel Grid.Row="2" DataContext="{StaticResource gameEventsViewSource}" >
 					<TextBlock Text="Статистика игрока" Style="{StaticResource Heading2}" />
-					<DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+					<DataGrid x:Name="gameEventsDataGrid" MouseDoubleClick="GameEventsDataGrid_OnMouseDoubleClick" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" RowDetailsVisibilityMode="VisibleWhenSelected">
+						<DataGrid.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Добавить..." Click="MenuAddGameEvent_OnClick"></MenuItem>
+								<MenuItem Header="Удалить" Click="MenuRemoveGameEvent_OnClick"></MenuItem>
+							</ContextMenu>
+						</DataGrid.ContextMenu>
 						<DataGrid.Columns>
 							<DataGridTemplateColumn x:Name="idColumn2" Header="ИД" Width="SizeToHeader">
 								<DataGridTemplateColumn.CellTemplate>
