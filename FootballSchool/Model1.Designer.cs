@@ -16,7 +16,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
-
 namespace FootballSchool
 {
     #region Contexts
@@ -296,7 +295,7 @@ namespace FootballSchool
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityType(NamespaceName="fscModel", Name="Coaches")]
+    [EdmEntityTypeAttribute(NamespaceName="fscModel", Name="Coaches")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Coaches : EntityObject

@@ -1,51 +1,39 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Content/f:About.xaml" caret="709" fromTop="11" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Settings.xaml" caret="842" fromTop="6" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Home.xaml" caret="391" fromTop="2" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Content/f:SettingsAppearance.xaml" caret="207" fromTop="2" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TabMenu.xaml.cs" caret="658" fromTop="13" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:packages.config" caret="0" fromTop="0" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:MainWindow.xaml.cs" caret="0" fromTop="0" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:App.xaml" caret="0" fromTop="0" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Properties/f:AssemblyInfo.cs" caret="448" fromTop="4" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:MainWindow.xaml" caret="1872" fromTop="19" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TableStats.xaml" caret="464" fromTop="5" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TableStats.xaml.cs" caret="866" fromTop="7" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TabMenu.xaml" caret="251" fromTop="0" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:App.Config" caret="1024" fromTop="13" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TeamsPlayers.xaml" caret="5951" fromTop="13" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Models/f:GameEventPlayerModel.cs" caret="0" fromTop="0" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:ViewModels/f:GameEventVM.cs" caret="572" fromTop="7" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Repositories/f:RefereeRepository.cs" caret="0" fromTop="0" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TeamsPlayers.xaml.cs" caret="2720" fromTop="27" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:ViewModels/f:GameVM.cs" caret="1154" fromTop="35" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:GamesVM.xaml" caret="2366" fromTop="8" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Models/f:GameModel.cs" caret="316" fromTop="10" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:Model1.Designer.cs" caret="20072" fromTop="14" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Referies.xaml" caret="6744" fromTop="16" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:GamesVM.xaml.cs" caret="1196" fromTop="0" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Referies.xaml.cs" caret="3635" fromTop="18" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:Model1.Designer.cs" caret="700" fromTop="16" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:GameEventDetail.xaml" caret="704" fromTop="13" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Main/f:GamesVM.xaml" caret="0" fromTop="0" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Properties/d:DataSources/f:fscEntities.datasource" caret="319" fromTop="5" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:TeamDetail.xaml" caret="51" fromTop="0" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:GameEventDetail.xaml.cs" caret="264" fromTop="0" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Main/f:TeamsPlayers.xaml.cs" caret="3495" fromTop="21" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:TeamDetail.xaml.cs" caret="754" fromTop="20" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Repositories/f:GameEventRepository.cs" caret="531" fromTop="18" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Main/f:TeamsPlayers.xaml" caret="2256" fromTop="20" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Main/f:Referies.xaml.cs" caret="2092" fromTop="12" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:ViewModels/f:GameEventVM.cs" caret="468" fromTop="9" />
   </RecentFiles>
   <RecentEdits>
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TabMenu.xaml.cs" caret="588" fromTop="11" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Settings.xaml" caret="842" fromTop="6" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Content/f:About.xaml" caret="709" fromTop="5" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Content/f:SettingsAppearance.xaml" caret="2448" fromTop="5" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TabMenu.xaml" caret="485" fromTop="7" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:MainWindow.xaml" caret="1872" fromTop="10" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TableStats.xaml" caret="467" fromTop="5" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TableStats.xaml.cs" caret="1083" fromTop="11" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TeamsPlayers.xaml" caret="6103" fromTop="3" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:App.Config" caret="1006" fromTop="12" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:TeamsPlayers.xaml.cs" caret="2734" fromTop="17" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:Model1.Designer.cs" caret="706" fromTop="4" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Repositories/f:RefereeRepository.cs" caret="0" fromTop="0" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:GamesVM.xaml" caret="2647" fromTop="10" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Models/f:GameModel.cs" caret="316" fromTop="10" />
     <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:ViewModels/f:GameVM.cs" caret="1154" fromTop="26" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Referies.xaml.cs" caret="3635" fromTop="18" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:Referies.xaml" caret="6744" fromTop="7" />
-    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/f:GamesVM.xaml.cs" caret="1196" fromTop="23" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/f:Model1.Designer.cs" caret="700" fromTop="8" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:GameEventDetail.xaml" caret="718" fromTop="5" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:TeamDetail.xaml" caret="2759" fromTop="11" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Main/f:TeamsPlayers.xaml.cs" caret="3495" fromTop="21" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Details/f:TeamDetail.xaml.cs" caret="728" fromTop="19" />
+    <File id="A70CD4DC-B3F5-4678-8797-010D0A6AB72C/d:Pages/d:Main/f:TeamsPlayers.xaml" caret="2256" fromTop="20" />
   </RecentEdits>
 </RecentFiles>

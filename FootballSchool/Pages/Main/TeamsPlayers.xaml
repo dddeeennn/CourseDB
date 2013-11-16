@@ -71,7 +71,6 @@
 				<StackPanel Grid.Row="2" DataContext="{StaticResource gameEventsViewSource}" >
 					<TextBlock Text="Статистика игрока" Style="{StaticResource Heading2}" />
 					<DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
-
 						<DataGrid.Columns>
 							<DataGridTemplateColumn x:Name="idColumn2" Header="ИД" Width="SizeToHeader">
 								<DataGridTemplateColumn.CellTemplate>

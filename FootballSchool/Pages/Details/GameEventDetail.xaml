@@ -12,6 +12,7 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 		<StackPanel>
+            
 			<TextBlock>Contents goes here!!!</TextBlock>
 		</StackPanel>
 		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">

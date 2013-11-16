@@ -24,5 +24,15 @@ namespace FootballSchool.Pages.Details
 		{
 			InitializeComponent();
 		}
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //(Window)Parent.
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
 	}
 }

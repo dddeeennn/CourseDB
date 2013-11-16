@@ -4,16 +4,8 @@ c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\FirstFloor.ModernUI.xml
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\FootballSchool.csprojResolveAssemblyReference.cache
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\MainWindow.baml
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Content\About.baml
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Content\SettingsAppearance.baml
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Home.baml
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Settings.baml
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\App.baml
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\MainWindow.g.cs
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Content\About.g.cs
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Content\SettingsAppearance.g.cs
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Home.g.cs
-c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Settings.g.cs
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\App.g.cs
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\FootballSchool_MarkupCompile.cache
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\FootballSchool.g.resources
@@ -22,17 +14,7 @@ c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\FootballSchool.exe.config
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\EntityFramework.dll
 c:\users\компьютер\documents\visual studio 2012\Projects\FootballSchool\FootballSchool\bin\Debug\EntityFramework.xml
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\TabMenu.baml
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\TabMenu.g.cs
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\TeamsPlayers.baml
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\TeamsPlayers.g.cs
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\TableStats.baml
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\TableStats.g.cs
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Referies.baml
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Referies.g.cs
 C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\FootballSchool_MarkupCompile.lref
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\GamesVM.g.cs
-C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\GamesVM.baml
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Content\About.baml
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Content\SettingsAppearance.baml
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-IdToName\CourseDB-IdToName\FootballSchool\obj\Debug\Pages\Home.baml
@@ -122,3 +104,31 @@ C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-dev\FootballSchool\obj\Debug\Pa
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-dev\FootballSchool\obj\Debug\Pages\Details\GameEventDetail.g.cs
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-dev\FootballSchool\obj\Debug\Pages\Details\PlayerDetail.g.cs
 C:\Users\Chudinov_D.KL\Desktop\study\DB\CourseDB-dev\FootballSchool\obj\Debug\Pages\Details\RefereeDetail.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Content\About.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Content\SettingsAppearance.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\GameDetail.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\GameEventDetail.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\PlayerDetail.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\RefereeDetail.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\TeamDetail.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Core\Home.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Core\Settings.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\TableStats.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Core\TabMenu.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Content\About.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Content\SettingsAppearance.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\GameDetail.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\GameEventDetail.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\PlayerDetail.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\RefereeDetail.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Details\TeamDetail.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\GamesVM.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Core\Home.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\Referies.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Core\Settings.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\TableStats.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Core\TabMenu.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\TeamsPlayers.g.cs
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\GamesVM.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\Referies.baml
+C:\Users\Компьютер\Documents\Visual Studio 2012\Projects\FootballSchool\FootballSchool\obj\Debug\Pages\Main\TeamsPlayers.baml
