@@ -4,17 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="fscModelStoreContainer">
-          <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GameEvents" EntityType="fscModel.Store.GameEvents" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Games" EntityType="fscModel.Store.Games" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PlayerInTeam" EntityType="fscModel.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PlayerPositions" EntityType="fscModel.Store.PlayerPositions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Players" EntityType="fscModel.Store.Players" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Referee" EntityType="fscModel.Store.Referee" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Teams" EntityType="fscModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GameEvents" EntityType="fscModel.Store.GameEvents" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Games" EntityType="fscModel.Store.Games" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PlayerInTeam" EntityType="fscModel.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PlayerPositions" EntityType="fscModel.Store.PlayerPositions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Players" EntityType="fscModel.Store.Players" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Referee" EntityType="fscModel.Store.Referee" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Teams" EntityType="fscModel.Store.Teams" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_GameEvents_Event" Association="fscModel.Store.FK_GameEvents_Event">
             <End Role="Events" EntitySet="Events" />
             <End Role="GameEvents" EntitySet="GameEvents" />
@@ -263,8 +263,8 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="fscModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="fscEntities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="fscModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="fscEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="Coaches" EntityType="fscModel.Coach" />
           <EntitySet Name="Events" EntityType="fscModel.Event" />
           <EntitySet Name="GameEvents" EntityType="fscModel.GameEvent" />
@@ -319,7 +319,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -329,7 +329,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Event" FromRole="Events" ToRole="GameEvents" />
         </EntityType>
@@ -337,7 +337,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="GameID" Type="Int32" Nullable="false" />
           <Property Name="PlayerID" Type="Int32" Nullable="false" />
           <Property Name="EventID" Type="Int32" Nullable="false" />
@@ -350,7 +350,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Team1ID" Type="Int32" Nullable="false" />
           <Property Name="Team2ID" Type="Int32" Nullable="false" />
           <Property Name="Stadium" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -365,7 +365,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PlayerID" Type="Int32" Nullable="false" />
           <Property Name="TeamID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Player" Relationship="fscModel.FK_PlayerInTeam_Players" FromRole="PlayerInTeam" ToRole="Players" />
@@ -375,7 +375,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Position" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Players" Relationship="fscModel.FK_Players_PlayerPositions" FromRole="PlayerPositions" ToRole="Players" />
         </EntityType>
@@ -383,7 +383,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -398,7 +398,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -409,7 +409,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CoachID" Type="Int32" Nullable="false" />
           <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -656,6 +656,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>

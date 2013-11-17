@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="fscModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="fscEntities" annotation:LazyLoadingEnabled="true">
+<Schema Namespace="fscModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="fscEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
     <EntitySet Name="Coaches" EntityType="fscModel.Coach" />
     <EntitySet Name="Events" EntityType="fscModel.Event" />
     <EntitySet Name="GameEvents" EntityType="fscModel.GameEvent" />
@@ -55,7 +55,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -65,7 +65,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="GameEvents" Relationship="fscModel.FK_GameEvents_Event" FromRole="Events" ToRole="GameEvents" />
   </EntityType>
@@ -73,7 +73,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="GameID" Type="Int32" Nullable="false" />
     <Property Name="PlayerID" Type="Int32" Nullable="false" />
     <Property Name="EventID" Type="Int32" Nullable="false" />
@@ -86,7 +86,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="Team1ID" Type="Int32" Nullable="false" />
     <Property Name="Team2ID" Type="Int32" Nullable="false" />
     <Property Name="Stadium" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -101,7 +101,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="PlayerID" Type="Int32" Nullable="false" />
     <Property Name="TeamID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Player" Relationship="fscModel.FK_PlayerInTeam_Players" FromRole="PlayerInTeam" ToRole="Players" />
@@ -111,7 +111,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="Position" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Players" Relationship="fscModel.FK_Players_PlayerPositions" FromRole="PlayerPositions" ToRole="Players" />
   </EntityType>
@@ -119,7 +119,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -134,7 +134,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -145,7 +145,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="CoachID" Type="Int32" Nullable="false" />
     <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />

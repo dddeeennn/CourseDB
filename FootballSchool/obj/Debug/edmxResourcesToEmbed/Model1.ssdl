@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="fscModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="fscModelStoreContainer">
-    <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="GameEvents" EntityType="fscModel.Store.GameEvents" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Games" EntityType="fscModel.Store.Games" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerInTeam" EntityType="fscModel.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerPositions" EntityType="fscModel.Store.PlayerPositions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Players" EntityType="fscModel.Store.Players" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Referee" EntityType="fscModel.Store.Referee" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Teams" EntityType="fscModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Coaches" EntityType="fscModel.Store.Coaches" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Events" EntityType="fscModel.Store.Events" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="GameEvents" EntityType="fscModel.Store.GameEvents" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Games" EntityType="fscModel.Store.Games" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="PlayerInTeam" EntityType="fscModel.Store.PlayerInTeam" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="PlayerPositions" EntityType="fscModel.Store.PlayerPositions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Players" EntityType="fscModel.Store.Players" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Referee" EntityType="fscModel.Store.Referee" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Teams" EntityType="fscModel.Store.Teams" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
     <AssociationSet Name="FK_GameEvents_Event" Association="fscModel.Store.FK_GameEvents_Event">
       <End Role="Events" EntitySet="Events" />
       <End Role="GameEvents" EntitySet="GameEvents" />

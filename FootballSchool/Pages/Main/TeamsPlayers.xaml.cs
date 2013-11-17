@@ -6,6 +6,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using FootballSchool.Kernel;
 using FootballSchool.Pages.Details;
+using FootballSchool.Repositories;
 using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages.Main
@@ -17,12 +18,14 @@ namespace FootballSchool.Pages.Main
     {
         private readonly QueryProvider _queryProvider;
         private readonly fscEntities _entities;
-
+        private readonly PlayerInTeamRepository _playerInTeamRepository;
+        
         public TeamsPlayers()
         {
             InitializeComponent();
             _queryProvider = new QueryProvider();
             _entities = EntityProvider.Entities;
+        _playerInTeamRepository = new PlayerInTeamRepository();
         }
 
         private ObjectQuery<GameEvent> GetEventsQuery(int playerId)
@@ -117,6 +120,7 @@ namespace FootballSchool.Pages.Main
             var selectedPlayer = playersDataGrid.SelectedItem as Player;
             if (selectedPlayer == null) return;
 
+            _playerInTeamRepository.RemoveByPlayerId(selectedPlayer.Id);
             DeleteObject(selectedPlayer);
         }
 
@@ -133,6 +137,7 @@ namespace FootballSchool.Pages.Main
             var selectedTeam = teamsDataGrid.SelectedItem as Team;
             if (selectedTeam == null) return;
 
+            _playerInTeamRepository.RemoveByTeamId(selectedTeam.Id);
             DeleteObject(selectedTeam);
         }
 

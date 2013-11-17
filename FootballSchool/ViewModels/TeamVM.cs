@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FootballSchool.Repositories;
 
 namespace FootballSchool.ViewModels
@@ -22,6 +23,7 @@ namespace FootballSchool.ViewModels
             Name = name;
             City = city;
             CoachId = coachId;
+            SelectedCoachId = Coaches.Keys.ToList().IndexOf(CoachId);
         }
 
         public TeamVM(Team team)
@@ -35,14 +37,9 @@ namespace FootballSchool.ViewModels
 
         public string City { get; set; }
 
-        private int _coachId;
+        public int CoachId { get; set; }
 
-        public int CoachId
-        {
-            get { return _coachId - 1; }
-            set { _coachId = value; }
-
-        }
+        public int SelectedCoachId { get; set; }
 
         public Dictionary<int, string> Coaches { get; set; }
 

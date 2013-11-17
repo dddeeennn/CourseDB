@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FootballSchool.Repositories;
 
 namespace FootballSchool.ViewModels
@@ -13,6 +14,7 @@ namespace FootballSchool.ViewModels
                 player.Passport, player.IsMain, player.PositionID)
         {
             TeamId = new RepositoryT<PlayerInTeam>().GetSingle(x => x.PlayerID == player.Id).TeamID;
+            SelectedTeamId = Teams.Keys.ToList().IndexOf(TeamId);
         }
 
         public PlayerVM(int id, string ln, string n, string mn,
@@ -26,6 +28,7 @@ namespace FootballSchool.ViewModels
             Passport = passport;
             IsMain = isMain;
             PositionId = posId;
+            SelectedPositionId = Positions.Keys.ToList().IndexOf(PositionId);
         }
 
         public PlayerVM()
@@ -50,26 +53,12 @@ namespace FootballSchool.ViewModels
         public Dictionary<int, string> Teams { get; set; }
 
         public int PositionId { get; set; }
-        public int PositionIdB
-        {
-            get
-            {
-                var res = PositionId - 1;
-                return res;
-            }
-            set { PositionId = PositionIdB + 1; }
-        }
+
+        public int SelectedPositionId { get; set; }
 
         public int TeamId { get; set; }
-        public int TeamIdB
-        {
-            get
-            {
-                var res = TeamId - 1;
-                return res;
-            }
-            set { TeamId = TeamIdB + 1; }
-        }
+
+        public int SelectedTeamId { get; set; }
 
         private void Initialize()
         {
