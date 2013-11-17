@@ -103,7 +103,9 @@
     </Compile>
     <Compile Include="Models\GameEventPlayerModel.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Repositories\GameEventRepository.cs" />
     <Compile Include="Repositories\PlayerInTeamRepository.cs" />
+    <Compile Include="ViewModels\EventVM.cs" />
     <Compile Include="ViewModels\PlayerVM.cs" />
     <Compile Include="Repositories\RepositoryT.cs" />
     <Compile Include="ViewModels\TeamVM.cs" />
@@ -136,7 +138,7 @@
       <DependentUpon>TabMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repositories\CoachRepository.cs" />
-    <Compile Include="Repositories\GameEventRepository.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\RefereeRepository.cs" />

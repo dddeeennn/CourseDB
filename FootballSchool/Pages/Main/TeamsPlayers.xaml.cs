@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using FootballSchool.Kernel;
+using FootballSchool.Models;
 using FootballSchool.Pages.Details;
 using FootballSchool.Repositories;
 using FootballSchool.ViewModels;
@@ -19,13 +20,17 @@ namespace FootballSchool.Pages.Main
         private readonly QueryProvider _queryProvider;
         private readonly fscEntities _entities;
         private readonly PlayerInTeamRepository _playerInTeamRepository;
-        
+        private readonly EventRepository _eventRepository;
+        private readonly GameEventRepository _gameEventRepository;
+
         public TeamsPlayers()
         {
             InitializeComponent();
             _queryProvider = new QueryProvider();
             _entities = EntityProvider.Entities;
-        _playerInTeamRepository = new PlayerInTeamRepository();
+            _eventRepository = new EventRepository();
+            _gameEventRepository = new GameEventRepository();
+            _playerInTeamRepository = new PlayerInTeamRepository();
         }
 
         private ObjectQuery<GameEvent> GetEventsQuery(int playerId)
@@ -97,7 +102,10 @@ namespace FootballSchool.Pages.Main
 
         private void GameEventsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Content = new GameEventDetail((GameEvent)gameEventsDataGrid.SelectedItem);
+            var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
+            if (model == null) return;
+
+            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id));
         }
 
         private void MenuAddTeam_OnClick(object sender, RoutedEventArgs e)

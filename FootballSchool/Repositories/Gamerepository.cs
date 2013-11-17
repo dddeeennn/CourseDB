@@ -5,7 +5,7 @@ namespace FootballSchool.Repositories
 	/// <summary>
 	/// repo for games
 	/// </summary>
-	public class GameRepository : RepositoryBase
+	public class GameRepository : RepositoryT<Game>
 	{
 		private readonly TeamRepository _teamRepository = new TeamRepository();
 

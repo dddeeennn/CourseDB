@@ -37,7 +37,7 @@ namespace FootballSchool.ViewModels
 		{
 			var gameName = _gameRepository.GetGameName(ge.GameID);
 			var playerName = _playerRepository.GetPlayerFullName(ge.PlayerID);
-			var eventType = _eventRepository.GetEvenType(ge.EventID);
+			var eventType = _eventRepository.GetEventType(ge.EventID);
 
 			return new GameEventPlayerModel(gameName, playerName, eventType, ge.Id);
 		}

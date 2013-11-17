@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace FootballSchool.Repositories
 {
 	/// <summary>
 	/// repository for players
 	/// </summary>
-	public class PlayerRepository : RepositoryBase
+	public class PlayerRepository : RepositoryT<Player>
 	{
 		/// <summary>
 		/// Gets the player by id.

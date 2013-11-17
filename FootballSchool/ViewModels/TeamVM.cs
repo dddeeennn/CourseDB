@@ -9,8 +9,6 @@ namespace FootballSchool.ViewModels
     /// </summary>
     public class TeamVM
     {
-        private CoachRepository _coachRepository;
-
         public TeamVM()
         {
             Initialize();
@@ -45,11 +43,11 @@ namespace FootballSchool.ViewModels
 
         private void Initialize()
         {
-            _coachRepository = new CoachRepository();
+            var coachRepository = new CoachRepository();
             Coaches = new Dictionary<int, string>();
-            foreach (var coach in _coachRepository.GetAll())
+            foreach (var coach in coachRepository.GetAll())
             {
-                Coaches.Add(coach.Id, _coachRepository.GetFullName(coach.Id));
+                Coaches.Add(coach.Id, coachRepository.GetFullName(coach.Id));
             }
         }
     }

@@ -3,21 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-		<Grid.RowDefinitions>
-			<RowDefinition />
-			<RowDefinition Height="Auto"/>
-		</Grid.RowDefinitions>
-		<StackPanel>
-            
-			<TextBlock>Contents goes here!!!</TextBlock>
-		</StackPanel>
-		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-			<Button Content="Отмена"  Margin="5"/>
-			<Button Content="Сохранить" Margin="5"/>
-		</StackPanel>
-	</Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <Grid x:Name="grid1" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="ИД:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label x:Name="Id" Content="{Binding Id}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Content="Игра" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                <ComboBox Name="CmbGame" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Games, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedGameId, Mode=TwoWay}" />
+                <Label Content="Игрок:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                <ComboBox Name="CmbPlayer" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Players, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedPlayerId, Mode=TwoWay}" />
+                <Label Content="Событие:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                <ComboBox Name="CmbEvent" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Events, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedEventId, Mode=TwoWay}" />
+                <Label Content="Время:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                <DatePicker Name="DtTime" Grid.Column="1" Grid.Row="4" Margin="3" SelectedDate="{Binding Time, Mode=TwoWay}" SelectedDateFormat="Short"></DatePicker>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" Click="ButtonCancel_OnClick"  Margin="5"/>
+            <Button Content="Сохранить" Click="ButtonSave_OnClick" Margin="5"/>
+        </StackPanel>
+    </Grid>
 </UserControl>
