@@ -134,10 +134,16 @@ namespace FootballSchool.Pages.Main
 
         private void MenuRemoveGameEvent_OnClick(object sender, RoutedEventArgs e)
         {
-            var selectedGameEvent = gameEventsDataGrid.SelectedItem as GameEvent;
-            if (selectedGameEvent == null) return;
+            var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
+            if (model == null) return;
 
-            DeleteObject(selectedGameEvent);
+            var ge = _gameEventRepository.GetSingle(x => x.Id == model.Id);
+
+            DeleteObject(ge);
+            var gameEventsViewSource = (CollectionViewSource)FindResource("gameEventsViewSource");
+            var geQuery = GetEventsQuery(ge.PlayerID);
+            var vm = new GameEventVM(geQuery.Select(x => x).ToList());
+            gameEventsViewSource.Source = vm.Models;
         }
 
         private void MenuRemoveTeam_OnClick(object sender, RoutedEventArgs e)
