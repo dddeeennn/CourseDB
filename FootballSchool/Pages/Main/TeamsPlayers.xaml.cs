@@ -54,6 +54,14 @@ namespace FootballSchool.Pages.Main
             return (ObjectQuery<Player>)players;
         }
 
+        public  void UpdateGameEvents(int playerId)
+        {
+            var gameEventsViewSource = (CollectionViewSource)FindResource("gameEventsViewSource");
+            var geQuery = GetEventsQuery(playerId);
+            var vm = new GameEventVM(geQuery.Select(x => x).ToList());
+            gameEventsViewSource.Source = vm.Models;
+        }
+
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
@@ -65,6 +73,7 @@ namespace FootballSchool.Pages.Main
             var playersViewSource = (CollectionViewSource)FindResource("playersViewSource");
             var playersQuery = _queryProvider.GetQuery<Player>();
             playersViewSource.Source = playersQuery.Execute(MergeOption.AppendOnly);
+
         }
 
         private void teamsDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
@@ -103,7 +112,7 @@ namespace FootballSchool.Pages.Main
             var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
             if (model == null) return;
 
-            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id));
+            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id), this, this.Content);
         }
 
         private void MenuAddTeam_OnClick(object sender, RoutedEventArgs e)
@@ -113,7 +122,7 @@ namespace FootballSchool.Pages.Main
 
         private void MenuAddGameEvent_OnClick(object sender, RoutedEventArgs e)
         {
-            Content = new GameEventDetail();
+            Content = new GameEventDetail(this, Content);
         }
 
         private void MenuAddPlayer_OnClick(object sender, RoutedEventArgs e)
@@ -138,10 +147,7 @@ namespace FootballSchool.Pages.Main
             var ge = _gameEventRepository.GetSingle(x => x.Id == model.Id);
 
             DeleteObject(ge);
-            var gameEventsViewSource = (CollectionViewSource)FindResource("gameEventsViewSource");
-            var geQuery = GetEventsQuery(ge.PlayerID);
-            var vm = new GameEventVM(geQuery.Select(x => x).ToList());
-            gameEventsViewSource.Source = vm.Models;
+            UpdateGameEvents(ge.PlayerID);
         }
 
         private void MenuRemoveTeam_OnClick(object sender, RoutedEventArgs e)

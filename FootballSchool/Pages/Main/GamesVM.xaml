@@ -46,7 +46,13 @@
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel DataContext="{StaticResource gamesGameEventsViewSource}">
                 <TextBlock Text="Статистика матча" Style="{StaticResource Heading2}" />
-                <DataGrid x:Name="gameEventsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+                <DataGrid x:Name="gameEventsDataGrid" MouseDoubleClick="gameEventsDataGrid_MouseDoubleClick_1"  AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Добавить..." Click="MenuGEAdd_Click_1"></MenuItem>
+                            <MenuItem Header="Удалить" Click="MenuGERemove_Click"></MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                     <DataGrid.Columns>
                         <DataGridTemplateColumn x:Name="idColumn1" Header="ИД" Width="SizeToHeader">
                             <DataGridTemplateColumn.CellTemplate>

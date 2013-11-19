@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Objects;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,27 +18,31 @@ namespace FootballSchool.Pages.Details
         private readonly fscEntities _entities;
         private readonly EventVM _viewModel = new EventVM();
         private readonly GameEvent _editableGE;
+        private object _parentUCContent;
+        private UserControl _parentUC;
 
-        public GameEventDetail()
+        public GameEventDetail(UserControl parentContent, object content)
         {
+            _parentUCContent = content;
+            _parentUC = parentContent;
             _entities = EntityProvider.Entities;
             InitializeComponent();
             DataContext = _viewModel;
-
         }
 
-        public GameEventDetail(GameEvent gameEvent):this()
+        public GameEventDetail(GameEvent gameEvent, UserControl parentUCContent, object content)
+            : this(parentUCContent,content)
         {
             _editableGE = gameEvent;
             _viewModel = new EventVM(gameEvent);
             DataContext = _viewModel;
         }
-        
+
         /// <summary>
         /// Edit game event.
         /// </summary>
         private void EditGameEvent()
-        {
+          {
             Map(_viewModel, _editableGE);
             _entities.GameEvents.ApplyCurrentValues(_editableGE);
         }
@@ -70,7 +75,16 @@ namespace FootballSchool.Pages.Details
         private void CloseControl()
         {
             SaveAndRefresh();
-            this.TryFindParent<UserControl>().Content = new TeamsPlayers();
+            if(_parentUCContent is TeamsPlayers)
+            {
+                this.TryFindParent<UserControl>().Content = _parentUCContent;
+                ((TeamsPlayers)_parentUC).UpdateGameEvents(_viewModel.PlayerId);
+            }
+            else
+            {
+                this.TryFindParent<UserControl>().Content = _parentUCContent;
+                ((GamesVM)_parentUC).UpdateGameEvents();
+            }
         }
 
         /// <summary>
@@ -80,6 +94,8 @@ namespace FootballSchool.Pages.Details
         {
             _entities.SaveChanges();
             _entities.Refresh(RefreshMode.StoreWins, _entities.Teams);
+            _entities.Refresh(RefreshMode.StoreWins, _entities.GameEvents);
+            _entities.Refresh(RefreshMode.StoreWins, _entities.Players);
         }
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)

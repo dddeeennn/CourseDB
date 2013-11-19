@@ -14,9 +14,10 @@ namespace FootballSchool.Pages.Main
     /// <summary>
     /// Interaction logic for GamesVM.xaml
     /// </summary>
-    public partial class GamesVM : UserControl
+    public partial class GamesVM
     {
         private readonly QueryProvider _queryProvider;
+        private GameEventRepository _gameEventRepository;
         private fscEntities _entities;
         private GameRepository _gameRepository;
 
@@ -26,9 +27,10 @@ namespace FootballSchool.Pages.Main
             _entities = EntityProvider.Entities;
             _queryProvider = new QueryProvider();
             _gameRepository = new GameRepository();
+            _gameEventRepository = new GameEventRepository();
         }
 
-        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
+        public void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
 
@@ -36,6 +38,11 @@ namespace FootballSchool.Pages.Main
             var gamesVM = new GameVM(_queryProvider.GetQuery<Game>().Select(x => x));
             gamesViewSource.Source = gamesVM.Models;
 
+            UpdateGameEvents();
+        }
+
+        public void UpdateGameEvents()
+        {
             var gamesGameEventsViewSource = (CollectionViewSource)FindResource("gamesGameEventsViewSource");
             var gameEventsVM = new GameEventVM(_queryProvider.GetQuery<GameEvent>().Select(x => x));
             gamesGameEventsViewSource.Source = gameEventsVM.Models;
@@ -77,5 +84,28 @@ namespace FootballSchool.Pages.Main
 
             _gameRepository.RemoveById(selectedGame.Id);
         }
+
+        private void gameEventsDataGrid_MouseDoubleClick_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
+            if (model == null) return;
+
+            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id),this, Content);
+        }
+
+        private void MenuGEAdd_Click_1(object sender, RoutedEventArgs e)
+        {
+            Content = new GameEventDetail(this, Content);
+        }
+
+        private void MenuGERemove_Click (object sender, RoutedEventArgs e)
+        {
+            var selectedGEP = gamesDataGrid.SelectedItem as GameEventPlayerModel;
+            if (selectedGEP == null) return;
+
+            _gameEventRepository.Remove(selectedGEP.Id);
+        }
+
+       
     }
 }
