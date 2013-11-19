@@ -75,15 +75,22 @@ namespace FootballSchool.Pages.Details
         private void CloseControl()
         {
             SaveAndRefresh();
-            if(_parentUCContent is TeamsPlayers)
+
+            this.TryFindParent<UserControl>().Content = _parentUCContent;
+
+            if (_parentUC is TeamsPlayers)
             {
-                this.TryFindParent<UserControl>().Content = _parentUCContent;
                 ((TeamsPlayers)_parentUC).UpdateGameEvents(_viewModel.PlayerId);
             }
-            else
+
+            if (_parentUC is GamesVM)
             {
-                this.TryFindParent<UserControl>().Content = _parentUCContent;
                 ((GamesVM)_parentUC).UpdateGameEvents();
+            }
+            
+            if(_parentUC is Referies)
+            {
+                ((Referies)_parentUC).UpdateGameEvents(_viewModel.GameId);
             }
         }
 

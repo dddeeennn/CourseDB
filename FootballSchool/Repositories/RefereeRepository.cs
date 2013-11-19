@@ -27,5 +27,11 @@ namespace FootballSchool.Repositories
 			var referee = GetRefereeById(id);
 			return referee.LastName + " " + referee.Name;
 		}
+
+        public void Remove(int refereeId)
+        {
+            var referee = GetSingle(x => x.Id == refereeId);
+            Entities.Referees.DeleteObject(referee);
+        }
 	}
 }

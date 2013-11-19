@@ -14,6 +14,7 @@ using FirstFloor.ModernUI.Windows;
 using FirstFloor.ModernUI.Windows.Controls;
 using FirstFloor.ModernUI.Windows.Converters;
 using FirstFloor.ModernUI.Windows.Navigation;
+using FootballSchool;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -44,6 +45,54 @@ namespace FootballSchool.Pages.Details {
     /// </summary>
     public partial class RefereeDetail : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
         
+        
+        #line 12 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Grid grid1;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 25 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label idLabel;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 27 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox lastNameTextBox;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 29 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox middleNameTextBox;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 31 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox nameTextBox;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 33 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox qualifyTextBox;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -72,6 +121,35 @@ namespace FootballSchool.Pages.Details {
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) {
+            switch (connectionId)
+            {
+            case 1:
+            
+            #line 2 "..\..\..\..\Pages\Details\RefereeDetail.xaml"
+            ((FootballSchool.Pages.Details.RefereeDetail)(target)).Loaded += new System.Windows.RoutedEventHandler(this.UserControl_Loaded_1);
+            
+            #line default
+            #line hidden
+            return;
+            case 2:
+            this.grid1 = ((System.Windows.Controls.Grid)(target));
+            return;
+            case 3:
+            this.idLabel = ((System.Windows.Controls.Label)(target));
+            return;
+            case 4:
+            this.lastNameTextBox = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 5:
+            this.middleNameTextBox = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 6:
+            this.nameTextBox = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 7:
+            this.qualifyTextBox = ((System.Windows.Controls.TextBox)(target));
+            return;
+            }
             this._contentLoaded = true;
         }
     }
