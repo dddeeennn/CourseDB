@@ -5,7 +5,7 @@ namespace FootballSchool.Repositories
 	/// <summary>
 	/// refereee repo
 	/// </summary>
-	public class RefereeRepository : RepositoryBase
+	public class RefereeRepository : RepositoryT<Referee>
 	{
 		/// <summary>
 		/// Gets the referee by id.
@@ -22,7 +22,7 @@ namespace FootballSchool.Repositories
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public string GetRefereeFullName(int id)
+		public string GetFullName(int id)
 		{
 			var referee = GetRefereeById(id);
 			return referee.LastName + " " + referee.Name;

@@ -18,7 +18,13 @@
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel DataContext="{StaticResource gamesViewSource}">
                 <TextBlock Text="Матчи" Style="{StaticResource Heading2}" />
-                <DataGrid x:Name="gamesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" SelectionChanged="gamesDataGrid_SelectionChanged_1" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+                <DataGrid x:Name="gamesDataGrid" MouseDoubleClick="gamesDataGrid_MouseDoubleClick_1"  AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" SelectionChanged="gamesDataGrid_SelectionChanged_1" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" >
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Добавить..." Click="MenuItemAdd_Click"></MenuItem>
+                            <MenuItem Header="Удалить" Click="MenuItemRemove_Click"></MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                     <DataGrid.Columns>
                         <DataGridTemplateColumn x:Name="idColumn" Header="ИД" Width="SizeToHeader">
                             <DataGridTemplateColumn.CellTemplate>

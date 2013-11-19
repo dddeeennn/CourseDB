@@ -20,7 +20,6 @@ namespace FootballSchool.Pages.Main
         private readonly QueryProvider _queryProvider;
         private readonly fscEntities _entities;
         private readonly PlayerInTeamRepository _playerInTeamRepository;
-        private readonly EventRepository _eventRepository;
         private readonly GameEventRepository _gameEventRepository;
 
         public TeamsPlayers()
@@ -28,7 +27,6 @@ namespace FootballSchool.Pages.Main
             InitializeComponent();
             _queryProvider = new QueryProvider();
             _entities = EntityProvider.Entities;
-            _eventRepository = new EventRepository();
             _gameEventRepository = new GameEventRepository();
             _playerInTeamRepository = new PlayerInTeamRepository();
         }

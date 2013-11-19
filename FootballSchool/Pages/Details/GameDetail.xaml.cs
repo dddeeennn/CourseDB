@@ -1,26 +1,70 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Data.Objects;
+using System.Windows;
 using System.Windows.Controls;
+using FootballSchool.Kernel;
 using FootballSchool.Kernel.Extensions;
 using FootballSchool.Pages.Main;
+using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages.Details
 {
 	/// <summary>
 	/// Interaction logic for GameDetail.xaml
 	/// </summary>
-	public partial class GameDetail : UserControl
+	public partial class GameDetail 
 	{
+        private Game _editableGame;
+        private readonly fscEntities _entities;
+        private GameVM _viewModel = new GameVM();
+
 		public GameDetail()
 		{
+		    _entities = EntityProvider.Entities;
 			InitializeComponent();
+            DataContext = _viewModel;
 		}
 
-		public bool IsSaveChanges { get; set; }
+        public GameDetail(Game game):this()
+        {
+            _editableGame = game;
+            _viewModel = new GameVM(game);
+            DataContext = _viewModel;
+        }
 
 		private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
 		{
+            if (_editableGame == null) AddGame();
+            else EditGame();
+
 			CloseControl();
 		}
+
+        private void EditGame()
+        {
+            Map(_editableGame, _viewModel);
+            _entities.Games.ApplyCurrentValues(_editableGame);
+        }
+
+        private void AddGame()
+        {
+            var game = new Game();
+            Map(game, _viewModel);
+            _entities.Games.AddObject(game);
+           
+        }
+
+        private void Map(Game game, GameVM viewModel)
+        {
+            viewModel.RefereeId = ((KeyValuePair<int, string>)CmbReferee.SelectedItem).Key;
+            viewModel.Team1Id = ((KeyValuePair<int, string>)CmbTeam1.SelectedItem).Key;
+            viewModel.Team2Id = ((KeyValuePair<int, string>)CmbTeam2.SelectedItem).Key;
+            game.RefereeID = viewModel.RefereeId;
+            game.Team1ID = viewModel.Team1Id;
+            game.Team2ID = viewModel.Team2Id;
+            game.Stadium = viewModel.Stadium;
+            game.Type = viewModel.Type;
+        }
 
 		private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
 		{
@@ -32,7 +76,9 @@ namespace FootballSchool.Pages.Details
 		/// </summary>
 		private void CloseControl()
 		{
-			this.TryFindParent<UserControl>().Content = new TeamsPlayers();
+            _entities.SaveChanges();
+            _entities.Refresh(RefreshMode.StoreWins, _entities.Games);
+			this.TryFindParent<UserControl>().Content = new GamesVM();
 		}
 	}
 }
