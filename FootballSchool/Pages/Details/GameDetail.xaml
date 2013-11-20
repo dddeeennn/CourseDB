@@ -26,9 +26,9 @@
                 </Grid.RowDefinitions>
                 <Label Content="ИД:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <Label x:Name="Id" Content="{Binding Id}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                <Label Content="Команда 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                <Label Content="Team 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                 <ComboBox Name="CmbTeam1" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Teams, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedTeam1Id, Mode=TwoWay}" />
-                <Label Content="Команда 2:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                <Label Content="Team 2:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                 <ComboBox Name="CmbTeam2" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Teams, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedTeam2Id, Mode=TwoWay}" />
                 <Label Content="Судья:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
                 <ComboBox Name="CmbReferee" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Referees, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedRefereeId, Mode=TwoWay}" />

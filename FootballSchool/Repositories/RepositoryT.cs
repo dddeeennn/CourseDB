@@ -15,7 +15,7 @@ namespace FootballSchool.Repositories
         public virtual IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
         {
             IQueryable<T> dbQuery = Entities.CreateObjectSet<T>();
-            
+ 
             foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
                 dbQuery = dbQuery.Include(navigationProperty);
 

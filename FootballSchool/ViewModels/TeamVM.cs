@@ -24,7 +24,7 @@ namespace FootballSchool.ViewModels
             SelectedCoachId = Coaches.Keys.ToList().IndexOf(CoachId);
         }
 
-        public TeamVM(Team team)
+        public TeamVM(Teams team)
             : this(team.Id, team.Name, team.City, team.CoachID)
         {
         }

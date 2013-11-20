@@ -22,7 +22,7 @@ namespace FootballSchool.ViewModels
 			_playerRepository = new PlayerRepository();
 		}
 
-		public GameEventVM(IEnumerable<GameEvent> gameEvents)
+		public GameEventVM(IEnumerable<GameEvents> gameEvents)
 			: this()
 		{
 			foreach (var model in gameEvents.Select(ge => GetModel(ge)))
@@ -33,7 +33,7 @@ namespace FootballSchool.ViewModels
 
 		public List<GameEventPlayerModel> Models { get; set; }
 
-		private GameEventPlayerModel GetModel(GameEvent ge)
+		private GameEventPlayerModel GetModel(GameEvents ge)
 		{
 			var gameName = _gameRepository.GetGameName(ge.GameID);
 			var playerName = _playerRepository.GetPlayerFullName(ge.PlayerID);

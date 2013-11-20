@@ -45,7 +45,7 @@ namespace FootballSchool.ViewModels
             }
         }
 
-        public GameVM(IEnumerable<Game> games)
+        public GameVM(IEnumerable<Games> games)
             : this()
         {
             foreach (var model in games.Select(GetModel))
@@ -54,7 +54,7 @@ namespace FootballSchool.ViewModels
             }
         }
 
-        public GameVM(Game game)
+        public GameVM(Games game)
             : this(game.Id, game.Team1ID, game.Team2ID, game.RefereeID, game.Stadium, game.Type)
         {
             SelectedRefereeId = Referees.Keys.ToList().IndexOf(RefereeId);
@@ -97,7 +97,7 @@ namespace FootballSchool.ViewModels
 
         public List<GameModel> Models { get; set; }
 
-        private GameModel GetModel(Game g)
+        private GameModel GetModel(Games g)
         {
             var refereeName = _refereeRepository.GetFullName(g.RefereeID);
             var team1 = _teamRepository.GetSingle(x => x.Id == g.Team1ID);

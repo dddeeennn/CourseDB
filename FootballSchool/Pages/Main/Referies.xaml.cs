@@ -12,145 +12,158 @@ using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages.Main
 {
-    /// <summary>
-    /// Interaction logic for Referies.xaml
-    /// </summary>
-    public partial class Referies
-    {
-        private QueryProvider _queryProvider;
-        private GameRepository _gameRepository;
-        private GameEventRepository _gameEventRepository;
-        private RefereeRepository _refereeRepository;
-        private fscEntities entities;
+	/// <summary>
+	/// Interaction logic for Referies.xaml
+	/// </summary>
+	public partial class Referies
+	{
+		private QueryProvider _queryProvider;
+		private GameRepository _gameRepository;
+		private GameEventRepository _gameEventRepository;
+		private RefereeRepository _refereeRepository;
+		private fscEntities entities;
 
-        public Referies()
-        {
-            InitializeComponent();
-            entities = EntityProvider.Entities;
-            _queryProvider = new QueryProvider();
-            _gameRepository = new GameRepository();
-            _gameEventRepository = new GameEventRepository();
-            _refereeRepository = new RefereeRepository();
-        }
+		public Referies()
+		{
+			InitializeComponent();
+			entities = EntityProvider.Entities;
+			_queryProvider = new QueryProvider();
+			_gameRepository = new GameRepository();
+			_gameEventRepository = new GameEventRepository();
+			_refereeRepository = new RefereeRepository();
+		}
 
-        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
+		private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
+		{
+			if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
 
-            var refereeViewSource = ((CollectionViewSource)(FindResource("refereeViewSource")));
-            refereeViewSource.Source = _queryProvider.GetQuery<Referee>().Execute(MergeOption.AppendOnly);
+			var refereeViewSource = (CollectionViewSource)FindResource("refereeViewSource");
+			refereeViewSource.Source = _queryProvider.GetQuery<Referee>().Execute(MergeOption.AppendOnly);
 
-            var refereeGamesViewSource = ((CollectionViewSource)(FindResource("refereeGamesViewSource")));
-            var gamesVM = new GameVM(_queryProvider.GetQuery<Game>().Select(x => x));
-            refereeGamesViewSource.Source = gamesVM.Models;
-        }
+			UpdateGames();
+		}
 
-        private ObjectQuery<Game> GetRefereeQuery(int refereeId)
-        {
-            var refereeQuery = from r in entities.Referees
-                               join g in entities.Games
-                                   on r.Id equals g.RefereeID
-                               where r.Id == refereeId
-                               select g;
-            return (ObjectQuery<Game>)refereeQuery;
-        }
+		public void UpdateGames()
+		{
+			var refereeGamesViewSource = (CollectionViewSource)FindResource("refereeGamesViewSource");
+			var gamesVM = new GameVM(_queryProvider.GetQuery<Games>().Select(x => x));
+			refereeGamesViewSource.Source = gamesVM.Models;
+		}
 
-        private ObjectQuery<GameEvent> GetRefereeGameQuery(int gameId)
-        {
-            var refereeGamesQuery = from g in entities.Games
-                                    join ge in entities.GameEvents
-                                        on g.Id equals ge.GameID
-                                    where ge.GameID == gameId
-                                    select ge;
-            return (ObjectQuery<GameEvent>)refereeGamesQuery;
-        }
+		private ObjectQuery<Games> GetRefereeQuery(int refereeId)
+		{
+			var refereeQuery = from r in entities.Referee
+							   join g in entities.Games
+								   on r.Id equals g.RefereeID
+							   where r.Id == refereeId
+							   select g;
+			return (ObjectQuery<Games>)refereeQuery;
+		}
 
-        private void refereeDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedReferee = refereeDataGrid.SelectedItem as Referee;
-            if (selectedReferee == null) return;
+		private ObjectQuery<GameEvents> GetRefereeGameQuery(int gameId)
+		{
+			var refereeGamesQuery = from g in entities.Games
+									join ge in entities.GameEvents
+										on g.Id equals ge.GameID
+									where ge.GameID == gameId
+									select ge;
+			return (ObjectQuery<GameEvents>)refereeGamesQuery;
+		}
 
-            var refereeGamesViewSource = (CollectionViewSource)FindResource("refereeGamesViewSource");
-            var gamesVM = new GameVM(GetRefereeQuery(selectedReferee.Id).Select(x => x));
-            refereeGamesViewSource.Source = gamesVM.Models;
-        }
+		private void refereeDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+		{
+			var selectedReferee = refereeDataGrid.SelectedItem as Referee;
+			if (selectedReferee == null) return;
 
-        private void gamesDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedGame = gamesDataGrid.SelectedItem as GameModel;
-            if (selectedGame == null) return;
+			var refereeGamesViewSource = (CollectionViewSource)FindResource("refereeGamesViewSource");
+			var gamesVM = new GameVM(GetRefereeQuery(selectedReferee.Id).Select(x => x));
+			refereeGamesViewSource.Source = gamesVM.Models;
+		}
 
-            UpdateGameEvents(selectedGame.Id);
-        }
+		private void gamesDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+		{
+			var selectedGame = gamesDataGrid.SelectedItem as GameModel;
+			if (selectedGame == null) return;
 
-        private void MenuRefereeAdd_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new RefereeDetail();
-        }
+			UpdateGameEvents(selectedGame.Id);
+		}
 
-        private void MenuRefereeRemove_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedReferee = refereeDataGrid.SelectedItem as Referee;
-            if (selectedReferee == null) return;
+		private void MenuRefereeAdd_Click(object sender, RoutedEventArgs e)
+		{
+			Content = new RefereeDetail();
+		}
 
-           _refereeRepository.Remove(selectedReferee.Id);
-        }
+		private void MenuRefereeRemove_Click(object sender, RoutedEventArgs e)
+		{
+			var selectedReferee = refereeDataGrid.SelectedItem as Referee;
+			if (selectedReferee == null) return;
 
-        private void refereeDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
-        {
-            var model = refereeDataGrid.SelectedItem as Referee;
-            if (model == null) return;
+			_refereeRepository.Remove(selectedReferee.Id);
+		}
 
-            Content = new RefereeDetail(_refereeRepository.GetRefereeById(model.Id));
-        }
+		private void refereeDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+		{
+			var model = refereeDataGrid.SelectedItem as Referee;
+			if (model == null) return;
 
-        private void MenuAddGame_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new GameDetail();
-        }
+			Content = new RefereeDetail(_refereeRepository.GetRefereeById(model.Id));
+		}
 
-        private void MenuRemoveGame_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedGame = gamesDataGrid.SelectedItem as GameModel;
-            if (selectedGame == null) return;
+		private void MenuAddGame_Click(object sender, RoutedEventArgs e)
+		{
+			Content = new GameDetail(this, Content);
+		}
 
-            _gameRepository.RemoveById(selectedGame.Id);
-        }
+		private void MenuRemoveGame_Click(object sender, RoutedEventArgs e)
+		{
+			var selectedGame = gamesDataGrid.SelectedItem as GameModel;
+			if (selectedGame == null) return;
 
-        private void gamesDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
-        {
-            var model = gamesDataGrid.SelectedItem as GameModel;
-            if (model == null) return;
+			_gameRepository.RemoveById(selectedGame.Id);
+		}
 
-            Content = new GameDetail(_gameRepository.GetGameById(model.Id));
-        }
+		private void gamesDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+		{
+			var model = gamesDataGrid.SelectedItem as GameModel;
+			if (model == null) return;
 
-        private void gameEventsDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
-        {
-            var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
-            if (model == null) return;
+			Content = new GameDetail(_gameRepository.GetGameById(model.Id), this, Content);
+		}
 
-            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id), this, Content);
-        }
+		private void gameEventsDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+		{
+			var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
+			if (model == null) return;
 
-        private void MenuAddGameEvent_OnClick(object sender, RoutedEventArgs e)
-        {
-            Content = new GameEventDetail(this, Content);
-        }
+			Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id), this, Content);
+		}
 
-        private void MenuRemoveGameEvent_OnClick(object sender, RoutedEventArgs e)
-        {
-            var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
-            if (model == null) return;
+		private void MenuAddGameEvent_OnClick(object sender, RoutedEventArgs e)
+		{
+			Content = new GameEventDetail(this, Content);
+		}
 
-            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id),this,Content);
-        }
+		private void MenuRemoveGameEvent_OnClick(object sender, RoutedEventArgs e)
+		{
+			var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
+			if (model == null) return;
 
-        public void UpdateGameEvents(int gameId)
-        {
-            var gameEventsViewSource = ((CollectionViewSource)(FindResource("gameEventsViewSource")));
-            var gameEventVM = new GameEventVM(GetRefereeGameQuery(gameId).Select(x => x));
-            gameEventsViewSource.Source = gameEventVM.Models;
-        }
-    }
+			_gameEventRepository.Remove(model.Id);
+			 UpdateGameEvents();
+		}
+
+		public void UpdateGameEvents(int gameId)
+		{
+			var gameEventsViewSource = (CollectionViewSource)FindResource("refereeGamesGameEventsViewSource");
+			var gameEventVM = new GameEventVM(GetRefereeGameQuery(gameId).Select(x => x));
+			gameEventsViewSource.Source = gameEventVM.Models;
+		}
+
+		public void UpdateGameEvents()
+		{
+			var gameEventsViewSource = (CollectionViewSource)FindResource("refereeGamesGameEventsViewSource");
+			var gameEventVM = new GameEventVM(_queryProvider.GetQuery<GameEvents>().Select(x => x));
+			gameEventsViewSource.Source = gameEventVM.Models;
+		}
+	}
 }

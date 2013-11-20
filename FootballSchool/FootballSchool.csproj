@@ -54,16 +54,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\..\CourseDB-IdToName\CourseDB-IdToName\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\CourseDB-IdToName\CourseDB-IdToName\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\..\CourseDB-IdToName\CourseDB-IdToName\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\CourseDB-IdToName\CourseDB-IdToName\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="FirstFloor.ModernUI">
-      <HintPath>..\..\..\CourseDB-IdToName\CourseDB-IdToName\packages\ModernUI.WPF.1.0.5\lib\net40\FirstFloor.ModernUI.dll</HintPath>
+      <HintPath>..\..\CourseDB-IdToName\CourseDB-IdToName\packages\ModernUI.WPF.1.0.5\lib\net40\FirstFloor.ModernUI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\..\..\CourseDB-IdToName\CourseDB-IdToName\packages\ModernUI.WPF.1.0.5\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
+      <HintPath>..\..\CourseDB-IdToName\CourseDB-IdToName\packages\ModernUI.WPF.1.0.5\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Models\GameEventPlayerModel.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\TableStatModel.cs" />
     <Compile Include="Repositories\GameEventRepository.cs" />
     <Compile Include="Repositories\PlayerInTeamRepository.cs" />
     <Compile Include="ViewModels\EventVM.cs" />
@@ -270,6 +271,9 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

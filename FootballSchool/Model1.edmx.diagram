@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="74615b23f49944d59b220d030867a4fd" Name="Diagram1">
-        <EntityTypeShape EntityType="fscModel.Coach" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="fscModel.Event" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="fscModel.GameEvent" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="fscModel.Game" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+      <Diagram DiagramId="bac281d7388e4da5a5d8b4f06a5dad0b" Name="Diagram1">
+        <EntityTypeShape EntityType="fscModel.Coaches" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="fscModel.Events" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fscModel.GameEvents" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fscModel.Games" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="fscModel.PlayerInTeam" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="fscModel.PlayerPosition" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="fscModel.Player" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fscModel.PlayerPositions" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fscModel.Players" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="fscModel.Referee" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="fscModel.Team" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fscModel.Teams" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="fscModel.FK_Teams_Coaches" ManuallyRouted="false" />
         <AssociationConnector Association="fscModel.FK_GameEvents_Event" ManuallyRouted="false" />
         <AssociationConnector Association="fscModel.FK_GameEvents_Game" ManuallyRouted="false" />

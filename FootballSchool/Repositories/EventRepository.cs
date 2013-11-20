@@ -5,14 +5,14 @@ namespace FootballSchool.Repositories
 	/// <summary>
 	/// event repo
 	/// </summary>
-	public class EventRepository : RepositoryT<Event>
+	public class EventRepository : RepositoryT<Events>
 	{
 		/// <summary>
 		/// Gets the event by id.
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public Event GetEventById(int id)
+		public Events GetEventById(int id)
 		{
 			return Entities.Events.FirstOrDefault(x => x.Id == id);
 		}

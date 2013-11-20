@@ -5,14 +5,14 @@ namespace FootballSchool.Repositories
 	/// <summary>
 	/// repository for players
 	/// </summary>
-	public class PlayerRepository : RepositoryT<Player>
+	public class PlayerRepository : RepositoryT<Players>
 	{
 		/// <summary>
 		/// Gets the player by id.
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public Player GetPlayerById(int id)
+		public Players GetPlayerById(int id)
 		{
 			return Entities.Players.FirstOrDefault(x => x.Id == id);
 		}

@@ -12,7 +12,7 @@ namespace FootballSchool.Repositories
 		/// Gets all coaches
 		/// </summary>
 		/// <returns></returns>
-		public IEnumerable<Coach> GetAll()
+		public IEnumerable<Coaches> GetAll()
 		{
 			return Entities.Coaches;
 		}
@@ -22,7 +22,7 @@ namespace FootballSchool.Repositories
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		public Coach GetCoachById(int id)
+		public Coaches GetCoachById(int id)
 		{
 			return Entities.Coaches.FirstOrDefault(x => x.Id == id);
 		}

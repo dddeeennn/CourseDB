@@ -16,10 +16,10 @@ namespace FootballSchool.Pages.Details
 	{
 		private readonly fscEntities _entities;
 
-		private readonly Team _editableTeam;
+		private readonly Teams _editableTeam;
 		private readonly TeamVM _viewModel = new TeamVM();
 
-		public TeamDetail(Team team)
+		public TeamDetail(Teams team)
 			: this()
 		{
 			_editableTeam = team;
@@ -56,7 +56,7 @@ namespace FootballSchool.Pages.Details
 			_entities.Teams.ApplyCurrentValues(_editableTeam);
 		}
 
-        private void Map(Team team, TeamVM viewModel)
+        private void Map(Teams team, TeamVM viewModel)
         {
             team.City = viewModel.City;
             team.Name = viewModel.Name;
@@ -68,7 +68,7 @@ namespace FootballSchool.Pages.Details
 		/// </summary>
 		private void AddTeam()
 		{
-		    var team = new Team();
+		    var team = new Teams();
             Map(team, _viewModel);
 			_entities.Teams.AddObject(team);
 		}

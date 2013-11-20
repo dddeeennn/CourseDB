@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database1.sdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.edmx.sql")]
 
 

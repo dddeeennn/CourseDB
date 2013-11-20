@@ -19,7 +19,7 @@
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel DataContext="{StaticResource refereeViewSource}">
                 <TextBlock Text="Судьи" Style="{StaticResource Heading2}" />
-                <DataGrid x:Name="refereeDataGrid" MouseDoubleClick="refereeDataGrid_MouseDoubleClick_1" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" SelectionChanged="refereeDataGrid_SelectionChanged_1" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+				<DataGrid x:Name="refereeDataGrid" MouseDoubleClick="refereeDataGrid_MouseDoubleClick_1"  IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" SelectionChanged="refereeDataGrid_SelectionChanged_1" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Добавить..." Click="MenuRefereeAdd_Click"></MenuItem>
@@ -52,7 +52,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel DataContext="{StaticResource refereeGamesViewSource}">
                     <TextBlock Text="Список матчей" Style="{StaticResource Heading2}" />
-                    <DataGrid x:Name="gamesDataGrid" MouseDoubleClick="gamesDataGrid_MouseDoubleClick_1" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="gamesDataGrid_SelectionChanged_1" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+					<DataGrid x:Name="gamesDataGrid" MouseDoubleClick="gamesDataGrid_MouseDoubleClick_1" CanUserAddRows="False" IsReadOnly="True"   CanUserDeleteRows="False" SelectionChanged="gamesDataGrid_SelectionChanged_1" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Добавить..." Click="MenuAddGame_Click"></MenuItem>
@@ -67,8 +67,8 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Команда 1" Width="*"/>
-                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Команда 2" Width="*"/>
+                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Team 1" Width="*"/>
+                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Team 2" Width="*"/>
                             <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="*"/>
                             <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Тип" Width="*"/>
                         </DataGrid.Columns>
@@ -77,7 +77,7 @@
                 <GridSplitter Grid.Row="1"/>
                 <StackPanel Grid.Row="2" DataContext="{StaticResource refereeGamesGameEventsViewSource}">
                     <TextBlock Text="Статистика матча" Style="{StaticResource Heading2}" />
-                    <DataGrid x:Name="gameEventsDataGrid" MouseDoubleClick="gameEventsDataGrid_MouseDoubleClick_1" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource gameEventsViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+					<DataGrid x:Name="gameEventsDataGrid" MouseDoubleClick="gameEventsDataGrid_MouseDoubleClick_1" IsReadOnly="True"  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource refereeGamesGameEventsViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Добавить..." Click="MenuAddGameEvent_OnClick"></MenuItem>

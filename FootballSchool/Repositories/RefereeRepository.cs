@@ -14,7 +14,7 @@ namespace FootballSchool.Repositories
 		/// <returns></returns>
 		public Referee GetRefereeById(int id)
 		{
-			return Entities.Referees.FirstOrDefault(x => x.Id == id);
+			return Entities.Referee.FirstOrDefault(x => x.Id == id);
 		}
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace FootballSchool.Repositories
         public void Remove(int refereeId)
         {
             var referee = GetSingle(x => x.Id == refereeId);
-            Entities.Referees.DeleteObject(referee);
+            Entities.Referee.DeleteObject(referee);
         }
 	}
 }

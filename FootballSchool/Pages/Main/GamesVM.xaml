@@ -33,8 +33,8 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Команда 1" Width="*"/>
-                        <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Команда 2" Width="*"/>
+                        <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Team 1" Width="*"/>
+                        <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Team 2" Width="*"/>
                         <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="*"/>
                         <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Тип" Width="SizeToHeader"/>
                         <DataGridTextColumn x:Name="refereeIDColumn" Binding="{Binding Referee}" Header="Судья" Width="*"/>

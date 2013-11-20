@@ -31,7 +31,7 @@ namespace FootballSchool.Pages.Main
             _playerInTeamRepository = new PlayerInTeamRepository();
         }
 
-        private ObjectQuery<GameEvent> GetEventsQuery(int playerId)
+        private ObjectQuery<GameEvents> GetEventsQuery(int playerId)
         {
             var events = from p in _entities.Players
                          join e in _entities.GameEvents
@@ -39,19 +39,19 @@ namespace FootballSchool.Pages.Main
                          where p.Id == playerId
                          select e;
 
-            return (ObjectQuery<GameEvent>)events;
+            return (ObjectQuery<GameEvents>)events;
         }
 
-        private ObjectQuery<Player> GetPlayersQuery(int teamId)
+        private ObjectQuery<Players> GetPlayersQuery(int teamId)
         {
-            var players = (from pt in _entities.PlayerInTeams
+            var players = (from pt in _entities.PlayerInTeam
                            join t in _entities.Teams
                                on pt.TeamID equals teamId
                            join p in _entities.Players
                                on pt.PlayerID equals p.Id
                            select p).Distinct();
 
-            return (ObjectQuery<Player>)players;
+            return (ObjectQuery<Players>)players;
         }
 
         public  void UpdateGameEvents(int playerId)
@@ -67,18 +67,18 @@ namespace FootballSchool.Pages.Main
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
 
             var teamsViewSource = (CollectionViewSource)FindResource("teamsViewSource");
-            var teamsQuery = _queryProvider.GetQuery<Team>();
+            var teamsQuery = _queryProvider.GetQuery<Teams>();
             teamsViewSource.Source = teamsQuery.Execute(MergeOption.AppendOnly);
 
             var playersViewSource = (CollectionViewSource)FindResource("playersViewSource");
-            var playersQuery = _queryProvider.GetQuery<Player>();
+            var playersQuery = _queryProvider.GetQuery<Players>();
             playersViewSource.Source = playersQuery.Execute(MergeOption.AppendOnly);
 
         }
 
         private void teamsDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            var selectedTeam = teamsDataGrid.SelectedItem as Team;
+            var selectedTeam = teamsDataGrid.SelectedItem as Teams;
             if (selectedTeam == null) return;
 
             var playersViewSource = (CollectionViewSource)FindResource("playersViewSource");
@@ -88,7 +88,7 @@ namespace FootballSchool.Pages.Main
 
         private void playersDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            var selectedPlayer = playersDataGrid.SelectedItem as Player;
+            var selectedPlayer = playersDataGrid.SelectedItem as Players;
             if (selectedPlayer == null) return;
 
             var gameEventsViewSource = (CollectionViewSource)FindResource("gameEventsViewSource");
@@ -99,12 +99,12 @@ namespace FootballSchool.Pages.Main
 
         private void TeamsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Content = new TeamDetail((Team)teamsDataGrid.SelectedItem);
+            Content = new TeamDetail((Teams)teamsDataGrid.SelectedItem);
         }
 
         private void PlayersDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Content = new PlayerDetail((Player)playersDataGrid.SelectedItem);
+            Content = new PlayerDetail((Players)playersDataGrid.SelectedItem);
         }
 
         private void GameEventsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -132,7 +132,7 @@ namespace FootballSchool.Pages.Main
 
         private void MenuRemovePlayer_OnClick(object sender, RoutedEventArgs e)
         {
-            var selectedPlayer = playersDataGrid.SelectedItem as Player;
+            var selectedPlayer = playersDataGrid.SelectedItem as Players;
             if (selectedPlayer == null) return;
 
             _playerInTeamRepository.RemoveByPlayerId(selectedPlayer.Id);
@@ -152,7 +152,7 @@ namespace FootballSchool.Pages.Main
 
         private void MenuRemoveTeam_OnClick(object sender, RoutedEventArgs e)
         {
-            var selectedTeam = teamsDataGrid.SelectedItem as Team;
+            var selectedTeam = teamsDataGrid.SelectedItem as Teams;
             if (selectedTeam == null) return;
 
             _playerInTeamRepository.RemoveByTeamId(selectedTeam.Id);
