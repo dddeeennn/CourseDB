@@ -55,7 +55,7 @@ namespace FootballSchool.Pages.Main
 
 			foreach (var tableStatModel in result)
 			{
-				tableStatModel.Место = result.IndexOf(tableStatModel);
+				tableStatModel.Место = result.IndexOf(tableStatModel)+1;
 			}
 
 			return result;

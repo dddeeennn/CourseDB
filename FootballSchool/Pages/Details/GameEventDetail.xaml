@@ -26,13 +26,13 @@
                 <Label Content="ИД:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <Label x:Name="Id" Content="{Binding Id}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <Label Content="Игра" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                <ComboBox Name="CmbGame" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Games, Mode=TwoWay}" SelectionChanged="CmbGame_OnSelectionChanged" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedGameId, Mode=TwoWay}" />
+                <ComboBox Name="CmbGame" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Games, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="CmbGame_OnSelectionChanged" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedGameId, Mode=TwoWay}" />
                 <Label Content="Игрок:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                <ComboBox Name="CmbPlayer" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Players, Mode=TwoWay}" SelectionChanged="CmbPlayer_OnSelectionChanged" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedPlayerId, Mode=TwoWay}" />
+                <ComboBox Name="CmbPlayer" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Players, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="CmbPlayer_OnSelectionChanged" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedPlayerId, Mode=TwoWay}" />
                 <Label Content="Событие:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                <ComboBox Name="CmbEvent" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Events, Mode=TwoWay}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedEventId, Mode=TwoWay}" />
+                <ComboBox Name="CmbEvent" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Events, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedEventId, Mode=TwoWay}" />
                 <Label Content="Время:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                <DatePicker Name="DtTime" Grid.Column="1" Grid.Row="4" Margin="3" SelectedDate="{Binding Time, Mode=TwoWay}" SelectedDateFormat="Short"></DatePicker>
+                <DatePicker Name="DtTime" Grid.Column="1" Grid.Row="4" Margin="3" SelectedDate="{Binding Time, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" SelectedDateFormat="Short"></DatePicker>
             </Grid>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">

@@ -8,7 +8,7 @@
         <ScrollViewer>
             <StackPanel MinWidth="200">
                 <TextBlock Text="Турнирная таблица" Style="{StaticResource Heading2}" />
-                <DataGrid Name="dgTableStat"></DataGrid>
+                <DataGrid Name="dgTableStat" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"></DataGrid>
             </StackPanel>
         </ScrollViewer>
     </Grid>

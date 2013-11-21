@@ -10,6 +10,10 @@ namespace FootballSchool.ViewModels
 	/// </summary>
 	public class EventVM
 	{
+        private PlayerRepository _playerRepository { get; set; }
+        private GameRepository _gameRepository { get; set; }
+	    private EventRepository _eventRepository { get; set; }
+
 		public EventVM()
 		{
 			Initialize();
@@ -17,6 +21,9 @@ namespace FootballSchool.ViewModels
 
 		private void Initialize()
 		{
+            _playerRepository = new PlayerRepository();
+            _eventRepository = new EventRepository();
+            _gameRepository = new GameRepository();
 			Time = DateTime.Today;
 			InitEvents();
 			InitGames();
@@ -25,34 +32,30 @@ namespace FootballSchool.ViewModels
 
 		private void InitPLayers()
 		{
-			var playerRepo = new PlayerRepository();
 			Players = new Dictionary<int, string>();
-			foreach (var player in playerRepo.GetAll())
+			foreach (var player in _playerRepository.GetAll())
 			{
-				Players.Add(player.Id, playerRepo.GetPlayerFullName(player.Id));
+				Players.Add(player.Id, _playerRepository.GetPlayerFullName(player.Id));
 			}
 		}
 
 		private void InitGames()
 		{
-			var gameRepo = new GameRepository();
 			Games = new Dictionary<int, string>();
-			foreach (var game in gameRepo.GetAll())
+			foreach (var game in _gameRepository.GetAll())
 			{
-				Games.Add(game.Id, gameRepo.GetGameName(game.Id));
+				Games.Add(game.Id, _gameRepository.GetGameName(game.Id));
 			}
 		}
 
 		private void InitEvents()
 		{
-			var eventRepo = new EventRepository();
 			Events = new Dictionary<int, string>();
-			foreach (var e in eventRepo.GetAll())
+			foreach (var e in _eventRepository.GetAll())
 			{
-				Events.Add(e.Id, eventRepo.GetEventType(e.Id));
+				Events.Add(e.Id, _eventRepository.GetEventType(e.Id));
 			}
 		}
-
 
 		public EventVM(int id, int eventId, int gameId, int playerId, DateTime time)
 			: this()
@@ -71,6 +74,20 @@ namespace FootballSchool.ViewModels
 			SelectedGameId = Games.Keys.ToList().IndexOf(GameId);
 			SelectedPlayerId = Players.Keys.ToList().IndexOf(PlayerId);
 		}
+
+        public void UpdatePlayer(int team1Id, int team2Id)
+        {
+            Players = new Dictionary<int, string>();
+            foreach (var player in _playerRepository.GetPlayersForTeam(team1Id))
+            {
+                Players.Add(player.Id, _playerRepository.GetPlayerFullName(player.Id));
+            }
+
+            foreach (var player in _playerRepository.GetPlayersForTeam(team2Id))
+            {
+                Players.Add(player.Id, _playerRepository.GetPlayerFullName(player.Id));
+            }
+        }
 
 		public int Id { get; set; }
 

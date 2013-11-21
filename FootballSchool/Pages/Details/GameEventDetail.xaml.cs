@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using FootballSchool.Kernel;
 using FootballSchool.Kernel.Extensions;
 using FootballSchool.Pages.Main;
+using FootballSchool.Repositories;
 using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages.Details
@@ -20,11 +21,13 @@ namespace FootballSchool.Pages.Details
 		private readonly GameEvents _editableGE;
 		private object _parentUCContent;
 		private UserControl _parentUC;
+	    private GameRepository _gameRepository;
 
 		public GameEventDetail(UserControl parentContent, object content)
 		{
 			_parentUCContent = content;
 			_parentUC = parentContent;
+            _gameRepository = new GameRepository();
 			_entities = EntityProvider.Entities;
 			InitializeComponent();
 			DataContext = _viewModel;
@@ -120,6 +123,13 @@ namespace FootballSchool.Pages.Details
 
 		private void CmbGame_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+		    var selected = CmbGame.SelectedItem as KeyValuePair<int,string>?;
+
+            if (selected == null) return;
+
+		    var game = _gameRepository.GetGameById(selected.Value.Key);
+
+		    _viewModel.UpdatePlayer(game.Team1ID, game.Team2ID); 
 		}
 
 		private void CmbPlayer_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
