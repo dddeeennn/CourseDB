@@ -6,9 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="900" Loaded="UserControl_Loaded_1">
 	<UserControl.Resources>
-		<CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Team}, CreateList=True}"/>
-		<CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Player}, CreateList=True}"/>
-		<CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvent}, CreateList=True}"/>
+		<CollectionViewSource x:Key="teamsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Teams}, CreateList=True}"/>
+		<CollectionViewSource x:Key="playersViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:Players}, CreateList=True}"/>
+		<CollectionViewSource x:Key="gameEventsViewSource" d:DesignSource="{d:DesignInstance {x:Type FootballSchool:GameEvents}, CreateList=True}"/>
 	</UserControl.Resources>
 	<Grid Style="{StaticResource ContentRoot}">
 		<Grid.ColumnDefinitions>

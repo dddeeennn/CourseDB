@@ -54,7 +54,7 @@ namespace FootballSchool.Pages.Main
             return (ObjectQuery<Players>)players;
         }
 
-        public  void UpdateGameEvents(int playerId)
+        public void UpdateGameEvents(int playerId)
         {
             var gameEventsViewSource = (CollectionViewSource)FindResource("gameEventsViewSource");
             var geQuery = GetEventsQuery(playerId);
@@ -122,12 +122,16 @@ namespace FootballSchool.Pages.Main
 
         private void MenuAddGameEvent_OnClick(object sender, RoutedEventArgs e)
         {
-            Content = new GameEventDetail(this, Content);
+            var selectedPlayer = playersDataGrid.SelectedItem as Players;
+            Content = selectedPlayer == null ?
+                new GameEventDetail(this, Content) : new GameEventDetail(selectedPlayer, this, Content);
         }
 
         private void MenuAddPlayer_OnClick(object sender, RoutedEventArgs e)
         {
-            Content = new PlayerDetail();
+            var selectedTeam = teamsDataGrid.SelectedItem as Teams;
+
+            Content = selectedTeam == null ? new PlayerDetail() : new PlayerDetail(selectedTeam);
         }
 
         private void MenuRemovePlayer_OnClick(object sender, RoutedEventArgs e)

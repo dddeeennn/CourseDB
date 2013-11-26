@@ -10,102 +10,109 @@ using FootballSchool.ViewModels;
 
 namespace FootballSchool.Pages.Details
 {
-	/// <summary>
-	/// Interaction logic for PlayerDetail.xaml
-	/// </summary>
-	public partial class PlayerDetail
-	{
-		private readonly fscEntities _entities;
-		private readonly PlayerVM _viewModel = new PlayerVM();
-		private readonly Players _editablePlayer;
+    /// <summary>
+    /// Interaction logic for PlayerDetail.xaml
+    /// </summary>
+    public partial class PlayerDetail
+    {
+        private readonly fscEntities _entities;
+        private readonly PlayerVM _viewModel = new PlayerVM();
+        private readonly Players _editablePlayer;
 
-		public PlayerDetail()
-		{
-			_entities = EntityProvider.Entities;
-			InitializeComponent();
-			DataContext = _viewModel;
-		}
+        public PlayerDetail()
+        {
+            _entities = EntityProvider.Entities;
+            InitializeComponent();
+            DataContext = _viewModel;
+        }
 
-		public PlayerDetail(Players player)
-			: this()
-		{
-			_editablePlayer = player;
-			_viewModel = new PlayerVM(player);
-			DataContext = _viewModel;
-		}
+        public PlayerDetail(Players player)
+            : this()
+        {
+            _editablePlayer = player;
+            _viewModel = new PlayerVM(player);
+            DataContext = _viewModel;
+        }
 
-		/// <summary>
-		/// Edit player.
-		/// </summary>
-		private void EditPlayer()
-		{
-			Map(_viewModel, _editablePlayer);
-			_entities.Players.ApplyCurrentValues(_editablePlayer);
+        public PlayerDetail(Teams team)
+            : this()
+        {
+            _viewModel = new PlayerVM(team);
+            DataContext = _viewModel;
+        }
 
-			var playerInTeam = _entities.PlayerInTeam.First(x => x.PlayerID == _editablePlayer.Id);
-			playerInTeam.TeamID = _viewModel.TeamId;
-			_entities.PlayerInTeam.ApplyCurrentValues(playerInTeam);
-		}
+        /// <summary>
+        /// Edit player.
+        /// </summary>
+        private void EditPlayer()
+        {
+            Map(_viewModel, _editablePlayer);
+            _entities.Players.ApplyCurrentValues(_editablePlayer);
 
-		private void Map(PlayerVM viewModel, Players entity)
-		{
-			entity.LastName = viewModel.LastName;
-			entity.Name = viewModel.Name;
-			entity.MiddleName = viewModel.MiddleName;
-			entity.Passport = viewModel.Passport;
-			entity.IsMain = viewModel.IsMain;
-			viewModel.TeamId = ((KeyValuePair<int, string>)CmbTeam.SelectedItem).Key;
-			viewModel.PositionId = ((KeyValuePair<int, string>)CmbPosition.SelectedItem).Key;
-			entity.PositionID = viewModel.PositionId;
-		}
+            var playerInTeam = _entities.PlayerInTeam.First(x => x.PlayerID == _editablePlayer.Id);
+            playerInTeam.TeamID = _viewModel.TeamId;
+            _entities.PlayerInTeam.ApplyCurrentValues(playerInTeam);
+        }
 
-		/// <summary>
-		/// Add new player.
-		/// </summary>
-		private void AddPlayer()
-		{
-			var player = new Players();
-			Map(_viewModel, player);
-			_entities.Players.AddObject(player);
-			SaveAndRefresh();
+        private void Map(PlayerVM viewModel, Players entity)
+        {
+            entity.LastName = viewModel.LastName;
+            entity.Name = viewModel.Name;
+            entity.MiddleName = viewModel.MiddleName;
+            entity.Passport = viewModel.Passport;
+            entity.IsMain = viewModel.IsMain;
+            viewModel.TeamId = ((KeyValuePair<int, string>)CmbTeam.SelectedItem).Key;
+            viewModel.PositionId = ((KeyValuePair<int, string>)CmbPosition.SelectedItem).Key;
+            entity.PositionID = viewModel.PositionId;
+        }
 
-			player = _entities.Players.First(x => x.Passport == _viewModel.Passport);
-			_entities.AddToPlayerInTeam(new PlayerInTeam
-			{
-				PlayerID = player.Id,
-				TeamID = _viewModel.TeamId
-			});
-		}
+        /// <summary>
+        /// Add new player.
+        /// </summary>
+        private void AddPlayer()
+        {
+            var player = new Players();
+            Map(_viewModel, player);
+            _entities.Players.AddObject(player);
+            SaveAndRefresh();
 
-		/// <summary>
-		/// Closes this control.
-		/// </summary>
-		private void CloseControl()
-		{
-			SaveAndRefresh();
-			this.TryFindParent<UserControl>().Content = new TeamsPlayers();
-		}
+            player = _entities.Players.First(x => x.Passport == _viewModel.Passport);
+            _entities.AddToPlayerInTeam(new PlayerInTeam
+            {
+                PlayerID = player.Id,
+                TeamID = _viewModel.TeamId
+            });
+        }
 
-		/// <summary>
-		/// Save and refresh.
-		/// </summary>
-		private void SaveAndRefresh()
-		{
-			_entities.SaveChanges();
-			_entities.Refresh(RefreshMode.StoreWins, _entities.Teams);
-		}
+        /// <summary>
+        /// Closes this control.
+        /// </summary>
+        private void CloseControl()
+        {
+            SaveAndRefresh();
+            this.TryFindParent<UserControl>().Content = new TeamsPlayers();
+        }
 
-		private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
-		{
-			if (_editablePlayer == null) AddPlayer();
-			else EditPlayer();
+        /// <summary>
+        /// Save and refresh.
+        /// </summary>
+        private void SaveAndRefresh()
+        {
+            _entities.SaveChanges();
+            _entities.Refresh(RefreshMode.StoreWins, _entities.Teams);
+        }
 
-			CloseControl();
-		}
+        private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_editablePlayer == null) AddPlayer();
+            else EditPlayer();
 
-		private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
-		{
-			CloseControl();
-		}
-	}
+            CloseControl();
+        }
+
+        private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
+        {
+            CloseControl();
+        }
+    }
 }
