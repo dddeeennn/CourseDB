@@ -41,10 +41,17 @@ namespace FootballSchool.Pages.Details
             DataContext = _viewModel;
         }
 
-        public GameEventDetail(Players selectedPlayer, UserControl parentUCContent, object Content)
-            : this(parentUCContent, Content)
+        public GameEventDetail(Players selectedPlayer, UserControl parentUCContent, object content)
+            : this(parentUCContent, content)
         {
             _viewModel = new EventVM(selectedPlayer);
+            DataContext = _viewModel;
+        }
+
+        public GameEventDetail(int gameId, UserControl gamesVM, object content)
+            : this(gamesVM, content)
+        {
+            _viewModel = new EventVM(gameId);
             DataContext = _viewModel;
         }
 

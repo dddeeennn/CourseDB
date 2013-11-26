@@ -13,11 +13,12 @@ namespace FootballSchool.ViewModels
         private readonly RefereeRepository _refereeRepository;
         private readonly TeamRepository _teamRepository;
 
+
         public GameVM()
         {
             Models = new List<GameModel>();
-            _teamRepository = new TeamRepository();
             _refereeRepository = new RefereeRepository();
+            _teamRepository = new TeamRepository();
             Initialize();
         }
 
@@ -71,6 +72,11 @@ namespace FootballSchool.ViewModels
             RefereeId = refereeId;
             Stadium = stadium;
             Type = type;
+        }
+
+        public GameVM(Referee model):this()
+        {
+            Referees = new Dictionary<int, string> { { model.Id, _refereeRepository.GetFullName(model.Id) } };
         }
 
         public int Id { get; set; }

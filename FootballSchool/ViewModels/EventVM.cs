@@ -69,6 +69,12 @@ namespace FootballSchool.ViewModels
             Time = time;
         }
 
+        public EventVM(int gameId)
+            : this()
+        {
+            Games = new Dictionary<int, string> { { gameId, _gameRepository.GetGameName(gameId) } };
+        }
+
         public EventVM(GameEvents ge)
             : this(ge.Id, ge.EventID, ge.GameID, ge.PlayerID, ge.Time)
         {
