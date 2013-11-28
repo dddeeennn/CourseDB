@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using FootballSchool.Kernel;
 using FootballSchool.Kernel.Extensions;
+using FootballSchool.Models;
 using FootballSchool.Pages.Main;
 using FootballSchool.Repositories;
 using FootballSchool.ViewModels;
@@ -33,11 +34,23 @@ namespace FootballSchool.Pages.Details
             DataContext = _viewModel;
         }
 
-        public GameEventDetail(GameEvents gameEvent, UserControl parentUCContent, object content)
+        public GameEventDetail(GameEvents gameEvent,Players player,
+            UserControl parentUCContent, object content)
             : this(parentUCContent, content)
         {
             _editableGE = gameEvent;
-            _viewModel = new EventVM(gameEvent);
+            _viewModel = new EventVM(gameEvent, player);
+            CmbPlayer.IsEnabled = false;
+            DataContext = _viewModel;
+        }
+
+        public GameEventDetail(GameEvents gameEvent,GameModel game,
+           UserControl parentUCContent, object content)
+            : this(parentUCContent, content)
+        {
+            _editableGE = gameEvent;
+            _viewModel = new EventVM(gameEvent,game);
+            CmbGame.IsEnabled = false;
             DataContext = _viewModel;
         }
 
@@ -45,6 +58,7 @@ namespace FootballSchool.Pages.Details
             : this(parentUCContent, content)
         {
             _viewModel = new EventVM(selectedPlayer);
+            CmbPlayer.IsEnabled = false;
             DataContext = _viewModel;
         }
 
@@ -52,6 +66,7 @@ namespace FootballSchool.Pages.Details
             : this(gamesVM, content)
         {
             _viewModel = new EventVM(gameId);
+            CmbGame.IsEnabled = false;
             DataContext = _viewModel;
         }
 

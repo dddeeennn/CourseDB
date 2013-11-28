@@ -52,7 +52,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel DataContext="{StaticResource refereeGamesViewSource}">
                     <TextBlock Text="Список матчей" Style="{StaticResource Heading2}" />
-					<DataGrid x:Name="gamesDataGrid" MouseDoubleClick="gamesDataGrid_MouseDoubleClick_1" CanUserAddRows="False" IsReadOnly="True"   CanUserDeleteRows="False" SelectionChanged="gamesDataGrid_SelectionChanged_1" Height="200" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+					<DataGrid x:Name="gamesDataGrid"  MouseDoubleClick="gamesDataGrid_MouseDoubleClick_1" CanUserAddRows="False" IsReadOnly="True"   CanUserDeleteRows="False" SelectionChanged="gamesDataGrid_SelectionChanged_1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Height="200" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Добавить..." Click="MenuAddGame_Click"></MenuItem>
@@ -60,15 +60,8 @@
                             </ContextMenu>
                         </DataGrid.ContextMenu>
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="idColumn1" Header="Id" Width="SizeToHeader">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Label Content="{Binding Id}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Team 1" Width="*"/>
-                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Team 2" Width="*"/>
+                            <DataGridTextColumn x:Name="team1IDColumn" Binding="{Binding Team1}" Header="Команда 1" Width="*"/>
+                            <DataGridTextColumn x:Name="team2IDColumn" Binding="{Binding Team2}" Header="Команда 2" Width="*"/>
                             <DataGridTextColumn x:Name="stadiumColumn" Binding="{Binding Stadium}" Header="Стадион" Width="*"/>
                             <DataGridCheckBoxColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Тип" Width="*"/>
                         </DataGrid.Columns>
@@ -85,13 +78,6 @@
                             </ContextMenu>
                         </DataGrid.ContextMenu>
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="idColumn2" Header="ИД" Width="SizeToHeader">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Label Content="{Binding Id}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
                             <DataGridTextColumn x:Name="gameIDColumn" Binding="{Binding Game}" Header="Игра" Width="*"/>
                             <DataGridTextColumn x:Name="eventIDColumn" Binding="{Binding Event}" Header="Событие" Width="*"/>
                             <DataGridTemplateColumn x:Name="timeColumn" Header="Время" Width="*">

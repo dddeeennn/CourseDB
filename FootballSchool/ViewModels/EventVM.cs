@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FootballSchool.Models;
 using FootballSchool.Repositories;
 
 namespace FootballSchool.ViewModels
@@ -75,17 +76,29 @@ namespace FootballSchool.ViewModels
             Games = new Dictionary<int, string> { { gameId, _gameRepository.GetGameName(gameId) } };
         }
 
-        public EventVM(GameEvents ge)
+        public EventVM(GameEvents ge,Players player)
             : this(ge.Id, ge.EventID, ge.GameID, ge.PlayerID, ge.Time)
+        {
+            SetCurrentIndexes();
+        }
+
+        private void SetCurrentIndexes()
         {
             SelectedEventId = Events.Keys.ToList().IndexOf(EventId);
             SelectedGameId = Games.Keys.ToList().IndexOf(GameId);
             SelectedPlayerId = Players.Keys.ToList().IndexOf(PlayerId);
         }
 
+        public EventVM(GameEvents ge, GameModel game)
+            : this(ge.Id, ge.EventID, ge.GameID, ge.PlayerID, ge.Time)
+        {
+            SetCurrentIndexes();
+        }
+
         public EventVM(Players selectedPlayer)
             : this()
         {
+            PlayerId = selectedPlayer.Id;
             UpdateGames(selectedPlayer);
         }
 
@@ -97,6 +110,7 @@ namespace FootballSchool.ViewModels
             {
                 Games.Add(g.Id, _gameRepository.GetGameName(g.Id));
             }
+            SetCurrentIndexes();
         }
 
         public void UpdatePlayer(int team1Id, int team2Id)
@@ -111,6 +125,7 @@ namespace FootballSchool.ViewModels
             {
                 Players.Add(player.Id, _playerRepository.GetPlayerFullName(player.Id));
             }
+            SetCurrentIndexes();
         }
 
         public int Id { get; set; }

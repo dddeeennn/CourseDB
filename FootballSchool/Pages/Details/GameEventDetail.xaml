@@ -23,8 +23,6 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="ИД:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                <Label x:Name="Id" Content="{Binding Id}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <Label Content="Игра" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                 <ComboBox Name="CmbGame" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Games, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="CmbGame_OnSelectionChanged" DisplayMemberPath="Value" Margin="3" SelectedIndex="{Binding SelectedGameId, Mode=TwoWay}" />
                 <Label Content="Игрок:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>

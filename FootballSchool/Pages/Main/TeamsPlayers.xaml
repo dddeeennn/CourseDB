@@ -27,13 +27,6 @@
 						</ContextMenu>
 					</DataGrid.ContextMenu>
 					<DataGrid.Columns>
-						<DataGridTemplateColumn x:Name="idColumn" Header="ИД" Width="SizeToHeader">
-							<DataGridTemplateColumn.CellTemplate>
-								<DataTemplate>
-									<Label Content="{Binding Id}"/>
-								</DataTemplate>
-							</DataGridTemplateColumn.CellTemplate>
-						</DataGridTemplateColumn>
 						<DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Название" Width="SizeToHeader"/>
 						<DataGridTextColumn x:Name="cityColumn" Binding="{Binding City}" Header="Город" Width="SizeToHeader"/>
 					</DataGrid.Columns>
@@ -58,13 +51,6 @@
 							</ContextMenu>
 						</DataGrid.ContextMenu>
 						<DataGrid.Columns>
-							<DataGridTemplateColumn x:Name="idColumn1" Header="ИД" Width="SizeToHeader">
-								<DataGridTemplateColumn.CellTemplate>
-									<DataTemplate>
-										<Label Content="{Binding Id}"/>
-									</DataTemplate>
-								</DataGridTemplateColumn.CellTemplate>
-							</DataGridTemplateColumn>
 							<DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Фамилия" Width="*"/>
 							<DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Имя" Width="*"/>
 							<DataGridTextColumn x:Name="middleNameColumn" Binding="{Binding MiddleName}" Header="Отчество" Width="*"/>
@@ -84,16 +70,10 @@
 							</ContextMenu>
 						</DataGrid.ContextMenu>
 						<DataGrid.Columns>
-							<DataGridTemplateColumn x:Name="idColumn2" Header="ИД" Width="SizeToHeader">
-								<DataGridTemplateColumn.CellTemplate>
-									<DataTemplate>
-										<Label Content="{Binding Id}"/>
-									</DataTemplate>
-								</DataGridTemplateColumn.CellTemplate>
-							</DataGridTemplateColumn>
 							<DataGridTextColumn x:Name="gameColumn" Binding="{Binding Game}" Header="Игра" Width="*"/>
 							<DataGridTextColumn x:Name="playerColumn1" Binding="{Binding Player}" Header="Игрок" Width="*"/>
 							<DataGridTextColumn x:Name="eventColumn" Binding="{Binding Event}" Header="Событие" Width="*"/>
+                            <DataGridTextColumn x:Name="dateColumn" Binding="{Binding Time}" Header="Время" Width="*"/>
 						</DataGrid.Columns>
 					</DataGrid>
 				</StackPanel>

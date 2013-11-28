@@ -35,6 +35,7 @@ namespace FootballSchool.Pages.Details
         {
             _editableGame = game;
             _viewModel = new GameVM(game);
+            CmbReferee.IsEnabled = false;
             DataContext = _viewModel;
         }
 
@@ -42,6 +43,7 @@ namespace FootballSchool.Pages.Details
             : this(parentUC, content)
         {
             _viewModel = new GameVM(model);
+            CmbReferee.IsEnabled = false;
             DataContext = _viewModel;
         }
 

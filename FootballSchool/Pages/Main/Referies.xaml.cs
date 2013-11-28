@@ -133,10 +133,13 @@ namespace FootballSchool.Pages.Main
 
         private void gameEventsDataGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
+            var game = gamesDataGrid.SelectedItem as GameModel;
+            if (game == null) return;
+
             var model = gameEventsDataGrid.SelectedItem as GameEventPlayerModel;
             if (model == null) return;
 
-            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id), this, Content);
+            Content = new GameEventDetail(_gameEventRepository.GetSingle(x => x.Id == model.Id), game, this, Content);
         }
 
         private void MenuAddGameEvent_OnClick(object sender, RoutedEventArgs e)

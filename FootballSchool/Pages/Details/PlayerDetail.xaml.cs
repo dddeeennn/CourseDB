@@ -31,6 +31,7 @@ namespace FootballSchool.Pages.Details
         {
             _editablePlayer = player;
             _viewModel = new PlayerVM(player);
+            CmbTeam.IsEnabled = false;
             DataContext = _viewModel;
         }
 
@@ -38,6 +39,7 @@ namespace FootballSchool.Pages.Details
             : this()
         {
             _viewModel = new PlayerVM(team);
+            CmbTeam.IsEnabled = false;
             DataContext = _viewModel;
         }
 
